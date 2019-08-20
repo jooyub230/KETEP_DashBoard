@@ -1,0 +1,347 @@
+<link href="static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom Theme Style -->
+<link href="static/css/custom.css" rel="stylesheet">
+<link href="static/lib/cropper/dist/cropper.min.css" rel="stylesheet">
+
+<!--<div class="right_col" role="main">-->
+    <!--<div>-->
+        <!--<div class="page-title">-->
+            <!--<div class="title_left">-->
+                <!--<h3>Form advanced</h3>-->
+            <!--</div>-->
+
+            <!--<div class="title_right">-->
+                <!--<div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">-->
+                    <!--<div class="input-group">-->
+                        <!--<input type="text" class="form-control" placeholder="Search for...">-->
+                        <!--<span class="input-group-btn">-->
+                            <!--<button class="btn btn-default" type="button">Go!</button>-->
+                        <!--</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="clearfix"></div>-->
+        <!--<div class="row"></div>-->
+
+        <!-- form grid slider -->
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>HVAC 온도 조절기</h2>
+                <script>
+                    var now = new Date();
+                    document.write("현재 시간 : " + now);
+                </script>
+            </div>
+            <div class="x_content">
+                <div class="row grid_slider">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                    <p>부대시설 난방조절</p>
+                    <input type="text" id="range_31" value="" name="range" />
+                    <br>
+                    <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Select Zone</label>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                    <select class="select2_group form-control">
+                    <optgroup label="1층 부대시설">
+                    <option value="A01">마트</option>
+                    <option value="A02">로비</option>
+                    <option value="A03">한식당</option>
+                    <option value="A04">노래방</option>
+                    <option value="A05">게임장</option>
+                    <option value="A06">오션홀(대연회장)</option>
+                    </optgroup>
+                    <optgroup label="2층 부대시설">
+                    <option value="A07">설악홀(대연회장)</option>
+                    <option value="A08">연어홀(중연회장)</option>
+                    <option value="A09">송이홀(소연회장)</option>
+                    </optgroup>
+                    </select>
+                    </div>
+                    </div>
+                    <br>
+                    <div>
+                    <br>
+                    <button class="btn btn-primary" type="reset">Reset</button>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                    <p>객실&nbsp; 난방조절</p>
+                    <input type="text" class="range_min_max" value="" name="range" />
+                    <br>
+                    <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Select Room</label>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                    <select class="select2_group form-control">
+                    <optgroup label="Floor 2">
+                    <option value="R01">201</option>
+                    <option value="R02">202</option>
+                    <option value="R03">203</option>
+                    <option value="R04">204</option>
+                    <option value="R05">205</option>
+                    <option value="R06">206</option>
+                    <option value="R07">207</option>
+                    <option value="R08">208</option>
+                    <option value="R09">209</option>
+                    <option value="R10">210</option>
+                    <option value="R11">211</option>
+                    <option value="R12">212</option>
+                    <option value="R13">213</option>
+                    </optgroup>
+                    <optgroup label="Floor 3">
+                    <option value="R14">301</option>
+                    <option value="R15">302</option>
+                    <option value="R16">303</option>
+                    <option value="R17">304</option>
+                    <option value="R18">305</option>
+                    <option value="R19">306</option>
+                    <option value="R20">307</option>
+                    <option value="R21">308</option>
+                    <option value="R22">309</option>
+                    <option value="R23">310</option>
+                    <option value="R24">311</option>
+                    <option value="R25">312</option>
+                    <option value="R26">313</option>
+                    <option value="R27">314</option>
+                    <option value="R28">315</option>
+                    <option value="R29">316</option>
+                    <option value="R30">317</option>
+                    <option value="R31">318</option>
+                    <option value="R32">319</option>
+                    <option value="R33">320</option>
+                    <option value="R34">321</option>
+                    <option value="R35">322</option>
+                    <option value="R36">323</option>
+                    <option value="R37">324</option>
+                    <option value="R38">325</option>
+                    </optgroup>
+                    <optgroup label="Floor 5">
+                    <option value="R39">501</option>
+                    <option value="R40">502</option>
+                    <option value="R41">503</option>
+                    <option value="R42">504</option>
+                    <option value="R43">505</option>
+                    <option value="R44">506</option>
+                    <option value="R45">507</option>
+                    <option value="R46">508</option>
+                    <option value="R47">509</option>
+                    <option value="R48">510</option>
+                    <option value="R49">511</option>
+                    <option value="R50">512</option>
+                    <option value="R51">513</option>
+                    <option value="R52">514</option>
+                    <option value="R53">515</option>
+                    <option value="R54">516</option>
+                    <option value="R55">517</option>
+                    <option value="R56">518</option>
+                    <option value="R57">519</option>
+                    <option value="R58">520</option>
+                    <option value="R59">521</option>
+                    <option value="R60">522</option>
+                    <option value="R61">523</option>
+                    <option value="R62">524</option>
+                    <option value="R63">525</option>
+                    <option value="R64">526</option>
+                    </optgroup>
+                    <optgroup label="Floor 6">
+                    <option value="R65">601</option>
+                    <option value="R66">602</option>
+                    <option value="R67">603</option>
+                    <option value="R68">604</option>
+                    <option value="R69">605</option>
+                    <option value="R70">606</option>
+                    <option value="R71">607</option>
+                    <option value="R72">608</option>
+                    <option value="R73">609</option>
+                    <option value="R74">610</option>
+                    <option value="R75">611</option>
+                    <option value="R76">612</option>
+                    <option value="R77">613</option>
+                    <option value="R78">614</option>
+                    <option value="R79">615</option>
+                    <option value="R80">616</option>
+                    <option value="R81">617</option>
+                    <option value="R82">618</option>
+                    <option value="R83">619</option>
+                    <option value="R84">620</option>
+                    <option value="R85">621</option>
+                    <option value="R86">622</option>
+                    <option value="R87">623</option>
+                    <option value="R88">624</option>
+                    <option value="R89">625</option>
+                    <option value="R90">626</option>
+                    <option value="R91">627</option>
+                    </optgroup>
+                    </select>
+                    </div>
+                    <br><br>
+                    <div>
+                    <br>
+                    <button class="btn btn-primary" type="reset">Reset</button>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <section class="wrapper">
+                <div class="row mt">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="content-panel">
+                            <h4><i class="fa fa-angle-right"></i>난방 현황</h4>
+                            <section id="unseen">
+                <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                <tr>
+                <th>Room</th>
+                <th>Resevation</th>
+                <th class="numeric">설정온도</th>
+                <th class="numeric">현재온도</th>
+                <th class="numeric">경과시간</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td>504</td>
+                <td>Thu Mar 21 2019 </td>
+                <td class="numeric">55</td>
+                <td class="numeric">48</td>
+                <td class="numeric">2.0hr</td>
+
+                </tr>
+                <tr>
+                <td>611</td>
+                <td>Fri Mar 21 2019</td>
+                <td class="numeric">45</td>
+                <td class="numeric">44</td>
+                <td class="numeric">1.2hr</td>
+
+                </tr>
+                <tr>
+                <td>202</td>
+                <td>Thu Mar 21 2019</td>
+                <td class="numeric">55</td>
+                <td class="numeric">55</td>
+                <td class="numeric">4.5hr</td>
+
+                </tr>
+                <tr>
+                <td>203</td>
+                <td>Thu Mar 21 2019</td>
+                <td class="numeric">55</td>
+                <td class="numeric">55</td>
+                <td class="numeric">4.5hr</td>
+
+                </tr>
+                <tr>
+                <td>204</td>
+                <td>Thu Mar 21 2019</td>
+                <td class="numeric">55</td>
+                <td class="numeric">55</td>
+                <td class="numeric">4.5hr</td>
+
+                </tr>
+                <tr>
+                <td>205</td>
+                <td>Thu Mar 21 2019</td>
+                <td class="numeric">55</td>
+                <td class="numeric">55</td>
+                <td class="numeric">4.5hr</td>
+
+                </tr>
+                <tr>
+                <td>206</td>
+                <td>Thu Mar 21 2019</td>
+                <td class="numeric">55</td>
+                <td class="numeric">55</td>
+                <td class="numeric">4.5hr</td>
+
+                </tr>
+                <tr>
+                <td>207</td>
+                <td>Thu Mar 21 2019</td>
+                <td class="numeric">55</td>
+                <td class="numeric">55</td>
+                <td class="numeric">4.5hr</td>
+
+                </tr>
+                <tr>
+                <td>208</td>
+                <td>Thu Mar 21 2019</td>
+                <td class="numeric">55</td>
+                <td class="numeric">55</td>
+                <td class="numeric">4.5hr</td>
+
+                </tr>
+                <tr>
+                <td>209</td>
+                <td>Thu Mar 21 2019</td>
+                <td class="numeric">55</td>
+                <td class="numeric">55</td>
+                <td class="numeric">4.5hr</td>
+
+                </tr>
+                <tr>
+                <td>210</td>
+                <td>Thu Mar 21 2019</td>
+                <td class="numeric">55</td>
+                <td class="numeric">55</td>
+                <td class="numeric">4.5hr</td>
+
+                </tr>
+                </tbody>
+                </table>
+                </section>
+                            <br />
+                            <br />
+                            <!-- /form grid slider -->
+                            <div class="row">
+                                <div class="col-md-9 docs-buttons">
+                                    <!-- <h3 class="page-header">Toolbar:</h3> -->
+                                    <!-- Show the cropped image in modal -->
+                                    <div class="modal fade docs-cropped" id="getCroppedCanvasModal" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" role="dialog" tabindex="-1">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                    <h4 class="modal-title" id="getCroppedCanvasTitle">Cropped</h4>
+                                                </div>
+                                                <div class="modal-body"></div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    <a class="btn btn-primary" id="download" href="javascript:void(0);" download="cropped.png">Download</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal -->
+
+                                </div><!-- /.dropdown -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    <!--</div>-->
+<!--</div>-->
+<script src="static/lib/jquery/jquery.min.js"></script>
+<script src="static/lib/cropper/dist/cropper.min.js"></script>
+<!--Plugin CSS file with desired skin-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.0/css/ion.rangeSlider.min.css"/>
+<!--jQuery-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!--Plugin JavaScript file-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.3.0/js/ion.rangeSlider.min.js"></script>
+<script type="text/javascript">
+    $(".range_min_max").ionRangeSlider({
+        type: "double",
+        min: 0,
+        max: 100,
+        from: 30,
+        to: 70,
+        max_interval: 50
+    });
+    $("#range_31").ionRangeSlider({type:"double",min:0,max:100,from:30,to:70,from_fixed:!0})
+</script>

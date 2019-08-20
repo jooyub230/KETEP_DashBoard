@@ -1,0 +1,327 @@
+<link href="static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="static/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+<!-- Custom styles for this template -->
+<link href="static/css/style.css" rel="stylesheet">
+<link href="static/css/style-responsive.css" rel="stylesheet">
+<div class="row">
+    <div class="col-lg-12">
+        <form class="form-inline" role="form" id="searchForm" action="getUsage/" method="post">
+            {% csrf_token %}
+            <div class="form-group col-lg-12">
+                <div class="input-append date dpYears">
+                    조회일자 :&nbsp;
+                    <select id="year" name="year" class="form-control">
+                    </select>년&nbsp;
+                    <select id="month" name="month" class="form-control">
+                    </select>월&nbsp;
+                    <select id="day" name="day" class="form-control">
+                    </select>일&nbsp;
+                </div>
+            </div>
+            <button type="submit" id="query" class="btn btn-theme">조회</button>
+        </form>
+        <div id="perHoursUsage" style="height:400px;">
+            </div>
+        <h4><i class="fa fa-angle-right"></i> Detail Usage</h4>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4">
+        <section>
+            <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                    <tr>
+                        <th>시</th>
+                        <th>최대수요(kW)</th>
+                    </tr>
+                </thead>
+            </table>
+        </section>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4">
+        <section>
+            <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                    <tr>
+                        <th>시</th>
+                        <th>최대수요(kW)</th>
+                    </tr>
+                </thead>
+            </table>
+        </section>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4">
+        <section>
+            <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                    <tr>
+                        <th>시</th>
+                        <th>최대수요(kW)</th>
+                    </tr>
+                </thead>
+            </table>
+        </section>
+    </div>
+</div>
+
+<script src="static/lib/jquery/jquery.min.js"></script>
+<script type="application/javascript">
+$(document).ready(function() {
+    var date = new Date();
+    var lastDayOfMonth = new Date(date.getFullYear(), date.getMonth()+1, 0);
+    appendYear(date);
+    appendMonth(date);
+    appendDay(date, lastDayOfMonth.getDate());
+
+    $("#year, #month").change(function(){
+        var $year = $("#year").val();
+        var $month = $("#month").val();
+        var $day = $("#day").val();
+        var queryDate = new Date($year, $month, 0);
+        $("#day").find("option").remove();
+        appendDay(queryDate, queryDate.getDate(), $day);
+    });
+
+    // timer = setInterval(function(){
+        $.ajax({
+            beforeSend:function(){
+                top.$(".wrap-loading").show();
+            },
+            url:'/getIsmartData/',
+            dataType:'json',
+            type:'POST',
+            // async: false,
+            cache: false,
+            contentType: 'application/json',
+            complete:function(){
+                top.$(".wrap-loading").fadeOut();
+            },
+            success:function(result){
+                var html = "<tbody>";
+                var table1 = "";
+                var table2 = "";
+                var table3 = "";
+                <!--for(var i = 0 ; i < result.length ; i++){-->
+                    <!--html += "<tr><td>" + result[i].dateTime.replace("T", " ") + "</td><td>" + result[i].usage + "</td></tr>";-->
+                <!--}-->
+                for(var i = 0 ; i < result['ismart_dic']['data'].length ; i++){
+                    if(parseInt(i/8) == 0){
+                        table1 += "<tr><td>" + result['ismart_dic']['data'][i][0] + "</td><td>" + result['ismart_dic']['data'][i][1] + "</td></tr>";
+                    }else if(parseInt(i/8) == 1){
+                        table2 += "<tr><td>" + result['ismart_dic']['data'][i][0] + "</td><td>" + result['ismart_dic']['data'][i][1] + "</td></tr>";
+                    }else{
+                        table3 += "<tr><td>" + result['ismart_dic']['data'][i][0] + "</td><td>" + result['ismart_dic']['data'][i][1] + "</td></tr>";
+                    }
+                }
+
+                $(".table:eq(0)").append(html + table1 + "</tbody>");
+                $(".table:eq(1)").append(html + table2 + "</tbody>");
+                $(".table:eq(2)").append(html + table3 + "</tbody>");
+                $.each(result, function(key, value){
+                    $.each(value, function(key, value){
+                        console.log(key, value);
+                    });
+                });
+                var perHoursUsage = document.getElementById("perHoursUsage");
+                var perHoursChart = echarts.init(perHoursUsage);
+                var data = [];
+                for(var i = 0 ; i < result['ismart_dic']['data'].length ; i++){
+                    data.push(result['ismart_dic']['data'][i][1]);
+                }
+                <!--alert(data);-->
+                setPeakChart(data);
+            },
+            error: function(status, errorMsg){
+              alert(errorMsg);
+            }
+        });
+
+    // }, 30000);
+
+    $("#searchForm").submit(function(event){
+        var year = $("#year").val();
+        var month = $("#month").val();
+        var day = $("#day").val();
+        event.preventDefault();
+
+        $.ajax({
+            url:'/getUsage/',
+            dataType:'json',
+            type:'GET',
+            data:{
+                year : year,
+                month : month,
+                day : day
+            },
+            contentType: 'application/json',
+            success:function(result){
+                <!--alert(JSON.stringify(result));-->
+                $(".table").find("tbody").remove();
+                var data = [];
+                var html = "<tbody>";
+                var table1 = "";
+                var table2 = "";
+                var table3 = "";
+                for(var i = 0 ; i < result.length ; i++){
+                    data.push(result[i].usage);
+                    if(parseInt(i/8) == 0){
+                        table1 += "<tr><td>" + result[i].dateTime + "</td><td>" + result[i].usage + "</td></tr>";
+                    }else if(parseInt(i/8) == 1){
+                        table2 += "<tr><td>" + result[i].dateTime + "</td><td>" + result[i].usage + "</td></tr>";
+                    }else{
+                        table3 += "<tr><td>" + result[i].dateTime + "</td><td>" + result[i].usage + "</td></tr>";
+                    }
+                }
+                $(".table:eq(0)").append(html + table1 + "</tbody>");
+                $(".table:eq(1)").append(html + table2 + "</tbody>");
+                $(".table:eq(2)").append(html + table3 + "</tbody>");
+                $.each(result, function(key, value){
+                    $.each(value, function(key, value){
+                        console.log(key, value);
+                    });
+                });
+                setPeakChart(data);
+            },
+            error: function(status, errorMsg){
+              alert(errorMsg);
+            }
+        });
+    });
+});
+
+function setPeakChart(data){
+    var perHoursUsage = document.getElementById("perHoursUsage");
+    var perHoursChart = echarts.init(perHoursUsage);
+    var app = {};
+    var hours = [];
+    for(var i = 1; i < 25; i++){
+        if(i == 24){
+            hours.push(0);
+        }else{
+            hours.push(i);
+        }
+    }
+    option = null;
+    option = {
+        title: {
+            text: '시간별 전력 최대수요'
+        },
+        color: ['#2f4554'],
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'cross',
+                crossStyle: {
+                    color: '#999'
+                }
+            },
+            formatter: function (params) {
+                var colorSpan = color => '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:' + color + '"></span>';
+                let rez = '<p>' + params[0].axisValue + ':00시 기준' + '</p>';
+                var xx = '<p>' + colorSpan(params[0].color) + ' ' + params[0].seriesName + ': ' + params[0].value + 'kW' + '</p>';
+                rez += xx;
+
+                return rez;
+            }
+        },
+        legend: {
+          data:['최대수요']
+        },
+        toolbox: {
+          show: true,
+          feature: {
+              saveAsImage: {}
+          }
+        },
+        xAxis: {
+            type: 'category',
+            data: hours
+        },
+        axisPointer: {
+            value: '06',
+            snap: true,
+            lineStyle: {
+              color: '#004E52',
+              opacity: 0.5,
+              width: 1
+            },
+            label: {
+              show: true,
+              backgroundColor: '#004E52'
+            },
+            handle: {
+              show: false,
+              color: '#004E52'
+            }
+        },
+        yAxis: [
+          {
+              type: 'value',
+              name: '최대수요',
+              axisLabel: {
+                formatter: '{value} kW'
+              }
+          }
+        ],
+        grid: {
+          left: 60,
+          right: 60,
+          bottom: 40
+        },
+        series: [
+            {
+                name:'최대수요',
+                type:'bar',
+                smooth: true,
+                itemStyle: {
+                    color: '#2f4554'
+                },
+                data: data
+            }
+        ]
+    };
+    if (option && typeof option === "object") {
+        perHoursChart.setOption(option, true);
+    };
+
+    window.onresize = function() {
+        perHoursChart.resize();
+    }
+}
+
+function appendYear(date){
+    var year = date.getFullYear();
+    var selectValue = document.getElementById("year");
+    var optionIndex = 0;
+
+    for(var i=year-3;i<=year;i++){
+        selectValue.add(new Option(i,i),optionIndex++);
+    }
+    selectValue.value = year;
+}
+
+function appendMonth(date){
+    var selectValue = document.getElementById("month");
+    var optionIndex = 0;
+    var month = date.getMonth() + 1;
+
+    for(var i=1;i<=12;i++){
+        selectValue.add(new Option(i,i),optionIndex++);
+    }
+    selectValue.value = month;
+}
+
+
+function appendDay(date, lastDayOfMonth, day){
+    var selectValue = document.getElementById("day");
+    var optionIndex = 0;
+    var date = date.getDate();
+    for(var i=1;i<=lastDayOfMonth;i++){
+        selectValue.add(new Option(i,i),optionIndex++);
+    }
+    if(day == null){
+        selectValue.value = date;
+    }else{
+        selectValue.value = day;
+    }
+}
+</script>
+<script src="static/js/echarts-dev.js"></script>
