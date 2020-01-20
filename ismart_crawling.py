@@ -13,7 +13,7 @@ from django.db import connection
 
 # django setting 파일 설정하기 및 장고 셋업
 cur_dir = os.path.dirname(__file__)
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "KETEP_DEV.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "KETEP_DashBoard.settings")
 django.setup()
 
 # 모델 임포트는 django setup이 끝난 후에 가능하다. 셋업 전에 import하면 에러난다. db connection 정보가 없어서......

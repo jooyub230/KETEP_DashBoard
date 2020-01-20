@@ -1,0 +1,674 @@
+<!-- Favicons -->
+<link href="static/img/favicon.png" rel="icon">
+<link href="static/img/apple-touch-icon.png" rel="apple-touch-icon">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<!-- Bootstrap core CSS -->
+<link href="static/lib/bootstrap-4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="static/lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+<!--JQuery UI CSS-->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!--external css-->
+<link href="static/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link href="static/css/style.css" rel="stylesheet">
+<link href="static/css/style-responsive.css" rel="stylesheet">
+<!-- Bootstrap Form Helpers -->
+<link href="static/lib/bootstrap-form-helpers/css/bootstrap-formhelpers.css" rel="stylesheet" media="screen">
+
+<!-- Nav tabs -->
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#setHeatingGroup">난방그룹설정</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#setHeatingTime">난방시간설정</a>
+    </li>
+</ul>
+<!-- Tab panes -->
+<div class="tab-content">
+    <div id="setHeatingGroup" class="tab-pane active"><br>
+        <div class="row">
+            <div class="col-sm-3 col-md-2">
+                <div class="form-group">
+                    <label>시작일 :</label>
+                    <div class="input-group date">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                        <input type="text" class="form-control" name="StartTime">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-2">
+                <div class="form-group">
+                    <label>시작시간 :</label>
+                    <div class="bfh-timepicker" name="StartTime"></div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-2">
+                <div class="form-group">
+                    <label>종료일 :</label>
+                    <div class="input-group date">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                        <input type="text" class="form-control" name="EndTime">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-2">
+                <div class="form-group">
+                    <label>종료시간 :</label>
+                    <div class="bfh-timepicker" name="EndTime"></div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-theme">조회</button>
+        </div>
+        <div class="row">
+            <div class="col-md-2 p-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <h5>스케줄 미등록 객실</h5>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="dragRoom p-2 d-flex flex-wrap">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-10 p-4 d-flex flex-wrap align-content-stretch">
+                <!--<div class="row">-->
+                    <div class="col-md-2_4 p-2">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h5>1그룹</h5>
+                                    </div>
+                                    <div class="option col-md-4">
+                                        <a class="edit">
+                                            <i class="far fa-check-square"></i>
+                                        </a>
+                                        <a class="trash">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="group p-2 d-flex flex-wrap" >
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2_4 p-2">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h5>2그룹</h5>
+                                    </div>
+                                    <div class="option col-md-4">
+                                        <a class="edit">
+                                            <i class="far fa-check-square"></i>
+                                        </a>
+                                        <a class="trash">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="group p-2 d-flex flex-wrap">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2_4 p-2">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h5>3그룹</h5>
+                                    </div>
+                                    <div class="option col-md-4">
+                                        <a class="edit">
+                                            <i class="far fa-check-square"></i>
+                                        </a>
+                                        <a class="trash">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="group p-2 d-flex flex-wrap">
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2_4 p-2">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h5>4그룹</h5>
+                                    </div>
+                                    <div class="option col-md-4">
+                                        <a class="edit">
+                                            <i class="far fa-check-square"></i>
+                                        </a>
+                                        <a class="trash">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="group p-2 d-flex flex-wrap">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2_4 p-2">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h5>5그룹</h5>
+                                    </div>
+                                    <div class="option col-md-4">
+                                        <a class="edit">
+                                            <i class="far fa-check-square"></i>
+                                        </a>
+                                        <a class="trash">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="group p-2 d-flex flex-wrap">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!--</div>-->
+                <!--<div class="row">-->
+                    <div class="col-md-2_4 p-2">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h5>6그룹</h5>
+                                    </div>
+                                    <div class="option col-md-4">
+                                        <a class="edit">
+                                            <i class="far fa-check-square"></i>
+                                        </a>
+                                        <a class="trash">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="group p-2 d-flex flex-wrap">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2_4 p-2">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h5>7그룹</h5>
+                                    </div>
+                                    <div class="option col-md-4">
+                                        <a class="edit">
+                                            <i class="far fa-check-square"></i>
+                                        </a>
+                                        <a class="trash">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="group p-2 d-flex flex-wrap">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2_4 p-2">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h5>8그룹</h5>
+                                    </div>
+                                    <div class="option col-md-4">
+                                        <a class="edit">
+                                            <i class="far fa-check-square"></i>
+                                        </a>
+                                        <a class="trash">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="group p-2 d-flex flex-wrap">
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2_4 p-2">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h5>9그룹</h5>
+                                    </div>
+                                    <div class="option col-md-4">
+                                        <a class="edit">
+                                            <i class="far fa-check-square"></i>
+                                        </a>
+                                        <a class="trash">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="group p-2 d-flex flex-wrap">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2_4 p-2">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h5>10그룹</h5>
+                                    </div>
+                                    <div class="option col-md-4">
+                                        <a class="edit">
+                                            <i class="far fa-check-square"></i>
+                                        </a>
+                                        <a class="trash">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <div class="group p-2 d-flex flex-wrap">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!--</div>-->
+            </div>
+        </div>
+    </div>
+    <div id="setHeatingTime" class="tab-pane"><br>
+        <div class="main">
+            <table id="timeScheduleList" class="table table-bordered table-striped table-condensed">
+                <colgroup>
+                    <col width="3%">
+                    <col width="7%">
+                    <col width="9%">
+                    <col width="9%">
+                    <col width="9%">
+                    <col width="9%">
+                    <col width="9%">
+                    <col width="9%">
+                    <col width="9%">
+                    <col width="9%">
+                    <col width="9%">
+                    <col width="9%">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <td>NO</td>
+                        <td>구분</td>
+                        <td>1그룹</td>
+                        <td>2그룹</td>
+                        <td>3그룹</td>
+                        <td>4그룹</td>
+                        <td>5그룹</td>
+                        <td>6그룹</td>
+                        <td>2F</td>
+                        <td>3F</td>
+                        <td>4F</td>
+                        <td>5F</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="temp time" style="display: none;">
+                        <td><span></span></td>
+                        <td><span></span></td>
+                        <td>
+                            <div class="form-group">
+                                <label class="switch">
+                                    <input type="checkbox" name="1group">
+                                    <span class="slider round"></span>
+                                </label>
+                                <p>OFF</p><p style="display:none;">ON</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <label class="switch">
+                                    <input type="checkbox" name="2group">
+                                    <span class="slider round"></span>
+                                </label>
+                                <p>OFF</p><p style="display:none;">ON</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <label class="switch">
+                                    <input type="checkbox" name="3group">
+                                    <span class="slider round"></span>
+                                </label>
+                                <p>OFF</p><p style="display:none;">ON</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <label class="switch">
+                                    <input type="checkbox" name="4group">
+                                    <span class="slider round"></span>
+                                </label>
+                                <p>OFF</p><p style="display:none;">ON</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <label class="switch">
+                                    <input type="checkbox" name="5group">
+                                    <span class="slider round"></span>
+                                </label>
+                                <p>OFF</p><p style="display:none;">ON</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <label class="switch">
+                                    <input type="checkbox" name="6group">
+                                    <span class="slider round"></span>
+                                </label>
+                                <p>OFF</p><p style="display:none;">ON</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <label class="switch">
+                                    <input type="checkbox" name="2ndFloor">
+                                    <span class="slider round"></span>
+                                </label>
+                                <p>OFF</p><p style="display:none;">ON</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <label class="switch">
+                                    <input type="checkbox" name="3rdFloor">
+                                    <span class="slider round"></span>
+                                </label>
+                                <p>OFF</p><p style="display:none;">ON</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <label class="switch">
+                                    <input type="checkbox" name="5thFloor">
+                                    <span class="slider round"></span>
+                                </label>
+                                <p>OFF</p><p style="display:none;">ON</p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <label class="switch">
+                                    <input type="checkbox" name="6thFloor">
+                                    <span class="slider round"></span>
+                                </label>
+                                <p>OFF</p><p style="display:none;">ON</p>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="static/lib/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="static/lib/bootstrap-4.3.1/js/bootstrap.min.js"></script>
+<script src="static/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="static/lib/jquery/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="static/lib/bootstrap-4.3.1/js/bootstrap-input-spinner-ver.bs3.js"></script>
+<!-- Bootstrap Form Helpers -->
+<script src="static/lib/bootstrap-form-helpers/js/bootstrap-formhelpers-ver.bs3.js"></script>
+<script src="static/lib/bootstrap-form-helpers/js/bootstrap-formhelpers-timepicker-ver.bs3.js"></script>
+<script src="static/lib/bootstrap-form-helpers/js/bootstrap-formhelpers-phone.js"></script>
+<script src="static/js/echarts-dev.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker3.min.css">
+<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
+<script src="static/lib/bootstrap/js/bootstrap-datepicker.kr.js"></script>
+<script src="static/js/newBroadAjax.js"></script>
+<script>
+$(document).ready(function(){
+
+    $(".bfh-timepicker").bfhtimepicker();
+    $(".bfh-timepicker").find('div:first-child').removeClass('input-group-sm');
+    $('.input-group.date').datepicker({
+        calendarWeeks: false,
+        todayHighlight: true,
+        autoclose: true,
+        format: "yyyy-mm-dd",
+        language: "kr"
+    });
+    var data = getNewBroadAjax('roomNo', 'rooms/roomPriority', '');
+    var roomList = data.roomNo.tPriority;
+
+    roomList.sort(function(a, b) {        // 객실번호 오름차순 정렬
+        return a["RoomNo"] - b["RoomNo"];
+    });
+    data = getNewBroadAjax('group', '/rooms/groupSchedule', '');
+    var group = data.group;
+    setParsedJson(group);
+
+    for(var i = 0; i < roomList.length; i++){
+        roomList[i].GroupIndex = group.GroupIndex[i];
+        roomList[i].Use = group.Use[i];
+
+        $spanRoom = $('<span class="room col-md-2_4 p-2">');
+        $spanRoom.append($('<label for="' + roomList[i].RoomNo + '">').text(roomList[i].RoomNo));
+        $spanRoom.append($('<input type="checkbox' + '" id=' + '"' + roomList[i].RoomNo + '">'));
+
+        if(group.GroupIndex[i] == 255){
+            <!--$spanRoom.find(':checkbox').on("click", function() {return false;});-->
+            $spanRoom.find(':checkbox').prop('checked', false);
+            <!--$spanRoom.find(':checkbox').unbind('click');-->
+            <!--$spanRoom.find(':checkbox').off('click');-->
+            $spanRoom.appendTo('.dragRoom');
+        }else{
+            if(group.Use[i] == 1){
+                $spanRoom.find(':checkbox').prop('checked', true);
+            }else{
+                $spanRoom.find(':checkbox').prop('checked', false);
+            }
+            $spanRoom.appendTo('.group:eq(' + group.GroupIndex[i] + ')');
+        }
+    }
+
+
+    $( ":checkbox" ).checkboxradio({
+	    icon: false
+    });
+    console.log('roomList = ', roomList);
+    $.fn.setRoom();
+
+    $('.room').find(':checkbox').click(function(){
+        if($(this).closest('div').hasClass('dragRoom')){
+            $(this).prop('checked', false);
+        }
+        console.log('room 상태 = ', $(this).prop('checked'));
+    });
+
+    $('.trash').click(function(){
+        var $initRoom = $(this).closest('div.panel').find('.room');
+        $initRoom.find(':checkbox').prop('checked', false).checkboxradio('refresh');
+        $initRoom.appendTo('.dragRoom');
+        $.fn.setRoom();
+    });
+
+    var switchValue = 0;
+    $('.edit').click(function(){
+        var $rooms = $(this).closest('div.panel').find('.room').find(':checkbox');
+        if(switchValue == 0){
+            $rooms.prop('checked', true).checkboxradio('refresh');
+            switchValue = 1;
+        }else{
+            $rooms.prop('checked', false).checkboxradio('refresh');
+            switchValue = 0;
+        }
+    });
+
+    $('a[href="#setHeatingTime"]').click(function(){
+        $('#timeScheduleList').find('tbody tr').not('.temp').remove();
+        var data = getNewBroadAjax('timeSchedule', 'rooms/timeSchedule', '');
+        var timeList = data.timeSchedule;
+        var groupList = Object.keys(timeList);
+        var times = timeList[groupList[0]];
+        var html = [];
+        console.log('groupList = ', groupList);
+        console.log('times = ', times);
+
+        for (var i = 0 ; i < times.length ; i++){               // 24 loop
+            var temp = $('.main').find('.temp').clone(true);
+            temp.find('td:eq(0) span').text(i+1);
+            temp.find('td:eq(1) span').text(i + '시 ~ ' + (i + 1) + '시');
+
+            for (var j = 0 ; j < groupList.length ; j++){       // 10 loop
+                <!--console.log(i, 'tr ', j, 'td ', timeList[groupList[j]][i]);-->
+                if(timeList[groupList[j]][i]){
+                    temp.find(':checkbox').eq(j).prop('checked', true).checkboxradio('refresh');
+                    temp.find(':checkbox').eq(j).parent().next().hide();
+                    temp.find(':checkbox').eq(j).parent().next().next().show();
+                }else{
+                    temp.find(':checkbox').eq(j).prop('checked', false).checkboxradio('refresh');
+                }
+            }
+            html.push(temp.removeClass('temp').show());
+        }
+        $('.main').find('tbody').append(html);
+
+    });
+    var check = $('.switch').find("input[type='checkbox']");
+    <!--console.log('check 개수 ', check.length);-->
+
+    check.click(function(){
+        $(this).closest('div').find('p').toggle();
+    });
+
+});
+$.fn.setRoom = function() {
+        var selectedClass = 'ui-state', //'ui-state-highlight'
+        clickDelay = 1,
+        // click time (milliseconds)
+        lastClick, diffClick; // timestamps
+
+        $(".dragRoom .room, .group .room")
+        // Script to deferentiate a click from a mousedown for drag event
+        .bind('mousedown mouseup', function(e) {
+            if (e.type == "mousedown") {
+                lastClick = e.timeStamp; // get mousedown time
+            } else {
+                diffClick = e.timeStamp - lastClick;
+                if (diffClick < clickDelay) {
+                    // add selected class to group draggable objects
+                    $(this).toggleClass(selectedClass);
+                }
+            }
+        })
+        .draggable({
+            revertDuration: 10,
+            // grouped items animate separately, so leave this number low
+            containment: '#setHeatingGroup',
+            start: function(e, ui) {
+                ui.helper.addClass(selectedClass);
+            },
+            stop: function(e, ui) {
+                // reset group positions
+                $('.' + selectedClass).css({
+                    top: 0,
+                    left: 0
+                });
+                <!--$(this).removeProp("checked");-->
+                /* $('#droppable').find('input[type="checkbox"]').removeAttr('disabled'); */
+            },
+            drag: function(e, ui) {
+                // set selected group position to main dragged object
+                // this works because the position is relative to the starting position
+                $('.' + selectedClass).css({
+                    top: ui.position.top,
+                    left: ui.position.left
+                });
+            }
+        });
+
+        $(".dragRoom, .group").sortable().droppable({
+            drop: function(e, ui) {
+                $('.' + selectedClass).appendTo($(this)).add(ui.draggable) // ui.draggable is appended by the script, so add it after
+                .removeClass(selectedClass).css({
+                    top: 0,
+                    left: 0
+                });
+
+                if($(this).hasClass('dragRoom')){
+                    console.log('dragRoom 으로 이동');
+                    $(this).find('.room :checkbox').prop('checked', false).checkboxradio('refresh');
+                    <!--$(this).find('.room :checkbox').on("click", function() {return false;});-->
+                    <!--$(this).find('.room :checkbox').on("click", function(e) {-->
+                        <!--$(this).prop('checked', false);-->
+                        <!--console.log('dragRoom ', $(this).prop('checked'));-->
+                    <!--});-->
+                }else{
+                    console.log('group 으로 이동');
+                    <!--$(this).removeAttr("checked");-->
+                    <!--$(this).find('.room :checkbox').on("click", function(e) {-->
+                        <!--$(this).prop('checked',function(){-->
+                            <!--return !$(this).prop('checked');-->
+                        <!--});-->
+
+                    <!--});-->
+                    <!--console.log('group ', $(this).prop('checked'));-->
+                    <!--$spanRoom.find(':checkbox').bind('click', true).checkboxradio('refresh');-->
+
+
+                }
+                <!--$('.dragRoom .room').find(':checkbox').prop('disabled', true).checkboxradio('refresh');-->
+                <!--$('.group .room').find(':checkbox').prop('disabled', false).checkboxradio('refresh');-->
+            }
+        });
+}
+</script>

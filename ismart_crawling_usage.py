@@ -13,7 +13,7 @@ from django.db import connection
 
 # django setting 파일 설정하기 및 장고 셋업
 cur_dir = os.path.dirname(__file__)
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "KETEP_DEV.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "KETEP_DashBoard.settings")
 django.setup()
 
 # 모델 임포트는 django setup이 끝난 후에 가능하다. 셋업 전에 import하면 에러난다. db connection 정보가 없어서......
@@ -132,9 +132,9 @@ def getDataYesterday(driver, cur_dt):
 if __name__ == "__main__":
     # --------------------------------------- ChromeDriver Option Setting ---------------------------------------------- #
     options = webdriver.ChromeOptions()
-    options.add_argument('headless')
-    options.add_argument('window-size=1920x1080')
-    options.add_argument("disable-gpu")
+    # options.add_argument('headless')
+    # options.add_argument('window-size=1920x1080')
+    # options.add_argument("disable-gpu")
     # 혹은 options.add_argument("--disable-gpu")
 
     # ----------------------------------------- Element Control Setting ------------------------------------------------ #
@@ -168,10 +168,10 @@ if __name__ == "__main__":
     #         cur_dt += timedelta(days=2)
 
     # 정책 수정 후(1년)
-    while (cur_dt <= end_dt):
-        print(cur_dt)
-        getDataLastYear(driver, cur_dt)
-        cur_dt += timedelta(days=1)
-
-    getDataYesterday(driver, end_dt)        # 마지막은 오늘 날짜로 조회
+    # while (cur_dt <= end_dt):
+    #     print(cur_dt)
+    #     getDataLastYear(driver, cur_dt)
+    #     cur_dt += timedelta(days=1)
+    #
+    # getDataYesterday(driver, end_dt)        # 마지막은 오늘 날짜로 조회
     driver.quit()

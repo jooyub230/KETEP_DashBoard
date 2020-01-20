@@ -80,7 +80,6 @@
 			} else {
 			
 				$('li a',obj).click(function(e){
-
 					$activeLi = $(this).parent('li');
 					$parentsLi = $activeLi.parents('li');
 					$parentsUl = $activeLi.parents('ul');
@@ -102,6 +101,10 @@
 						$('a',$activeLi).removeClass(defaults.classActive);
 					} else {
 						$(this).siblings('ul').slideToggle(defaults.speed);
+						if($parentsLi != undefined){
+						    $activeLi.siblings('li').removeClass(defaults.classActive);
+						    $activeLi.siblings('li').find('ul li').removeClass(defaults.classActive);
+						}
 						$('> a',$activeLi).addClass(defaults.classActive);
 					}
 					
@@ -138,7 +141,6 @@
 			}
 			
 			function linkOver(){
-
 			$activeLi = $(this).parent('li');
 			$parentsLi = $activeLi.parents('li');
 			$parentsUl = $activeLi.parents('ul');

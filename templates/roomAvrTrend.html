@@ -1,0 +1,322 @@
+<!-- Favicons -->
+<link href="static/img/favicon.png" rel="icon">
+<link href="static/img/apple-touch-icon.png" rel="apple-touch-icon">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<!-- Bootstrap core CSS -->
+<link href="static/lib/bootstrap-4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="static/lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+<!--external css-->
+<link href="static/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link href="static/css/style.css" rel="stylesheet">
+<link href="static/css/style-responsive.css" rel="stylesheet">
+<!-- Bootstrap Form Helpers -->
+<link href="static/lib/bootstrap-form-helpers/css/bootstrap-formhelpers.css" rel="stylesheet" media="screen">
+
+<div id="ahuAvrTrend">
+    <div class="row">
+        <div class="col-sm-3 col-md-2">
+            <div class="form-group">
+                <label>시간단위 :</label>
+                <select class="form-control" name="time">
+                    <option value="300">5분</option>
+                    <option value="600" selected>10분</option>
+                    <option value="3600">1시간</option>
+                    <option value="86400">하루</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-3 col-md-2">
+            <div class="form-group">
+                <label>시작일 :</label>
+                <div class="input-group date">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                    <input type="text" readonly class="form-control" name="startDate">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 col-md-2">
+            <div class="form-group">
+                <label>시작시간 :</label>
+                <div class="bfh-timepicker" name="startTime"></div>
+            </div>
+        </div>
+        <div class="col-sm-3 col-md-2">
+            <div class="form-group">
+                <label>종료일 :</label>
+                <div class="input-group date">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                    <input type="text" readonly class="form-control" name="endDate">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 col-md-2">
+            <div class="form-group">
+                <label>종료시간 :</label>
+                <div class="bfh-timepicker" name="endTime"></div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-theme">조회</button><input type="hidden" name="roomNo">
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <!--max-width:1347px;-->
+            <div id="roomAvrChart" class="eCharts" style="width: 100%; height: 650px; margin: 0 auto;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="static/lib/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="static/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="static/lib/jquery/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="static/lib/bootstrap-4.3.1/js/bootstrap-input-spinner-ver.bs3.js"></script>
+<!-- Bootstrap Form Helpers -->
+<script src="static/lib/bootstrap-form-helpers/js/bootstrap-formhelpers-ver.bs3.js"></script>
+<script src="static/lib/bootstrap-form-helpers/js/bootstrap-formhelpers-timepicker-ver.bs3.js"></script>
+<script src="static/lib/bootstrap-form-helpers/js/bootstrap-formhelpers-phone.js"></script>
+<script src="static/js/echarts-dev.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker3.min.css">
+<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
+<script src="static/lib/bootstrap/js/bootstrap-datepicker.kr.js"></script>
+<script src="static/js/newBroadAjax.js"></script>
+<script>
+$(document).ready(function(){
+    $("input[type='number']").inputSpinner();
+    $(".bfh-timepicker").bfhtimepicker();
+    $(".bfh-timepicker").find('div:first-child').removeClass('input-group-sm');
+    $('.input-group.date').datepicker({
+        calendarWeeks: false,
+        todayHighlight: true,
+        autoclose: true,
+        format: "yyyy-mm-dd",
+        language: "kr"
+    });
+
+    var formData = setFormData();
+    console.log("formData = ", formData);
+    formData = JSON.stringify(formData);
+    var data = getNewBroadDB('graph', '/getRoomAvrTrend', formData);
+    var graph = data.graph;
+    console.log('graph', graph);
+    var keys = Object.keys(graph[0]);
+    console.log('key', keys);
+    var parseData = {};
+    for(var i = 0; i < graph.length; i++){
+        for(var j = 0; j < keys.length; j++){
+            if(parseData[keys[j]]==undefined){
+                parseData[keys[j]] = [];
+            }else{
+                parseData[keys[j]].push(graph[i][keys[j]]);
+            }
+        }
+    }
+    setRoomAvrChart(parseData);
+
+    $("button:submit").click(function(e){
+        e.preventDefault();
+        var formData = setFormData();
+        console.log("formData = ", formData);
+        formData = JSON.stringify(formData);
+        var data = getNewBroadDB('graph', '/getRoomAvrTrend', formData);
+        var graph = data.graph;
+        console.log('graph', graph);
+        var keys = Object.keys(graph[0]);
+        console.log('key', keys);
+        var parseData = {};
+        for(var i = 0; i < graph.length; i++){
+            for(var j = 0; j < keys.length; j++){
+                if(parseData[keys[j]]==undefined){
+                    parseData[keys[j]] = [];
+                }else{
+                    parseData[keys[j]].push(graph[i][keys[j]]);
+                }
+            }
+        }
+        setRoomAvrChart(parseData);
+    });
+
+});
+function setRoomAvrChart(parseData){
+    var $roomAvrChart = document.getElementById("roomAvrChart");
+    var eChartObject = echarts.getInstanceByDom($roomAvrChart);
+
+    if(eChartObject==null || eChartObject==undefined){
+        var resizeContainer = function(){
+            $roomAvrChart.style.width = window.innerWidth * 0.95 + 'px';
+        };
+        resizeContainer();
+        var eChart = echarts.init($roomAvrChart);
+        $(window).on('resize', function (){
+            resizeContainer();
+            eChart.resize();
+        });
+        var app = {};
+
+        option = null;
+        option = {
+            title: [
+                {text: '온도', padding: [5, 0]},
+                {text: '난방', padding: [340, 0]}
+            ],
+            axisPointer: {
+                link: {xAxisIndex: 'all'},
+                label: {backgroundColor: '#777'}
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                },
+                formatter: function (params) {
+                    var tooltip = params[0].name + '<br>';
+                    for(var i = 0; i < params.length; i++){
+                        var roomCnt = option.legend[1].data;
+                        if(roomCnt.includes(params[i].seriesName)){
+                            tooltip += params[i].marker + params[i].seriesName + ': ' + params[i].value + '개<br>';
+                        }else{
+                            tooltip += params[i].marker + params[i].seriesName + ': ' + params[i].value + '℃<br>';
+                        }
+                    }
+                    return tooltip;
+                }
+            },
+            legend: [
+                {
+                    right: 'center',
+                    top: '5%',
+                    data:['평균바닥온도', '평균실내온도', '외기온도']
+                }, {
+                    right: 'center',
+                    top: '55%',
+                    data:['난방 가동수', '난방 설정수']
+                }
+            ],
+            grid: [
+                {left: 50, right: 50, top: 80, bottom: '55%', containLabel: false},
+                {left: 50, right: 50, top: '60%', bottom: 50, containLabel: false}
+            ],
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: [
+                {type: 'category', gridIndex: 0, splitLine: {show: true, lineStyle:{type:'dashed'}}, data: parseData.timestamp},
+                {type: 'category', gridIndex: 1, splitLine: {show: true, lineStyle:{type:'dashed'}}, data: parseData.timestamp}
+            ],
+            yAxis: [
+                {
+                    gridIndex: 0,
+                    type: 'value',
+                    name: '온도 (℃)',
+                    nameGap: 15,
+                    axisLabel: {
+                        formatter: '{value}'
+                    }
+                }, {
+                    gridIndex: 1,
+                    type: 'value',
+                    nameGap: 10,
+                    axisLabel: {
+                        formatter: '{value}'
+                    }
+                }
+            ],
+            series: [
+                {
+                    name:'평균바닥온도',
+                    type:'line',
+                    smooth: true,
+                    xAxisIndex: 0,
+                    yAxisIndex: 0,
+                    itemStyle: {
+                        color: '#2f4554'
+                    },
+                    animationDelay: function (idx) {
+                        return idx * 10;
+                    },
+                    data: parseData.Tsurf_avg
+                },
+                {
+                    name:'평균실내온도',
+                    type:'line',
+                    smooth: true,
+                    xAxisIndex: 0,
+                    yAxisIndex: 0,
+                    itemStyle: {
+                        color: '#00b894'
+                    },
+                    animationDelay: function (idx) {
+                        return idx * 10;
+                    },
+                    data: parseData.Troom_avg
+                },
+                {
+                    name:'외기온도',
+                    type:'line',
+                    smooth: true,
+                    xAxisIndex: 0,
+                    yAxisIndex: 0,
+                    itemStyle: {
+                        color: '#ff5252'
+                    },
+                    animationDelay: function (idx) {
+                        return idx * 10;
+                    },
+                    data: parseData.Tout
+                },
+                {
+                    name:'난방 가동수',
+                    type:'line',
+                    smooth: true,
+                    xAxisIndex: 1,
+                    yAxisIndex: 1,
+                    itemStyle: {
+                        color: 'rgba(46, 134, 222,1.0)'
+                    },
+                    animationDelay: function (idx) {
+                        return idx * 10;
+                    },
+                    data: parseData.HeatingCnt
+                },
+                {
+                    name:'난방 설정수',
+                    type:'line',
+                    smooth: true,
+                    xAxisIndex: 1,
+                    yAxisIndex: 1,
+                    itemStyle: {
+                        color: 'rgba(255, 82, 82, 1.0)'
+                    },
+                    animationDelay: function (idx) {
+                        return idx * 10;
+                    },
+                    data: parseData.HeatingRoomCnt
+                }
+            ]
+        };
+
+        if (option && typeof option === "object") {
+            eChart.setOption(option, true);
+        };
+        window.onresize = function() {
+            eChart.resize();
+        }
+    }else{
+        var option = eChartObject.getOption();
+        option.series[0].data = parseData.Tsurf_avg
+        option.series[1].data = parseData.Troom_avg
+        option.series[2].data = parseData.Tout
+        option.series[3].data = parseData.HeatingCnt
+        option.series[4].data = parseData.HeatingRoomCnt
+        option.xAxis[0].data = parseData.timestamp;
+        option.xAxis[1].data = parseData.timestamp;
+        eChartObject.setOption(option, true);
+    }
+
+}
+
+</script>

@@ -1,0 +1,306 @@
+<!-- Bootstrap core CSS -->
+<link href="static/lib/bootstrap-4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<!--<link href="static/lib/bootstrap/css/bootstrap.css" rel="stylesheet">-->
+<!--external css-->
+<link href="static/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link href="static/css/style.css" rel="stylesheet">
+<link href="static/css/style-responsive.css" rel="stylesheet">
+<!-- Bootstrap Form Helpers -->
+<link href="static/lib/bootstrap-form-helpers/css/boot strap-formhelpers.css" rel="stylesheet" media="screen">
+
+<div class="main">
+    <table id="ahuSetList" class="table table-bordered table-striped table-condensed">
+        <colgroup>
+            <col width="2%">
+            <col width="12%">
+            <col width="6%">
+            <col width="6%">
+            <col width="6%">
+            <col width="6%">
+            <col width="6%">
+            <col width="6%">
+            <col width="6%">
+            <col width="6%">
+            <col width="6%">
+            <col width="6%">
+            <col width="6%">
+            <col width="6%">
+            <col width="5%">
+            <col width="5%">
+            <col width="4%">
+        </colgroup>
+        <thead>
+            <tr style="vertical-align: middle;">
+                <td>NO</td>
+                <td>구분</td>
+                <td>스케줄러 사용</td>
+                <td>거주자 상태보고</td>
+                <td>이코노마이저 사용</td>
+                <td>외기온도 보상제어 사용</td>
+                <td>냉난방 모드</td>
+                <td>팬 자동/수동 설정</td>
+                <td>댐퍼 자동/수동 설정</td>
+                <td>내부 설정온도</td>
+                <td>냉난방 초기시간(분)</td>
+                <td>CO2 초기설정값</td>
+                <td>CO2 농도 기준설정값</td>
+                <td>댐퍼 수동 설정값</td>
+                <td>댐퍼 수동 최대값</td>
+                <td>댐퍼 수동 최소값</td>
+                <td>PID</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="temp ahu" style="display: none;">
+                <td></td>
+                <td></td>
+                <td>
+                    <div class="form-group-sm">
+                        <select class="form-control-sm" name="UseScheduler">
+                            <option value="0">사용안함</option>
+                            <option value="1">사용</option>
+                        </select>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group-sm">
+                        <select class="form-control-sm" name="NotifyOccupantsState">
+                            <option value="0">사용안함</option>
+                            <option value="1">사용</option>
+                        </select>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group-sm">
+                        <select class="form-control-sm" name="EconomizerCycle">
+                            <option value="0">사용안함</option>
+                            <option value="1">사용</option>
+                        </select>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group-sm">
+                        <select class="form-control-sm" name="VarTempControl">
+                            <option value="0">사용안함</option>
+                            <option value="1">사용</option>
+                        </select>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group-sm">
+                        <select class="form-control-sm" name="HCMode">
+                            <option value="-1">사용안함</option>
+                            <option value="0">난방</option>
+                            <option value="1">냉방</option>
+                        </select>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group-sm">
+                        <select class="form-control-sm" name="FanAutoManual">
+                            <option value="-1">사용안함</option>
+                            <option value="0">자동</option>
+                            <option value="1">수동</option>
+                        </select>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group-sm">
+                        <select class="form-control-sm" name="DamperAutoManual">
+                            <option value="-1">사용안함</option>
+                            <option value="0">자동</option>
+                            <option value="1">수동</option>
+                        </select>
+                    </div>
+                </td>
+                <td><span class="active"></span></td>
+                <td><span class="active"></span></td>
+                <td><span class="active"></span></td>
+                <td><span class="active"></span></td>
+                <td><span class="active"></span></td>
+                <td><span class="active"></span></td>
+                <td><span class="active"></span></td>
+                <td>
+                    <div class="form-group-sm">
+                        <form>
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" name="UserPID" id="pidCheck">
+                                <label class="custom-control-label" for="pidCheck">사용</label>
+                            </div>
+                        </form>
+                    </div>
+                </td>
+                <input type="hidden" class="ahu_id">
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="static/lib/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<!--<script src="static/lib/bootstrap/js/bootstrap.min.js"></script>-->
+<script src="static/lib/bootstrap-4.3.1/js/bootstrap.min.js"></script>
+<script src="static/lib/bootstrap-4.3.1/js/bootstrap-input-spinner.js"></script>
+<script src="static/lib/jquery/jquery-ui.min.js"></script>
+
+<!-- Bootstrap Form Helpers -->
+<script src="static/lib/bootstrap-form-helpers/js/bootstrap-formhelpers.js"></script>
+<script src="static/lib/bootstrap-form-helpers/js/bootstrap-formhelpers-timepicker.js"></script>
+<script src="static/lib/bootstrap-form-helpers/js/bootstrap-formhelpers-phone.js"></script>
+<!--<script src="static/js/echarts-dev.js"></script>-->
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker3.min.css">-->
+<!--<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>-->
+<!--<script src="static/lib/bootstrap/js/bootstrap-datepicker.kr.js"></script>-->
+<script src="static/js/newBroadAjax.js"></script>
+<script>
+$(document).ready(function(){
+    $("input[type='number']").inputSpinner();
+    var data = getNewBroadAjax('ahuList', 'rooms/ahusConfig/255', '', 'ahu')
+    var ahuList = data.ahuList;
+    console.log('ahuList = ', ahuList);
+    var sortNo = [
+                    {"AhuIndex":1, "AhuName":"그라시아스"},
+                    {"AhuIndex":6, "AhuName":"호텔1층 대연회장"},
+                    {"AhuIndex":7, "AhuName":"호텔1층 연회장 로비"},
+                    {"AhuIndex":15, "AhuName":"별관 1층 피카소"},
+                    {"AhuIndex":11, "AhuName":"별관지하 홀/DMS/젤라"},
+                    {"AhuIndex":12, "AhuName":"별관지하 게임장"},
+                    {"AhuIndex":13, "AhuName":"별관지하 슈퍼마켓"},
+                    {"AhuIndex":14, "AhuName":"별관지하 노래방"},
+                    {"AhuIndex":2, "AhuName":"호텔지하 홀/복도"},
+                    {"AhuIndex":3, "AhuName":"BBQ"},
+                    {"AhuIndex":4, "AhuName":"호텔지하 송이"},
+                    {"AhuIndex":5, "AhuName":"호텔지하 엘꼬시네로"},
+                    {"AhuIndex":8, "AhuName":"호텔1층 로비라운지 좌"},
+                    {"AhuIndex":9, "AhuName":"호텔1층 로비라운지 우"},
+                    {"AhuIndex":10, "AhuName":"엘비노"},
+                    {"AhuIndex":18, "AhuName":"호텔지하 메인 주방"},
+                    {"AhuIndex":16, "AhuName":"호텔 객실복도 좌"},
+                    {"AhuIndex":17, "AhuName":"호텔 객실복도 우"},
+                    {"AhuIndex":19, "AhuName":"사우나"},
+                    {"AhuIndex":20, "AhuName":"수영장"}
+                ];
+    var idxList = [];
+    var reSort = [];
+    for (var i = 0 ; i < sortNo.length ; i++){
+        idxList[i] = sortNo[i].AhuIndex;
+    }
+    for (var i = 0 ; i < ahuList.length ; i++){
+        var idx = idxList.indexOf(ahuList[i].AhuIndex);
+        reSort[idx] = ahuList[i];
+    }
+    console.log('reSort = ', reSort);
+    var html = [];
+    for (var i = 0 ; i < reSort.length ; i++){
+        var dataSet = [];
+        dataSet.push(reSort[i].AhuIndex);
+        dataSet.push('AHU' + reSort[i].AhuIndex + ' ('+ sortNo[i].AhuName + ')');
+        dataSet.push(reSort[i].UseScheduler);
+        dataSet.push(reSort[i].NotifyOccupantsState);
+        dataSet.push(reSort[i].EconomizerCycle);
+        dataSet.push(reSort[i].VarTempControl);
+        dataSet.push(reSort[i].HCMode);
+        dataSet.push(reSort[i].FanAutoManual);
+        dataSet.push(reSort[i].DamperAutoManual);
+        dataSet.push(reSort[i].Tzone_set);
+        dataSet.push(reSort[i].HCInitTimeMin);
+        dataSet.push(reSort[i].PPMco2_init);
+        dataSet.push(reSort[i].PPMco2_set);
+        dataSet.push(reSort[i].Rdamp_set);
+        dataSet.push(reSort[i].Rdamp_max);
+        dataSet.push(reSort[i].Rdamp_min);
+        dataSet.push(reSort[i].UsePID);
+
+
+        var temp = $('.main').find('.temp').clone(true);
+        for (var j = 0 ; j < dataSet.length ; j++){
+            if(j < 1) {
+                temp.find('td:first-child').text(i+1);
+                temp.find('.ahu_id').val(dataSet[j]);
+            } else {
+                var $select = temp.find('td').eq(j).find('select');
+                var $span = temp.find('td').eq(j).find('span');
+                var $checkbox = temp.find('td').eq(j).find('input[type="checkbox"]');
+
+                if($select.length > 0){
+                    $select.val(dataSet[j]);
+                    if(dataSet[j] > 0){
+                        $select.css({"color": "red"});
+                    }
+                }else if($span.length > 0){
+                    $span.text(dataSet[j]);
+                    $span.parent().append('<div class="' + 'toggleForm form-group-sm">' +
+                                        '<input required type="' + 'number" class=' + '"form-control spinner' + '" step=' + '"1' + '"/>' +
+                                '</div>');
+                    temp.find('td').eq(j).find('input').val(dataSet[j]);
+                }else if($checkbox.length > 0){
+                    $checkbox.attr('id', $checkbox.attr('id')+dataSet[0]);
+                    $checkbox.parent().find('label').attr('for', $checkbox.attr('id'));
+
+                    if(dataSet[j] == 1){
+                        $checkbox.prop('checked', 'checked');
+                    }else{
+                        $checkbox.prop('checked', '');
+                    }
+                }else{
+                    temp.find('td').eq(j).text(dataSet[j]);
+                }
+            }
+        }
+        html.push(temp.removeClass('temp').show());
+    }
+
+    $('.main').find('tbody').append(html);
+
+    if($(".ahu td input[type='number']").next().length == 0){
+        $(".ahu td input[type='number']").inputSpinner();
+    }
+    $('.ahu td').click(function(){
+        $('.ahu td span').not('.active').toggleClass('active');
+        if($('.ahu td').has('div.active')){
+            $('.ahu td div').removeClass('active');
+        }
+        var $span = $(this).find('span');
+        if($span.length > 0){
+            $span.removeClass('active');
+            $span.next().addClass('active');
+        }
+    });
+    $('.ahu .input-group').change(function(){
+        var value = $(this).find('input').val();
+        $(this).prev().text(value);
+    });
+    $('.ahu select').change(function(){
+        console.log($(this).find('option').length);
+        if($(this).find('option').length > 2){
+            if($(this).val() > -1){
+                $(this).css({"color": "red"});
+            }else{
+                $(this).css({"color": "black"});
+            }
+        }else{
+            if($(this).val() > 0){
+                $(this).css({"color": "red"});
+            }else{
+                $(this).css({"color": "black"});
+            }
+        }
+    });
+});
+$('.ahu td').click(function(){
+    $('.ahu td span').not('.active').toggleClass('active');
+    if($('.ahu td').has('div.active')){
+        $('.ahu td div').removeClass('active');
+    }
+    var $span = $(this).find('span');
+    if($span.length > 0){
+        $span.removeClass('active');
+        $span.next().addClass('active');
+        $span.next().find('div.input-group').addClass('input-group-sm');
+        $span.next().find('.btn').css({"min-width": "1rem"});
+    }
+});
+$(document).on('change', '.spinner', function() {
+    $(this).closest('td').find('span').text($(this).val());
+});
+</script>

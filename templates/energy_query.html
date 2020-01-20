@@ -443,7 +443,7 @@ function appendYear(today){
     <!--var selectValue = document.getElementById("year");-->
     var optionIndex = 0;
     for(var j=0; j<selectValue.length; j++){
-        for(var i=year-2;i<=year;i++){
+        for(var i=year-3;i<=year;i++){
             selectValue[j].add(new Option(i,i),optionIndex++);
         }
         selectValue[j].value = year;
@@ -466,6 +466,7 @@ function getDataAjax(queryBt, chartTitle){
     var form = queryBt.closest("div").find("form");
     var formData = form.serializeArray();
     formData = JSON.stringify(formData);
+    console.log("formData = ", formData);
     (term==undefined) ? term = 'years' : term = term;
 
     var peak_list = [];
@@ -634,7 +635,8 @@ function setPeakChart(term, peak_list, use_amt_list, term_list, chartTitle){
             grid: {
               left: 60,
               right: 60,
-              bottom: 40
+              bottom: 40,
+              containLabel: true
             },
             series: [
                 {

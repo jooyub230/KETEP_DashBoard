@@ -83,7 +83,7 @@ $(document).ready(function() {
     // timer = setInterval(function(){
         $.ajax({
             beforeSend:function(){
-                top.$(".wrap-loading").show();
+                $(top.document).find(".wrap-loading").show();
             },
             url:'/getIsmartData/',
             dataType:'json',
@@ -92,7 +92,7 @@ $(document).ready(function() {
             cache: false,
             contentType: 'application/json',
             complete:function(){
-                top.$(".wrap-loading").fadeOut();
+                $(top.document).find(".wrap-loading").fadeOut();
             },
             success:function(result){
                 var html = "<tbody>";

@@ -1,0 +1,356 @@
+<!-- Bootstrap core CSS -->
+<link href="static/lib/bootstrap-4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="static/lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+<!--external css-->
+<link href="static/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link href="static/css/style.css" rel="stylesheet">
+<link href="static/css/style-responsive.css" rel="stylesheet">
+<!-- Bootstrap Form Helpers -->
+<link href="static/lib/bootstrap-form-helpers/css/bootstrap-formhelpers.css" rel="stylesheet" media="screen">
+
+<div class="main">
+    <table class="table table-bordered table-striped table-condensed">
+        <colgroup>
+            <col width="0">
+            <col width="15%">
+        </colgroup>
+        <thead>
+            <tr>
+                <td rowspan="2" style="vertical-align: middle;">NO</td>
+                <td rowspan="2" style="vertical-align: middle;">구분</td>
+                <td colspan="4">냉난방모드</td>
+                <td colspan="2">Fan</td>
+                <td colspan="3">Damper</td>
+                <td colspan="2">CO₂센서</td>
+            </tr>
+            <tr>
+                <td>냉난방 설정모드</td>
+                <td>냉난방 상태</td>
+                <td>냉난방 설정온도</td>
+                <td>실내온도</td>
+                <td>FAN 동작설정</td>
+                <td>공급FAN 상태</td>
+                <td>Damper 설정모드</td>
+                <td>Damper 설정값</td>
+                <td>Damper 현재값</td>
+                <td>CO₂ 설정값</td>
+                <td>CO₂ 현재값</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="temp ahu" style="display: none;">
+                <td><span></span></td>
+                <td><span></span></td>
+                <td>
+                    <!--<span></span>-->
+                    <img src="static/img/hot.svg" width="20" height="20">
+                    <img src="static/img/cold.svg" width="20" height="20">
+                </td>
+                <td>
+                    <!--<span></span>-->
+                    <img src="static/img/hot.svg" width="20" height="20">
+                    <img src="static/img/cold.svg" width="20" height="20">
+                </td>
+                <td><span></span><span>℃</span></td>
+                <td><span></span><span>℃</span></td>
+                <td>
+                    <!--<span></span>-->
+                    <img src="static/img/fan_set.svg" width="20" height="20">
+                    <img src="static/img/pause.svg" width="20" height="20">
+                    <img src="static/img/fan.svg" width="20" height="20">
+                </td>
+                <td>
+                    <!--<span></span>-->
+                    <img src="static/img/fan_set.svg" width="20" height="20">
+                    <img src="static/img/pause.svg" width="20" height="20">
+                    <img src="static/img/fan.svg" width="20" height="20">
+                </td>
+                <td>
+                    <!--<span></span>-->
+                    <img src="static/img/damper_set.svg" width="20" height="20">
+                    <img src="static/img/auto.svg" width="20" height="20">
+                    <img src="static/img/manual.svg" width="20" height="20">
+                </td>
+                <td><span></span></td>
+                <td><span></span></td>
+                <td><span></span></td>
+                <td><span></span></td>
+                <input type="hidden" class="ahu_id">
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal fade" id="ahuGraph" role="dialog">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">그래프</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <form class="condition" role="form">
+                        <div class="col-sm-3 col-md-2">
+                            <div class="form-group-sm">
+                                <label>시간단위 :</label>
+                                <select class="form-control" name="time">
+                                    <option value="300">5분</option>
+                                    <option value="600" selected>10분</option>
+                                    <option value="3600">1시간</option>
+                                    <option value="86400">하루</option>
+                                    <option value="0">전체</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-2">
+                            <div class="form-group">
+                                <label>시작일 :</label>
+                                <div class="input-group input-group-sm date">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    <input type="text" readonly class="form-control" name="startDate">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-2">
+                            <div class="form-group">
+                                <label>시작시간 :</label>
+                                <div class="bfh-timepicker" name="startTime"></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-2">
+                            <div class="form-group">
+                                <label>종료일 :</label>
+                                <div class="input-group input-group-sm date">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    <input type="text" readonly class="form-control" name="endDate">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-2">
+                            <div class="form-group">
+                                <label>종료시간 :</label>
+                                <div class="bfh-timepicker" name="endTime"></div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-theme">조회</button><input type="hidden" name="ahu_id">
+                    </form>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="ahuInfoChart" class="eCharts" style="width: 100%; height: 580px; margin: 0 auto;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="static/lib/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="static/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="static/lib/jquery/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="static/lib/bootstrap-4.3.1/js/bootstrap-input-spinner-ver.bs3.js"></script>
+<!-- Bootstrap Form Helpers -->
+<script src="static/lib/bootstrap-form-helpers/js/bootstrap-formhelpers-ver.bs3.js"></script>
+<script src="static/lib/bootstrap-form-helpers/js/bootstrap-formhelpers-timepicker-ver.bs3.js"></script>
+<script src="static/lib/bootstrap-form-helpers/js/bootstrap-formhelpers-phone.js"></script>
+<script src="static/js/echarts-dev.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker3.min.css">
+<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
+<script src="static/lib/bootstrap/js/bootstrap-datepicker.kr.js"></script>
+<script src="static/js/newBroadAjax.js"></script>
+<script>
+$(document).ready(function(){
+    $("input[type='number']").inputSpinner();
+    $(".bfh-timepicker").bfhtimepicker('toggle');
+    $('.modal-dialog').draggable({
+        handle: ".modal-header"
+    });
+    $('.input-group.date').datepicker({
+        calendarWeeks: false,
+        todayHighlight: false,
+        autoclose: true,
+        format: "yyyy-mm-dd",
+        language: "kr"
+    });
+
+    var data = getNewBroadDB('ahuList', '/getAhuStatus');
+    var ahuList = data.ahuList;
+    console.log('ahuList = ', ahuList);
+    var html = [];
+    for (var i = 0 ; i < ahuList.length ; i++){
+        var dataSet = [];
+        dataSet.push({'key': "ahu_id", 'value': ahuList[i].ahu_id});
+        dataSet.push({'key': "ahu_name", 'value': ahuList[i].ahu_name + ' (' + ahuList[i].ahu_desc + ')'});
+        dataSet.push({'key': "cMode_hc_mode", 'value': ahuList[i].cMode_hc_mode});                      // 냉난방설정모드 (-1 : 중지, 0 : 난방, 1 : 냉방)
+        dataSet.push({'key': "nHCState", 'value': ahuList[i].nHCState});                                // 냉난방상태 (-1 : 중지, 0 : 난방 on, 1 : 냉방 on)
+        dataSet.push({'key': "fData_hc_set_temp", 'value': ahuList[i].fData_hc_set_temp});              // 냉난방설정온도
+        dataSet.push({'key': "fData_temp_return", 'value': ahuList[i].fData_temp_return});              // 실내온도
+        dataSet.push({'key': "cMode_manual_mode", 'value': ahuList[i].cMode_manual_mode});              // FAN 동작설정 (-1 : 미설정, 0 : 중지, 1 : 가동)
+        dataSet.push({'key': "cState_supplay_fan", 'value': ahuList[i].cState_supplay_fan});            // 공급 FAN 상태 (-1 : 미설정, 0 : 중지, 1 : 가동)
+        dataSet.push({'key': "cMode_damper_auto_manual", 'value': ahuList[i].cMode_damper_auto_manual});// Damper 설정모드 (-1 : 미설정, 0 : 자동, 1 : 수동)
+        dataSet.push({'key': "nRdamp_set", 'value': ahuList[i].nRdamp_set});                            // Damper 설정값
+        dataSet.push({'key': "fData_damper_manual_set", 'value': ahuList[i].fData_damper_manual_set});  // Damper 현재값
+        dataSet.push({'key': "nPPMco2_set", 'value': ahuList[i].nPPMco2_set});                          // CO2설정값
+        dataSet.push({'key': "nPPMco2_cur", 'value': ahuList[i].nPPMco2_cur});                          // CO2현재값
+
+        console.log('dataSet = ', dataSet);
+        var temp = $('.main').find('.temp').clone(true);
+        for (var j = 0 ; j < dataSet.length ; j++){
+            if(j < 1) {
+                temp.find('td:first-child span').text(i+1);
+                temp.find('.ahu_id').val(dataSet[j].value);
+            } else {
+                var $activeTd = temp.find('td').eq(j);
+                var label = '';
+                if(dataSet[j].key == "cMode_hc_mode" || dataSet[j].key == "nHCState"){
+                    switch (dataSet[j].value) {
+                        case -1:
+                            <!--label = "중지"; -->
+                            break;
+                        case 0:
+                            <!--label = "난방";-->
+                            <!--$activeTd.css({"color":"red"});-->
+                            $activeTd.find('img:nth-child(1)').attr('src', $activeTd.find('img:nth-child(1)').attr('src').replace("hot", "hot-active"));
+                            break;
+                        case 1:
+                            <!--label = "냉방";-->
+                            <!--$activeTd.css({"color":"red"});-->
+                            $activeTd.find('img:nth-child(2)').attr('src', $activeTd.find('img:nth-child(2)').attr('src').replace("cold", "cold-active"));
+                            break;
+                    }
+                    <!--$activeTd.find('span:first-child').text(label);-->
+                }else if(dataSet[j].key == "cMode_manual_mode" || dataSet[j].key == "cState_supplay_fan"){
+                    switch (dataSet[j].value) {
+                        case -1:
+                            <!--label = "미설정"; -->
+                            $activeTd.find('img:nth-child(1)').attr('src', $activeTd.find('img:nth-child(1)').attr('src').replace("fan_set", "fan_set-active"));
+                            break;
+                        case 0:
+                            <!--label = "중지"; -->
+                            $activeTd.find('img:nth-child(2)').attr('src', $activeTd.find('img:nth-child(2)').attr('src').replace("pause", "pause-active"));
+                            break;
+                        case 1:
+                            <!--label = "가동"; -->
+                            <!--$activeTd.css({"color":"red"}); -->
+                            $activeTd.find('img:nth-child(3)').attr('src', $activeTd.find('img:nth-child(3)').attr('src').replace("fan", "fan-active"));
+                            break;
+                    }
+                    <!--$activeTd.find('span:first-child').text(label);-->
+                }else if(dataSet[j].key == "cMode_damper_auto_manual"){
+                    switch (dataSet[j].value) {
+                        case -1:
+                            <!--label = "미설정"; -->
+                            $activeTd.find('img:nth-child(1)').attr('src', $activeTd.find('img:nth-child(1)').attr('src').replace("damper_set", "damper_set-active"));
+                            break;
+                        case 0:
+                            <!--label = "자동"; -->
+                            <!--$activeTd.css({"color":"red"}); -->
+                            $activeTd.find('img:nth-child(2)').attr('src', $activeTd.find('img:nth-child(2)').attr('src').replace("auto", "auto-active"));
+                            break;
+                        case 1:
+                            <!--label = "수동"; -->
+                            <!--$activeTd.css({"color":"red"}); -->
+                            $activeTd.find('img:nth-child(3)').attr('src', $activeTd.find('img:nth-child(3)').attr('src').replace("manual", "manual-active"));
+                            break;
+                    }
+                    <!--$activeTd.find('span:first-child').text(label);-->
+                }else{
+                    $activeTd.find('span:first-child').text(dataSet[j].value);
+                    if(dataSet[j].key == "nPPMco2_cur"){
+                        if(dataSet[j].value > dataSet[j-1].value){
+                            $activeTd.css({"color":"red"});
+                        }
+                    }
+                }
+            }
+        }
+        html.push(temp.removeClass('temp').show());
+    }
+    $('.main').find('tbody').append(html);
+    $('.ahu').click(function(){
+        var ahuNo = $(this).find('.ahu_id').val();
+        var ahuName = $(this).find('td').eq(1).text();
+        console.log('ahuNo = ', ahuNo);
+        var formData = setFormData(ahuNo);
+
+        console.log("ahuStatus.html - formData = ", formData, "type = ", typeof(formData));
+        formData = JSON.stringify(formData);
+
+        var data = getNewBroadDB('graph', '/getAhuTrend', formData);
+        var graph = data.graph;
+        console.log('graph', graph);
+        var keys = Object.keys(graph[0]);
+        var parseData = {};
+        for(var i = 0; i < graph.length; i++){
+            for(var j = 0; j < keys.length; j++){
+                if(parseData[keys[j]]==undefined){
+                    parseData[keys[j]] = [];
+                }else{
+                    parseData[keys[j]].push(graph[i][keys[j]]);
+                }
+            }
+        }
+        $('#ahuGraph').find('input[name="ahu_id"]').val(ahuNo);
+        $('#ahuGraph').find('.modal-title').text(ahuName + ' 그래프');
+        setAhuInfoChart(ahuNo, parseData);
+        $('#ahuGraph').modal('show');
+    });
+    $("button:submit").click(function(e){
+        var queryBt = $(this);
+        e.preventDefault();
+        var ahuNo = $('input[name="ahu_id"]').val();
+        var formData = setFormData(ahuNo);
+        console.log("formData = ", formData);
+        formData = JSON.stringify(formData);
+        var data = getNewBroadDB('graph', '/getAhuTrend', formData);
+        var graph = data.graph;
+        console.log('graph', graph);
+        console.log('graph.length', graph.length);
+        var keys = Object.keys(graph[0]);
+        var parseData = {};
+        for(var i = 0; i < graph.length; i++){
+            for(var j = 0; j < keys.length; j++){
+                if(parseData[keys[j]]==undefined){
+                    parseData[keys[j]] = [];
+                }else{
+                    parseData[keys[j]].push(graph[i][keys[j]]);
+                }
+            }
+        }
+        setAhuInfoChart(ahuNo, parseData);
+    });
+
+});
+function setFormData(ahuNo){
+    var startDate = $('input[name="startDate"]').val();
+    var endDate = $('input[name="endDate"]').val();
+    if(startDate == '' || endDate == ''){
+        var today = new Date();
+        var endDate = today.toISOString().slice(0,10);
+        var startDate = today.setDate(today.getDate()-2);
+        startDate = today.toISOString().slice(0,10);
+        $('input[name="startDate"]').val(startDate);
+        $('input[name="endDate"]').val(endDate);
+    }
+    var $time = $('select[name="time"]').val();
+    var $startTime = $('.bfh-timepicker[name="startTime"]');
+    var hour = $startTime.find('td.hour').find('input[type="text"]').val();
+    var minute = $startTime.find('td.minute').find('input[type="text"]').val();
+    var startTime = $startTime.find('div:first-child > input[type="text"]').val();
+    var $endTime = $('.bfh-timepicker[name="endTime"]');
+    hour = $endTime.find('td.hour').find('input[type="text"]').val();
+    minute = $endTime.find('td.minute').find('input[type="text"]').val();
+    var endTime = $endTime.find('div:first-child > input[type="text"]').val();
+    var formData = {
+            "nZoneIdx": ahuNo,
+            "startTime": startDate + ' ' + startTime,
+            "endTime": endDate + ' ' + endTime,
+            "time": $time
+    };
+    return formData;
+}
+</script>

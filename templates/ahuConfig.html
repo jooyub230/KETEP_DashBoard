@@ -1,0 +1,799 @@
+<!-- Bootstrap core CSS -->
+<!--<link href="static/lib/bootstrap/css/bootstrap.css" rel="stylesheet">-->
+<link href="static/lib/bootstrap-4.3.1/css/bootstrap.css" rel="stylesheet">
+<!--external css-->
+<link href="static/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link href="static/css/style.css" rel="stylesheet">
+<link href="static/css/style-responsive.css" rel="stylesheet">
+<!-- Bootstrap Form Helpers -->
+<link href="static/lib/bootstrap-form-helpers/css/bootstrap-formhelpers.css" rel="stylesheet" media="screen">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+<!-- Nav tabs -->
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#common_config">시스템</a>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">공조기</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" data-toggle="tab" href="#base_config">기본설정&연락망</a>
+            <a class="dropdown-item" data-toggle="tab" href="#control_config">제어설정</a>
+        </div>
+    </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div id="common_config" class="container tab-pane active"><br>
+        <div class="row">
+            <div class="col-md-12">
+                <h4><i class="fa fa-angle-right"></i> System Setting</h4>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-md-9">
+                <div class="form-group">
+                    <label>시스템 주소 :</label>
+                    <form>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">IP</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="IP Addr" name="tAddr.IpAddress">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">PORT</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="PortNo" name="tAddr.PortNo">
+                        </div>
+                    </form>
+                </div>
+                <div class="form-group">
+                    <label>원격지 주소 :</label>
+                    <form>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">IP</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="IP Addr" name="tRemoteAddr.IpAddress">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">PORT</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="PortNo" name="tRemoteAddr.PortNo">
+                        </div>
+                    </form>
+                </div>
+                <div class="form-group">
+                    <label>DB 서버 :</label>
+                    <form>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">IP</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="IP Addr" name="tDataBase.tAddr.IpAddress">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">PORT</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="PortNo" name="tDataBase.tAddr.PortNo">
+                        </div>
+                    </form>
+                </div>
+                <div class="form-group">
+                    <label>DB 계정 :</label>
+                    <form>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">ID</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="ID" name="tDataBase.ID">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">PW</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="PassWd" name="tDataBase.PassWd">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>수요처 구분 :</label>
+                    <select class="form-control" name="SiteInfo">
+                        <option value="1">오션벨리</option>
+                        <option selected value="2">쏠비치</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>최소패킷간격(초) :</label>
+                    <input required type="number" class="form-control" name="PacketMinIntervalSec" data-decimals="1" min="0" max="9" step="0.1"/>
+                </div>
+                <div class="form-group">
+                    <label>제어주기(초) :</label>
+                    <input required type="number" class="form-control" name="ControlPeriodSec" data-decimals="1" min="0" max="200" step="1"/>
+                </div>
+                <div class="form-group">
+                    <label>DB 이름 :</label>
+                    <input type="text" class="form-control" name="tDataBase.Name" placeholder="DB Name *" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>SMS :</label>
+                    <form>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">ID</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="ID" name="tSMS.ID">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">KEY</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="KEY" name="tSMS.Key">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="base_config" class="container tab-pane fade"><br>
+        <div class="row">
+            <div class="col-md-12">
+                <h4><i class="fa fa-angle-right"></i> base_config</h4>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <div class="form-group">
+                    <label>제어옵션 :</label>
+                    <form>
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" name="tSolBeachConf.ControlOption" id="ctrl_damper">
+                                    <label class="custom-control-label" for="ctrl_damper">외부환기비율</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" name="tSolBeachConf.ControlOption" id="ctrl_occupant">
+                                    <label class="custom-control-label" for="ctrl_occupant">재실자 판단</label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label>공조기 수 :</label>
+                    <input required type="number" class="form-control" name="tSolBeachConf.ZoneCnt" placeholder="ZoneCnt *" min="1" max="300" step="1"/>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label>냉난방 모드 :</label>
+                    <select class="form-control" name="tSolBeachConf.HCMode">
+                        <option class="hidden" selected disabled>미선택시 정지</option>
+                        <option value="0">정지</option>
+                        <option value="1">수동</option>
+                        <option value="2">자동</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label>실내 설정온도 :</label>
+                    <input required type="number" class="form-control" name="tSolBeachConf.Tzone_set" placeholder="Tzone_set *" data-decimals="1" min="0" max="100" step="0.1"/>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label>CO₂ 설정값 :</label>
+                    <input required type="number" class="form-control" name="tSolBeachConf.tRdamp.PPMco2_set" placeholder="PPMco2_set *" data-decimals="1" min="0" max="100" step="0.1"/>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label>댐퍼 모드 :</label>
+                    <select class="form-control" name="tSolBeachConf.tRdamp.DamperAutoManual">
+                        <option class="hidden" selected disabled>미선택시 자동</option>
+                        <option value="0">자동</option>
+                        <option value="1">수동</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label>제어온도 최소단위 :</label>
+                    <input required type="number" class="form-control" name="tSolBeachConf.Tctrl_res" placeholder="Tctrl_res *" data-decimals="1" min="0" max="100" step="0.1"/>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label>CO₂ 측정주기(초) :</label>
+                    <input required type="number" class="form-control" name="tSolBeachConf.CO2LoadPeriodSec" placeholder="CO2LoadPeriodSec *" data-decimals="1" min="0" max="100000" step="1"/>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label>비동작 옵션 :</label>
+                    <input type="text" class="form-control" placeholder="NoControlOption" name="tSolBeachConf.NoControlOption">
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label>스케줄러 사용 :</label>
+                    <form>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" name="tSolBeachConf.SchedulerOption" id="SchedulerOption">
+                            <label class="custom-control-label" for="SchedulerOption">NO/YES</label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h4><i class="fa fa-angle-right"></i> register_telNo</h4>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>연락처 1 :</label>
+                    <form>
+                        <div class="control-group">
+                            <div class="controls">
+                                <input type="text" class="form-control bfh-phone" placeholder="'-'제외" data-format="010dddddddd" name="tSolBeachConf.TelNumber0">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="form-group">
+                    <label>연락처 2 :</label>
+                    <form>
+                        <div class="control-group">
+                            <div class="controls">
+                                <input type="text" class="form-control bfh-phone" placeholder="'-'제외" data-format="010dddddddd" name="tSolBeachConf.TelNumber1">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="form-group">
+                    <label>연락처 3 :</label>
+                    <form>
+                        <div class="control-group">
+                            <div class="controls">
+                                <input type="text" class="form-control bfh-phone" placeholder="'-'제외" data-format="010dddddddd" name="tSolBeachConf.TelNumber2">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="form-group">
+                    <label>연락처 4 :</label>
+                    <form>
+                        <div class="control-group">
+                            <div class="controls">
+                                <input type="text" class="form-control bfh-phone" placeholder="'-'제외" data-format="010dddddddd" name="tSolBeachConf.TelNumber3">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>연락처 5 :</label>
+                    <form>
+                        <div class="control-group">
+                            <div class="controls">
+                                <input type="text" class="form-control bfh-phone" placeholder="'-'제외" data-format="010dddddddd" name="tSolBeachConf.TelNumber4">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>문자알림 옵션 :</label>
+                            <form>
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" name="tSolBeachConf.tNotify.NotifyOption" id="SMSOpt">
+                                    <label class="custom-control-label" for="SMSOpt">ON / OFF</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label>문자알림 간격(초) :</label>
+                            <input required type="number" name="tSolBeachConf.tNotify.NotifyIntervalSec" class="form-control"  placeholder="NotifyIntervalSec *" min="0" max="86400" step="1"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>문자알림 시작시간 :</label>
+                            <div class="bfh-timepicker" name="tSolBeachConf.tNotify.NotifyStartHour"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>문자알림 종료시간 :</label>
+                            <div class="bfh-timepicker" name="tSolBeachConf.tNotify.NotifyEndHour"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="control_config" class="container tab-pane fade"><br>
+        <div id="Damper_control">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4><i class="fa fa-angle-right"></i> Damper_control</h4>
+                </div>
+            </div><br>
+            <div class="row">
+                <!--<div class="col-sm-6 col-md-2">-->
+                    <!--<div class="form-group">-->
+                        <!--<label>제어모드 :</label>-->
+                        <!--<input type="text" class="form-control" placeholder="DamperCtrlMode" name="tSolBeachConf.tRdamp.DamperCtrlMode">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <div class="col-sm-6 col-md-2">
+                    <div class="form-group">
+                        <label>댐퍼설정값 :</label>
+                        <input required type="number" name="tSolBeachConf.tRdamp.Rdamp_set" class="form-control" placeholder="Rdamp_set *" min="1" max="300" step="0.1"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-2">
+                    <div class="form-group">
+                        <label>댐퍼제어 최소값 :</label>
+                        <input required type="number" name="tSolBeachConf.tRdamp.Rdamp_min" class="form-control"  placeholder="Rdamp_min *" min="1" max="300" step="0.1"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-2">
+                    <div class="form-group">
+                        <label>댐퍼제어 최대값 :</label>
+                        <input required type="number" name="tSolBeachConf.tRdamp.Rdamp_max" class="form-control"  placeholder="Rdamp_max *" min="1" max="300" step="0.1"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-2">
+                    <div class="form-group">
+                        <label>댐퍼제어 최소단위 :</label>
+                        <input required type="number" name="tSolBeachConf.tRdamp.Rdamp_ctrl_res" class="form-control"  placeholder="Rdamp_ctrl_res *" data-decimals="1" min="-30" max="30" step="0.1"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-2">
+                    <div class="form-group">
+                        <label>댐퍼 비동작 옵션 :</label>
+                        <input type="text" name="tSolBeachConf.tRdamp.Rdamp_noctrl_max" class="form-control" placeholder="Rdamp_noctrl_max">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="occupant_control">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4><i class="fa fa-angle-right"></i> occupant_control</h4>
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-sm-6 col-md-2">
+                    <div class="form-group">
+                        <label>Control Mode :</label>
+                        <input type="text" class="form-control" placeholder="ControlMode" name="tSolBeachConf.tC02Conf.ControlMode">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-2">
+                    <div class="form-group">
+                        <label>CO2_rate_wf :</label>
+                        <input required type="number" name="tSolBeachConf.tC02Conf.PPMco2_rate_wf" class="form-control" placeholder="PPMco2_rate_wf *" step="1"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-2">
+                    <div class="form-group">
+                        <label>CO2_wf :</label>
+                        <input required type="number" name="tSolBeachConf.tC02Conf.PPMco2_wf" class="form-control"  placeholder="PPMco2_wf *" step="1"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-2">
+                    <div class="form-group">
+                        <label>CO2_empty :</label>
+                        <input required type="number" name="tSolBeachConf.tC02Conf.PPMco2_empty" class="form-control"  placeholder="PPMco2_empty *" step="1"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="form-group">
+                        <label>CO2_occupied :</label>
+                        <input required type="number" name="tSolBeachConf.tC02Conf.PPMco2_occupied" class="form-control"  placeholder="PPMco2_occupied *" step="1"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-2">
+                    <div class="form-group">
+                        <label>CO2_inc_rate :</label>
+                        <input required type="number" name="tSolBeachConf.tC02Conf.PPMco2_inc_rate" class="form-control" placeholder="CO2_inc_rate *" step="1"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-2">
+                    <div class="form-group">
+                        <label>CO2_dec_rate :</label>
+                        <input required type="number" name="tSolBeachConf.tC02Conf.PPMco2_dec_rate" class="form-control"  placeholder="CO2_dec_rate *" step="1"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="form-group">
+                        <label>CO2_inc_time :</label>
+                        <input required type="number" name="tSolBeachConf.tC02Conf.PPMco2_inc_time" class="form-control"  placeholder="CO2_inc_time *" step="1"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="form-group">
+                        <label>CO2_dec_time :</label>
+                        <input required type="number" name="tSolBeachConf.tC02Conf.PPMco2_dec_time" class="form-control"  placeholder="CO2_dec_time *" step="1"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="outdoor_reset_control">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4><i class="fa fa-angle-right"></i> outdoor_reset_control</h4>
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-sm-6 col-md-2">
+                    <div class="form-group">
+                        <label>난방온도범위 최고값 :</label>
+                        <input required type="number" name="tSolBeachConf.tVariableTemp.HeatingHighTemp" class="form-control" placeholder="HeatingHighTemp *" data-decimals="1" min="-300" max="300" step="0.1"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-2">
+                    <div class="form-group">
+                        <label>난방온도범위 최저값 :</label>
+                        <input required type="number" name="tSolBeachConf.tVariableTemp.HeatingLowTemp" class="form-control"  placeholder="HeatingLowTemp *" data-decimals="1" min="-300" max="300" step="0.1"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-2">
+                    <div class="form-group">
+                        <label>난방온도 제어폭 :</label>
+                        <input required type="number" name="tSolBeachConf.tVariableTemp.HeatingDelatTemp" class="form-control"  placeholder="HeatingDelatTemp *" data-decimals="1" min="-300" max="300" step="0.1"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-2">
+                    <div class="form-group">
+                        <label>냉방온도범위 최고값 :</label>
+                        <input required type="number" name="tSolBeachConf.tVariableTemp.CoolingHighTemp" class="form-control"  placeholder="CoolingHighTemp *" data-decimals="1" min="-300" max="300" step="0.1"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-2">
+                    <div class="form-group">
+                        <label>냉방온도범위 최저값 :</label>
+                        <input required type="number" name="tSolBeachConf.tVariableTemp.CoolingLowTemp" class="form-control"  placeholder="CoolingLowTemp *" data-decimals="1" min="-300" max="300" step="0.1"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-2">
+                    <div class="form-group">
+                        <label>냉방온도 제어폭 :</label>
+                        <input required type="number" name="tSolBeachConf.tVariableTemp.CoolingDelatTemp" class="form-control"  placeholder="CoolingDelatTemp *" data-decimals="1" min="-300" max="300" step="0.1"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="pid_control">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4><i class="fa fa-angle-right"></i> pid_control</h4>
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-sm-6 col-md-2">
+                    <div class="form-group">
+                        <label>CtrlStepValue :</label>
+                        <input type="text" class="form-control" placeholder="ControlStepValue" name="tSolBeachConf.tPID.ControlStepValue">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-2">
+                    <div class="form-group">
+                        <label>UserPID :</label>
+                        <input type="text" class="form-control" placeholder="PIDCtrlMode" name="tSolBeachConf.tPID.PIDCtrlMode">
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-2">
+                    <div class="form-group">
+                        <label>Kp :</label>
+                        <input required type="number" name="tSolBeachConf.tPID.Kp" class="form-control" placeholder="Kp *" data-decimals="1" min="-300" max="300" step="0.1"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-2">
+                    <div class="form-group">
+                        <label>Ki :</label>
+                        <input required type="number" name="tSolBeachConf.tPID.Ki" class="form-control"  placeholder="Ki *" data-decimals="1" min="-300" max="300" step="0.1"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-2">
+                    <div class="form-group">
+                        <label>Kd :</label>
+                        <input required type="number" name="tSolBeachConf.tPID.Kd" class="form-control"  placeholder="Kd *" data-decimals="1" min="-300" max="300" step="0.1"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container"><br>
+    <div class="form-group text-right">
+        <input type="button" class="btn btn-primary scheduler" value="스케줄러"/>
+        <input type="submit" class="btn btn-info" value="저장"/>
+        <button type="button" class="btn btn-secondary">취소</button>
+    </div>
+</div>
+<div class="modal fade" id="ahuScheduler" role="dialog">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">스케줄러</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="main">
+                    <table id="damperList" class="table table-bordered table-striped table-condensed">
+                        <colgroup>
+                            <col width="5.5%">
+                            <col width="10.5%">
+                            <col width="10.5%">
+                            <col width="10.5%">
+                            <col width="10.5%">
+                            <col width="10.5%">
+                            <col width="10.5%">
+                            <col width="10.5%">
+                            <col width="10.5%">
+                            <col width="10.5%">
+                        </colgroup>
+                        <thead>
+                            <tr style="vertical-align: middle;">
+                                <td>단계</td>
+                                <td>시</td>
+                                <td>분</td>
+                                <td>댐퍼 자/수동</td>
+                                <td>동작</td>
+                                <td>외기비율</td>
+                                <td>팬 자/수동</td>
+                                <td>동작</td>
+                                <td>설정온도</td>
+                                <td>Economizer</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="temp ahu" style="display: none;">
+                                <td></td>
+                                <td><span class="active"></span></td>
+                                <td><span class="active"></span></td>
+                                <td><span class="active"></span></td>
+                                <td><span class="active"></span></td>
+                                <td><span class="active"></span></td>
+                                <td><span class="active"></span></td>
+                                <td><span class="active"></span></td>
+                                <td><span class="active"></span></td>
+                                <td>
+                                    <div class="form-group">
+                                        <form>
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" name="UserPID" id="pidCheck">
+                                                <label class="custom-control-label" for="pidCheck">사용</label>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="static/lib/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<!--<script src="static/lib/bootstrap/js/bootstrap.min.js"></script>-->
+<script src="static/lib/bootstrap-4.3.1/js/bootstrap.min.js"></script>
+<script src="static/lib/bootstrap-4.3.1/js/bootstrap-input-spinner.js"></script>
+<!-- Bootstrap Form Helpers -->
+<script src="static/lib/bootstrap-form-helpers/js/bootstrap-formhelpers.js"></script>
+<script src="static/lib/bootstrap-form-helpers/js/bootstrap-formhelpers-timepicker.js"></script>
+<script src="static/lib/bootstrap-form-helpers/js/bootstrap-formhelpers-phone.js"></script>
+<script src="static/js/newBroadAjax.js"></script>
+<script>
+
+$(document).ready(function(){
+    $("input[type='number']").inputSpinner();
+    $(".bfh-timepicker").bfhtimepicker('toggle');
+
+    var data = getNewBroadAjax('emsSysConfig', 'rooms/emsSysConfig', '', 'ahu');
+    var config = data['emsSysConfig'];
+    setParsedJson(config);
+
+
+    $("input[type='submit']").click(function(){
+        var params = new Object();
+        var config = new Object();
+        var $tabs = $('.tab-content');
+
+        $tabs.find('input[type="text"], select').each(function(index){
+            var key = $(this).attr('name');
+            var value = $(this).val();
+            if(key == undefined || key == ''){
+                key = $(this).parent().parent().find('input[type="number"]').attr('name') || $(this).closest('.bfh-timepicker').attr('name');
+                var $timePicker = $(this).closest('.bfh-timepicker');
+                if($timePicker.length > 0){
+                    value = $timePicker.find('td.hour').find('input[type="text"]').val();
+                };
+            };
+            if(($(this).prop('tagName') == "SELECT") && (value == null)) {
+                value = 0;
+            };
+            // if(params['configs'] == undefined) params['configs'] = {};
+            // console.log("key = ", key, "value = ", value);
+            if($('input[name="'+key+'"]').attr('type') == "number"){
+                value = value.replace(/,/gi, "");
+                value = parseFloat(value);
+            }else {
+                if(!isNaN(Number(value))){
+                    value = Number(value);
+                }
+            }
+            key = key.split(".");
+            <!--var numValue = parseFloat(value);-->
+            // console.log('key.length : ', key.length);
+            if(key.length > 1){
+                if(key.length < 3){
+                    if(config[key[0]] == undefined) {
+                        config[key[0]] = {};
+                    }
+                    // config[key[0]][key[1]] = isNaN(numValue)? value : numValue;
+                    // data['emsSysConfig'][key[0]][key[1]] = isNaN(numValue)? value : numValue;
+                    data['emsSysConfig'][key[0]][key[1]] = value;
+                }else if(key.length < 4){
+                    if(config[key[0]] == undefined) {
+                        config[key[0]] = {};
+                    }
+                    if(config[key[0]][key[1]] == undefined) {
+                        config[key[0]][key[1]] = {};
+                    }
+                    // config[key[0]][key[1]][key[2]] = isNaN(numValue)? value : numValue;
+                    data['emsSysConfig'][key[0]][key[1]][key[2]] = value;
+                }
+            }else {
+                // config[key] = isNaN(numValue)? value : numValue;
+                data['emsSysConfig'][key] = value;
+            }
+        });
+
+        var $checkBox = $tabs.find('input[type="checkbox"]');
+        if($checkBox.length > 0){
+            var ctrl_option = new Object();
+            $checkBox.each(function(index){
+                var key = $(this).attr('name');
+                var on_off = 0;
+                var oneCheckBox = $(this).prop('checked');
+                (oneCheckBox == true) ? on_off = 1 : on_off = 0;
+                // console.log(key, on_off);
+                if(params[key] == undefined) params[key] = [];
+                params[key].push(on_off);
+            });
+        };
+        $.each(params, function(key, value){
+            var strBinary = value.join("");
+            value = parseInt(strBinary, 2);
+            key = key.split(".");
+            if(key.length > 1){
+                if(key.length < 3){
+                    data['emsSysConfig'][key[0]][key[1]] = value;
+                }else if(key.length < 4){
+                    data['emsSysConfig'][key[0]][key[1]][key[2]] = value;
+                }
+            }else {
+                data['emsSysConfig'][key] = value;
+            }
+            // console.log(key, ' : ', value);
+        });
+
+        alert(JSON.stringify(data));
+        console.log('data : ', data);
+        console.log('config : ', config);
+        console.log('params : ', params);
+    });
+
+    $('.scheduler').click(function(){
+        var data = getNewBroadAjax('damperConfig', 'rooms/damperConfig/1', '', 'ahu');
+        var tSch = data.damperConfig.tSch;
+        console.log(tSch);
+        var html = [];
+        if($('tr.ahu').length == 1){
+            for (var i = 0 ; i < tSch.length ; i++){
+                var dataSet = [];
+                dataSet.push(tSch[i].Hour);
+                dataSet.push(tSch[i].Min);
+                dataSet.push(tSch[i].DamperAM);
+                dataSet.push(tSch[i].DamperRun);
+                dataSet.push(tSch[i].DamperRatio);
+                dataSet.push(tSch[i].FanAM);
+                dataSet.push(tSch[i].FanRun);
+                dataSet.push(tSch[i].Tset);
+                dataSet.push(tSch[i].Economizer);
+
+                var temp = $('.main').find('.temp').clone(true);
+                for (var j = 0 ; j < dataSet.length ; j++){
+                    temp.find('td:first-child').text(i+1);
+                    var $select = temp.find('td').eq(j+1).find('select');
+                    var $span = temp.find('td').eq(j+1).find('span');
+                    var $checkbox = temp.find('td').eq(j+1).find('input[type="checkbox"]');
+
+                    if($select.length > 0){
+                        $select.val(dataSet[j]);
+                    }else if($span.length > 0){
+                        $span.text(dataSet[j]);
+                        $span.parent().append('<div class="' + 'form-group-sm">' +
+                                            '<input required type="' + 'number" class=' + '"form-control spinner' + '" min=' + '"-300' + '" max=' + '"300' + '" step=' + '"1' + '"/>' +
+                                    '</div>');
+                        temp.find('td').eq(j+1).find('input').val(dataSet[j]);
+                    }else if($checkbox.length > 0){
+                        $checkbox.attr('id', $checkbox.attr('id') + i);
+                        $checkbox.parent().find('label').attr('for', $checkbox.attr('id'));
+
+                        if(dataSet[j] == 1){
+                            $checkbox.prop('checked', 'checked');
+                        }else{
+                            $checkbox.prop('checked', '');
+                        }
+                    }else{
+                        temp.find('td').eq(j+1).text(dataSet[j]);
+                    }
+                }
+                html.push(temp.removeClass('temp').show());
+            }
+            $('.main').find('tbody').append(html);
+
+            if($(".ahu td input[type='number']").next().length == 0){
+                $(".ahu td input[type='number']").inputSpinner();
+            }
+        }
+
+        $('.ahu td').click(function(){
+            $('.ahu td span').not('.active').toggleClass('active');
+            if($('.ahu td').has('div.active')){
+                $('.ahu td div').removeClass('active');
+            }
+            var $span = $(this).find('span');
+            if($span.length > 0){
+                $span.removeClass('active');
+                $span.next().addClass('active');
+                $span.next().find('div.input-group').addClass('input-group-sm');
+                $span.next().find('.btn').css({"min-width": "1rem"});
+            }
+        });
+
+        $('#ahuScheduler').modal('show');
+    });
+
+    $('#ahuScheduler').on('hidden.bs.modal', function (e) {
+        $('.ahu').not('.temp').remove();
+    });
+
+
+});
+
+$(document).on('change', '.spinner', function() {
+    $(this).closest('td').find('span').text($(this).val());
+});
+
+
+
+</script>

@@ -1,0 +1,416 @@
+<!-- Favicons -->
+<link href="static/img/favicon.png" rel="icon">
+<link href="static/img/apple-touch-icon.png" rel="apple-touch-icon">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<!-- Bootstrap core CSS -->
+<link href="static/lib/bootstrap-4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="static/lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+<!--external css-->
+<link href="static/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link href="static/css/style.css" rel="stylesheet">
+<link href="static/css/style-responsive.css" rel="stylesheet">
+<!-- Bootstrap Form Helpers -->
+<link href="static/lib/bootstrap-form-helpers/css/bootstrap-formhelpers.css" rel="stylesheet" media="screen">
+
+<div id="mainChart">
+    <div class="row">
+        <div class="col-md-12">
+            <!--max-width:1347px;-->
+            <div id="realTimeChart" class="eCharts" style="max-width:1347px; height: 380px; margin: 0 auto;">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h4><i class="fa fa-angle-right"></i> Detail Usage</h4>
+        </div>
+        <div class="col-lg-6 col-sm-6">
+            <section>
+                <table class="table table-bordered table-striped table-condensed">
+                    <colgroup>
+                        <col width="20%">
+                        <col width="40%">
+                        <col width="40%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>시</th>
+                            <th>사용량 (kWh)</th>
+                            <th>최대수요 (kW)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+        <div class="col-lg-6 col-sm-6">
+            <section>
+                <table class="table table-bordered table-striped table-condensed">
+                    <colgroup>
+                        <col width="20%">
+                        <col width="40%">
+                        <col width="40%">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>시</th>
+                            <th>사용량 (kWh)</th>
+                            <th>최대수요 (kW)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </div>
+</div>
+
+<script src="static/lib/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="static/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="static/lib/jquery/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="static/lib/bootstrap-4.3.1/js/bootstrap-input-spinner-ver.bs3.js"></script>
+<!-- Bootstrap Form Helpers -->
+<script src="static/lib/bootstrap-form-helpers/js/bootstrap-formhelpers-ver.bs3.js"></script>
+<script src="static/lib/bootstrap-form-helpers/js/bootstrap-formhelpers-timepicker-ver.bs3.js"></script>
+<script src="static/lib/bootstrap-form-helpers/js/bootstrap-formhelpers-phone.js"></script>
+<script src="static/js/echarts-dev.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker3.min.css">
+<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
+<script src="static/lib/bootstrap/js/bootstrap-datepicker.kr.js"></script>
+<script src="static/js/newBroadAjax.js"></script>
+<script>
+$(document).ready(function(){
+    var today = new Date();
+    var term = 'times';
+    var formData = '';
+    getDataAjax(term, formData);
+});
+function getDataAjax(term, formData){
+    var peak_list = [];
+    var use_amt_list = [];
+    var term_list = [];
+
+    $.ajax({
+        url:'/getUsage/',
+        dataType:'json',
+        type:'GET',
+        data: {
+            term: term,
+            formData: formData
+        },
+        contentType: 'application/json',
+        success:function(result){
+            // alert("ajax return :"+result);
+            for(var i = 0 ; i < result.length ; i++){
+                peak_list.push(result[i].peak);
+                use_amt_list.push(result[i].use_amt);
+                term_list.push(result[i].dateTime);
+            }
+
+            $.each(result, function(key, value){
+                $.each(value, function(key, value){
+                    // console.log(key, value);
+                });
+            });
+        },
+        error: function(status, errorMsg){
+          alert(errorMsg);
+        },
+        complete : function() {
+            setPeakChart(term, peak_list, use_amt_list, term_list);
+            setTableContents(term, peak_list, use_amt_list, term_list);
+        }
+    });
+}
+
+function setTableContents(term, peak_list, use_amt_list, term_list){
+    var $table = $(".table");
+    var rowNum = $table.first().find("tr").slice(1).length;
+
+    $table.find("tr").slice(1).find("td").text('');
+    for(var i = 0; i < term_list.length; i++){
+        var tableNum = parseInt(i/rowNum);
+        var $table_td = $table.eq(tableNum).find("tbody > tr").eq(i%rowNum).children();
+        $table_td.eq(0).text(term_list[i]);
+        $table_td.eq(1).text(use_amt_list[i]);
+        $table_td.eq(2).text(peak_list[i]);
+    }
+}
+
+function setPeakChart(term, peak_list, use_amt_list, term_list){
+    var $realTimeChart = document.getElementById('realTimeChart');
+    var eChartObject = echarts.getInstanceByDom($realTimeChart);
+
+    if(eChartObject==undefined){
+        var resizeContainer = function(){
+            $realTimeChart.style.width = window.innerWidth * 0.97 + 'px';
+            //$termChart.style.height = window.innerHeight * 0.8 + 'px';
+        };
+        resizeContainer();
+        var eChart = echarts.init($realTimeChart);
+        $(window).on('resize', function (){
+            resizeContainer();
+            eChart.resize();
+        });
+        var app = {};
+
+        option = null;
+        option = {
+            title: {
+                text: '최대전력ㆍ사용량 그래프'
+            },
+            color: ['#2f4554'],
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    crossStyle: {
+                        color: '#999'
+                    }
+                },
+                formatter: function (params) {
+                    var colorSpan = color => '<span style="display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:' + color + '"></span>';
+                    let rez = '<p>' + params[0].axisValue + ':00시 기준' + '</p><br>';
+                    var xx = '<p>' + colorSpan(params[0].color) + ' ' + params[0].seriesName + ': ' + params[0].value + 'kW' + '</p><br>';
+                    xx += '<p>' + colorSpan(params[1].color) + ' ' + params[1].seriesName + ': ' + params[1].value + 'kWh' + '</p>';
+                    rez += xx;
+
+                    return rez;
+                }
+            },
+            legend: {
+                right: 'center',
+                top: 30,
+                data:['최대수요', '전력소비량']
+            },
+            toolbox: {
+              show: true,
+              feature: {
+                  saveAsImage: {}
+              }
+            },
+            xAxis: {
+                type: 'category',
+                data: term_list
+            },
+            axisPointer: {
+                value: '6',
+                snap: true,
+                lineStyle: {
+                  color: '#004E52',
+                  opacity: 0.5,
+                  width: 1
+                },
+                label: {
+                  show: true,
+                  backgroundColor: '#004E52'
+                },
+                handle: {
+                  show: false,
+                  color: '#004E52'
+                }
+            },
+            yAxis: [
+              {
+                  type: 'value',
+                  name: '최대수요',
+                  axisLabel: {
+                    formatter: '{value} kW'
+                  }
+              },
+              {
+                  type: 'value',
+                  name: '전력소비량',
+                  axisLabel: {
+                    formatter: '{value} kWh'
+                  }
+              }
+            ],
+            grid: {
+              left: 60,
+              right: 60,
+              bottom: 40,
+              containLabel: true
+            },
+            series: [
+                {
+                    name:'최대수요',
+                    type:'bar',
+                    smooth: true,
+                    itemStyle: {
+                        color: '#2f4554'
+                    },
+                    animationDelay: function (idx) {
+                        return idx * 10;
+                    },
+                    markPoint : {
+                        data : [
+                            {type : 'max', name: '전력피크'}
+                        ]
+                    },
+                    data: peak_list
+                },
+                {
+                    name:'전력소비량',
+                    type:'line',
+                    itemStyle: {
+                        color: '#ff5252'
+                    },
+                    animationDelay: function (idx) {
+                        return idx * 10;
+                    },
+                    data: use_amt_list,
+                    yAxisIndex: 1
+                }
+            ],
+            animationEasing: 'elasticOut',
+            animationDelayUpdate: function (idx) {
+                return idx * 5;
+            }
+        };
+        if (option && typeof option === "object") {
+            eChart.setOption(option, true);
+        };
+        window.onresize = function() {
+            <!--$('.eCharts').each(function(){-->
+                <!--var id = $(this).attr('_echarts_instance_');-->
+                <!--window.echarts.getInstanceById(id).resize();-->
+            <!--});-->
+            // alert("size variation");
+            eChart.resize();
+        }
+    }else{
+        var option = eChartObject.getOption();
+        option.series[0].data = peak_list;
+        option.series[1].data = use_amt_list;
+        option.xAxis[0].data = term_list;
+        eChartObject.setOption(option, true);
+    }
+
+}
+
+</script>

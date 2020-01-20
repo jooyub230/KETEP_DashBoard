@@ -2632,7 +2632,7 @@ input[type="search"] {
   }
 }
 .form-group {
-  margin-bottom: 15px;
+  /*margin-bottom: 15px;*/
 }
 .radio,
 .checkbox {
@@ -2724,14 +2724,17 @@ select[multiple].input-sm {
 }
 .form-group-sm .form-control {
   height: 30px;
-  padding: 5px 10px;
+  /*padding: 5px 10px;*/
+  padding: 2px 10px;
   font-size: 12px;
   line-height: 1.5;
   border-radius: 3px;
 }
 .form-group-sm select.form-control {
-  height: 30px;
-  line-height: 30px;
+  /*height: 30px;
+  line-height: 30px;*/
+  height: 25px;
+  line-height: 25px;
 }
 .form-group-sm textarea.form-control,
 .form-group-sm select[multiple].form-control {
@@ -5459,10 +5462,12 @@ button.list-group-item-danger.active:focus {
           box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
 .panel-body {
-  padding: 15px;
+  /*padding: 15px;*/
+  padding: 5px;
 }
 .panel-heading {
-  padding: 10px 15px;
+  /*padding: 10px 15px;*/
+  padding: 5px 10px;
   border-bottom: 1px solid transparent;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
@@ -5484,7 +5489,7 @@ button.list-group-item-danger.active:focus {
   color: inherit;
 }
 .panel-footer {
-  padding: 10px 15px;
+  /*padding: 10px 15px;*/
   background-color: #f5f5f5;
   border-top: 1px solid #ddd;
   border-bottom-right-radius: 3px;

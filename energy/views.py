@@ -29,14 +29,22 @@ def getUsage(request):
     # day = int(request.GET.get('day'))
     # queryDate = datetime.date(year, month, day)
     term = request.GET.get('term')
-    form_data_dict = {}
-    form_data_list = json.loads(request.GET.get('formData'))
-    for field in form_data_list:
-        form_data_dict[field["name"]] = field["value"]
+    print(request.GET.get('formData'))
+    if request.GET.get('formData') != '':
+        form_data_dict = {}
+        form_data_list = json.loads(request.GET.get('formData'))
+        for field in form_data_list:
+            form_data_dict[field["name"]] = field["value"]
+        print(form_data_dict)
     print(term)
-    print(form_data_dict)
+
     if term == 'times':
-        str_date = form_data_dict['date']
+        today = datetime.datetime.now()
+        str_date = today.strftime("%Y-%m-%d")
+
+        if request.GET.get('formData') != '':
+            str_date = form_data_dict['date']
+
         start_date = datetime.datetime.strptime(str_date, "%Y-%m-%d").date()
         ismart_dic = list(EnergyUsage.objects.all().filter(dateTime__year=start_date.year, dateTime__month=start_date.month, dateTime__day=start_date.day).values('peak', 'use_amt', 'dateTime').order_by('dateTime'))
         for idx, item in enumerate(ismart_dic):
@@ -54,9 +62,9 @@ def getUsage(request):
             "SELECT " +
             "DATE_FORMAT(E.dateTime, '%%Y-%%m-%%d') AS date, " +
             "MAX(E.peak) max_peak, ROUND(SUM(E.use_amt), 2) sum_use_amt " +
-            "FROM test.energy_energyusage E " +
+            "FROM ketep.energy_energyusage E " +
             "WHERE year(E.dateTime)=%s AND month(E.dateTime)=%s " +
-            "GROUP BY date", [year, month])
+            "GROUP BY date ORDER BY E.dateTime", [year, month])
         rows = list(cursor.fetchall())
         print("rows length : ", len(rows))
         print(calendar.monthrange(int(year), int(month))[1])
@@ -75,9 +83,9 @@ def getUsage(request):
             "SELECT " +
             "DATE_FORMAT(E.dateTime, '%%Y-%%m') AS date, " +
             "MAX(E.peak) max_peak, ROUND(SUM(E.use_amt), 2) sum_use_amt " +
-            "FROM test.energy_energyusage E " +
+            "FROM ketep.energy_energyusage E " +
             "WHERE year(E.dateTime)=%s " +
-            "GROUP BY date", [year])
+            "GROUP BY date ORDER BY E.dateTime", [year])
         rows = list(cursor.fetchall())
         for i in range(len(rows)):
             rows[i] = list(rows[i])
@@ -92,8 +100,8 @@ def getUsage(request):
             "SELECT " +
             "DATE_FORMAT(E.dateTime, '%Y') AS date, " +
             "MAX(E.peak) max_peak, ROUND(SUM(E.use_amt), 2) sum_use_amt " +
-            "FROM test.energy_energyusage E " +
-            "GROUP BY date")
+            "FROM ketep.energy_energyusage E " +
+            "GROUP BY date ORDER BY E.dateTime")
         rows = list(cursor.fetchall())
         for i in range(len(rows)):
             rows[i] = list(rows[i])
@@ -173,3 +181,4 @@ def iSmartWebCrawler(today):
     #     EnergyUsage(condo_id=dataList[i][0], use_amt=dataList[i][1]).save()
     print(data_dic)
     return data_dic
+

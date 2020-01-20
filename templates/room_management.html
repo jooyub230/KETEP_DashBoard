@@ -1,2090 +1,1655 @@
-<link href="static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<!-- Custom Theme Style -->
-<link href="static/css/custom.css" rel="stylesheet">
-<link href="static/css/switchery.min.css" rel="stylesheet">
+<!-- Favicons -->
+<link href="static/img/favicon.png" rel="icon">
+<link href="static/img/apple-touch-icon.png" rel="apple-touch-icon">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<!-- Bootstrap core CSS -->
+<link href="static/lib/bootstrap-4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="static/lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+<!--external css-->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link href="static/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-<div class="right_col" role="main">
-    <div>
-        <div class="page-title">
-            <div class="title_left">
-                <h3> Oceanvalley<small> Room Status</small> </h3>
+<!--jQuery-ui-Slider-Pips-->
+<link href="static/lib/jQuery-ui-Slider-Pips-master/dist/jquery-ui-slider-pips.css" rel="stylesheet" media="screen">
+<link href="static/css/style.css" rel="stylesheet">
+<link href="static/css/style-responsive.css" rel="stylesheet">
+<!-- Bootstrap Form Helpers -->
+<link href="static/lib/bootstrap-form-helpers/css/bootstrap-formhelpers.css" rel="stylesheet" media="screen">
+<!--<link href="static/lib/bootstrap-4.3.1/js/bootstrap.min.js" rel="stylesheet">-->
+<!--<div class="row col-md-12 col-sm-12 col-12 mx-auto" id="contents">-->
+    <!--<div class="col-md-2 col-sm-2 col-6">-->
+        <!--<div class="grey-panel border-primary">-->
+            <!--<div class="grey-header bg-primary text-white">209호</div>-->
+            <!--<div class="panel-body">-->
+                <!--<div class="row">-->
+                    <!--<div class="col-6">-->
+                        <!--<span>난방모드</span>-->
+                    <!--</div>-->
+                    <!--<div class="col-6">-->
+                        <!--<object type="image/svg+xml" data="static/img/roomStatus/heater.svg" width="20" height="20"></object>-->
+                        <!--<object type="image/svg+xml" data="static/img/roomStatus/manual-dial.svg" width="20" height="20"></object>-->
+                        <!--<object type="image/svg+xml" data="static/img/roomStatus/auto-dial.svg" width="20" height="20"></object>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                    <!--<div class="col-sm-2 col-2">-->
+                        <!--<object type="image/svg+xml" data="static/img/roomStatus/temperature.svg" width="20" height="20"></object>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-4 col-4">-->
+                        <!--<span>23℃</span>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-2 col-2">-->
+                        <!--<object type="image/svg+xml" data="static/img/roomStatus/temperature_pipe.svg" width="20" height="20"></object>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-4 col-4">-->
+                        <!--<span>255</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<div class="d-flex flex-wrap">
+    <div class="col-md-12 boilerStat">
+        <h4>난방(보일러 on) : </h4>
+    </div>
+</div>
+<div id="roomContainer" class="d-flex flex-wrap">
+    <div class="floorForm p-2 col-xs-4 col-sm-0_9 col-md-0_9 col-lg-0_9" style="display:none;">
+        <div class="floor" style="background-color:#337ab7; height: 100%; width: 100%; border-radius: 2px; margin:0 auto; display: table;">
+            <h2 style="color:white; text-align: center; vertical-align: middle; display: table-cell;">2F</h2>
+        </div>
+    </div>
+    <div class="roomForm p-2 col-xs-4 col-sm-0_9 col-md-0_9 col-lg-0_9" tabindex="-1" data-toggle="popover" style="display:none;">
+    	<div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6">
+                        <span class="roomNo"></span><span>호</span>
+                    </div>
+                    <div class="col-xs-6 col-md-6 col-md-6 text-right">
+                        <span>공실</span>
+                    </div>
+                </div>
             </div>
-            <div class="title_right">
-                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for...">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">Go!</button>
-                        </span>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-3 col-sm-3 col-md-3 text-left">
+                        <span>난방</span>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <!--<object class="power" type="image/svg+xml" data="static/img/roomStatus/power-icon.svg" width="15" height="15"></object>-->
+                        <!--<object class="fire" type="image/svg+xml" data="static/img/roomStatus/fire.svg" width="15" height="15"></object>-->
+                        <img class="power" src="static/img/roomStatus/power-icon.svg" width="15" height="15">
+                        <!--<img class="fire" src="static/img/roomStatus/fire.svg" width="15" height="15">-->
+                        <img class="flame" src="static/img/flame.svg" width="15" height="15">
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3 text-left">
+                        <span>통신</span>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <img class="wifi" src="static/img/wifi-off.svg" width="15" height="15">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3 col-sm-3 col-md-3 text-left">
+                        <span>모드</span>
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4">
+                        <!--<object class="manual" type="image/svg+xml" data="static/img/roomStatus/manual-dial.svg" width="15" height="15"></object>-->
+                        <!--<object class="auto" type="image/svg+xml" data="static/img/roomStatus/auto-dial.svg" width="15" height="15"></object>-->
+                        <img class="manual" src="static/img/roomStatus/manual-dial.svg" width="15" height="15">
+                        <img class="auto" src="static/img/roomStatus/auto-dial.svg" width="15" height="15">
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3 text-left">
+                        <span>센서</span>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <img class="plug" src="static/img/plug.svg" width="15" height="15">
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <!--<object type="image/svg+xml" data="static/img/roomStatus/temperature.svg" width="15" height="15"></object>-->
+                        <img src="static/img/roomStatus/temperature.svg" width="15" height="15">
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 text-center">
+                        <span>23</span><span>℃</span>
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2">
+                        <!--<object type="image/svg+xml" data="static/img/roomStatus/heater.svg" width="15" height="15"></object>-->
+                        <img src="static/img/roomStatus/heater.svg" width="15" height="15">
+                    </div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 text-center">
+                        <span>255</span><span>℃</span>
                     </div>
                 </div>
             </div>
         </div>
-            <div class="clearfix"></div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>Floor 2 <small> Information </small></h2>
-                            <ul class="nav navbar-right panel_toolbox">
-                                <li>
-                                    <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li>
-                                            <a href="#">Settings 1</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Settings 2</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a class="close-link"><i class="fa fa-close"></i></a>
-                                </li>
-                            </ul>
-                            <div class="clearfix">
+    </div>
+</div>
+<div class="click-menu" style="display:none;">
+    <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action roomGraph">그래프</a>
+        <!--<a href="#" class="roomGraph list-group-item list-group-item-action" data-toggle="modal" data-target="#roomGraph">그래프</a>-->
+        <a href="#" class="list-group-item list-group-item-action roomSetting" data-toggle="modal" data-target="#roomSetting">객실설정</a>
+    </div>
+</div>
+<div class="modal fade" id="roomGraph" role="dialog">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">그래프</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <form class="condition" role="form">
+                        <div class="col-sm-3 col-md-2">
+                            <div class="form-group-sm">
+                                <label>시간단위 :</label>
+                                <select class="form-control" name="time">
+                                    <option value="300">5분</option>
+                                    <option value="600" selected>10분</option>
+                                    <option value="3600">1시간</option>
+                                    <option value="86400">하루</option>
+                                    <option value="0">전체</option>
+                                </select>
                             </div>
-                            <div class="x_content">
+                        </div>
+                        <div class="col-sm-3 col-md-2">
+                            <div class="form-group">
+                                <label>시작일 :</label>
+                                <div class="input-group input-group-sm date">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    <input type="text" readonly class="form-control" name="startDate">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-2">
+                            <div class="form-group">
+                                <label>시작시간 :</label>
+                                <div class="bfh-timepicker" name="startTime"></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-2">
+                            <div class="form-group">
+                                <label>종료일 :</label>
+                                <div class="input-group input-group-sm date">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    <input type="text" readonly class="form-control" name="endDate">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 col-md-2">
+                            <div class="form-group">
+                                <label>종료시간 :</label>
+                                <div class="bfh-timepicker" name="endTime"></div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-theme">조회</button><input type="hidden" name="roomNo">
+                    </form>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="roomInfoChart" class="eCharts" style="width: 100%; height: 525px; margin: 0 auto;">
+                        </div>
+                        <!--<div id="roomTempChart" class="eCharts" style="width: 100%; height: 380px; margin: 0 auto;">-->
+                        <!--</div>-->
+                        <!--<div id="roomStatusChart" class="eCharts" style="width: 100%; height: 200px; margin: 0 auto;">-->
+                        <!--</div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="roomSetting" tabindex="-1" role="dialog" aria-labelledby="roomSettingTitle" aria-hidden="true">
+    <div class="modal-dialog-centered modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">설정</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4><i class="fa fa-angle-right"></i> 객실목록</h4>
+                            </div>
+                        </div><br>
+                        <div id="roomCheckList">
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#room_status">현재상태</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="room_status" class="tab-pane active"><br>
                                 <div class="row">
+                                    <div class="col-sm-12 col-md-4">
+                                        <div class="form-group">
+                                            <label>난방설정상태 :</label><br>
+                                            <label class="switch">
+                                                <input type="checkbox" name="HeatingSetState" disabled>
+                                                <span class="slider round"></span>
+                                            </label>
+                                            <p>OFF</p><p style="display:none;">ON</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4">
+                                        <div class="form-group">
+                                            <label>난방현재상태 :</label><br>
+                                            <label class="switch">
+                                                <input type="checkbox" name="HeatingCurState" disabled>
+                                                <span class="slider round"></span>
+                                            </label>
+                                            <p>OFF</p><p style="display:none;">ON</p>
+                                        </div>
+                                    </div>
+                                    <!--<div class="col-sm-12 col-md-4">-->
+                                        <!--<div class="form-group">-->
+                                            <!--<label>난방설정상태 :</label>-->
+                                            <!--<form>-->
+                                                <!--<div class="custom-control custom-switch">-->
+                                                    <!--<input type="checkbox" class="custom-control-input" name="HeatingSetState" id="HeatingSetState">-->
+                                                    <!--<label class="custom-control-label" for="HeatingSetState">OFF / ON</label>-->
+                                                <!--</div>-->
+                                            <!--</form>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="col-sm-12 col-md-4">-->
+                                        <!--<div class="form-group">-->
+                                            <!--<label>난방현재상태 :</label>-->
+                                            <!--<form>-->
+                                                <!--<div class="custom-control custom-switch">-->
+                                                    <!--<input type="checkbox" class="custom-control-input" name="HeatingCurState" id="HeatingCurState">-->
+                                                    <!--<label class="custom-control-label" for="HeatingCurState">OFF / ON</label>-->
+                                                <!--</div>-->
+                                            <!--</form>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <div class="col-sm-12 col-md-4">
+                                        <div class="form-group">
+                                            <label>바닥설정온도 :</label>
+                                            <input required type="number" readonly name="Tset_cur" class="form-control-sm" placeholder="Tset_cur *" data-decimals="1" min="0" max="20" step="0.1"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4">
+                                        <div class="form-group">
+                                            <label>바닥제어범위 :</label>
+                                            <input required type="number" readonly name="Tcr_cur" class="form-control-sm" placeholder="Tcr_cur *" data-decimals="1" min="0" max="20" step="0.1"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4">
+                                        <div class="form-group">
+                                            <label>바닥온도 :</label>
+                                            <input required type="number" readonly name="Tsurf_cur" class="form-control-sm" placeholder="Tsurf_cur *" data-decimals="1" min="0" max="20" step="0.1"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4">
+                                        <div class="form-group">
+                                            <label>객실온도 :</label>
+                                            <input required type="number" readonly name="Troom_cur" class="form-control-sm" placeholder="Troom_cur *" data-decimals="1" min="0" max="20" step="0.1"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4">
+                                        <div class="form-group">
+                                            <label>바닥온도 상승 :</label>
+                                            <input required type="number" readonly name="Tsurf_inc" class="form-control-sm" placeholder="Tsurf_inc *" data-decimals="1" min="0" max="20" step="0.1"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4">
+                                        <div class="form-group">
+                                            <label>객실온도 상승 :</label>
+                                            <input required type="number" readonly name="Troom_inc" class="form-control-sm" placeholder="Troom_inc *" data-decimals="1" min="0" max="20" step="0.1"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4">
+                                        <div class="form-group">
+                                            <label>바닥온도 하강 :</label>
+                                            <input required type="number" readonly name="Tsurf_dec" class="form-control-sm" placeholder="Tsurf_dec *" data-decimals="1" min="0" max="20" step="0.1"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4">
+                                        <div class="form-group">
+                                            <label>객실온도 하강 :</label>
+                                            <input required type="number" readonly name="Troom_dec" class="form-control-sm" placeholder="Troom_dec *" data-decimals="1" min="0" max="20" step="0.1"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4">
+                                        <div class="form-group input-group-sm">
+                                            <label>온도 동작 상태 :</label>
+                                            <input type="text" readonly name="OperationState" class="form-control form-control-sm" placeholder="OperationState">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4">
+                                        <div class="form-group input-group-sm">
+                                            <label>전체 상태 :</label>
+                                            <input type="text" readonly name="TotalStatus" class="form-control form-control-sm" placeholder="TotalStatus">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>사전난방 시작일시 :</label>
+                                            <div class="input-group input-group-sm date">
+                                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                <input type="text" readonly class="form-control" name="PreHeatingStartTime">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>&nbsp;</label>
+                                            <div class="bfh-timepicker" name="PreHeatingStartTime"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>수동난방 시작일시 :</label>
+                                            <div class="input-group input-group-sm date">
+                                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                <input type="text" readonly class="form-control" name="MH_StartTime">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>&nbsp;</label>
+                                            <div class="bfh-timepicker" name="MH_StartTime"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>수동난방 종료일시 :</label>
+                                            <div class="input-group input-group-sm date">
+                                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                <input type="text" readonly class="form-control" name="MH_EndTime">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>&nbsp;</label>
+                                            <div class="bfh-timepicker" name="MH_EndTime"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>난방소요시간 :</label>
+                                            <div class="bfh-timepicker" name="OptimalNeedTime"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>수동난방잔여시간 :</label>
+                                            <div class="bfh-timepicker" name="MH_HeatingLeftTime"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>최종제어일시 :</label>
+                                            <div class="input-group input-group-sm date">
+                                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                <input type="text" readonly class="form-control" name="LastControlTime">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>&nbsp;</label>
+                                            <div class="bfh-timepicker" name="LastControlTime"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#">난방모드</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item active" data-toggle="tab" href="#manual_setting">수동설정</a>
+                                    <a class="dropdown-item" data-toggle="tab" href="#auto_setting">자동설정</a>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="manual_setting" class="tab-pane active"><br>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4><i class="fa fa-angle-right"></i> 수동난방설정 (<span id="SchState">중지</span>)</h4>
+                                        <!--<img class="gear" src="static/img/Gear-0.3s-40px.gif" width="20" height="20">-->
+                                    </div>
+                                </div><br>
+                                <!--<div class="row">-->
+                                    <!--<div class="col-md-12">-->
+                                        <!--<div class="form-group">-->
+                                            <!--<label>스케줄러 사용 :</label>-->
+                                            <!--<form>-->
+                                                <!--<div class="custom-control custom-switch">-->
+                                                    <!--<input type="checkbox" class="custom-control-input" name="MH_SchedulerUsed" id="MH_SchedulerUsed">-->
+                                                    <!--<label class="custom-control-label" for="MH_SchedulerUsed">NO/YES</label>-->
+                                                <!--</div>-->
+                                            <!--</form>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>난방가동시간 :</label>
+                                            <div class="bfh-timepicker" name="MH_HeatingTimeSec"></div>
+                                        </div>
+                                    </div>
+                                    <!--<div class="col-sm-12 col-md-6">-->
+                                        <!--<div class="form-group">-->
+                                            <!--<label>난방휴지시간 :</label>-->
+                                            <!--<div class="bfh-timepicker" name="MH_HeatingStopTimeSec"></div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="col-sm-12 col-md-6">-->
+                                        <!--<div class="form-group">-->
+                                            <!--<label>난방시작시간 :</label>-->
+                                            <!--<div class="bfh-timepicker" name="MH_TodayStartTime"></div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="col-sm-12 col-md-6">-->
+                                        <!--<div class="form-group">-->
+                                            <!--<label>전체난방시간 :</label>-->
+                                            <!--<div class="bfh-timepicker" name="MH_TotalHeatingTimeSec"></div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>바닥온도 설정 :</label>
+                                            <input required type="number" class="form-control-sm" name="MH_Tsurf_set" placeholder="MH_Tsurf_set *" data-decimals="1" step="0.1"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>바닥온도 제어범위 :</label>
+                                            <input required type="number" class="form-control-sm" name="MH_Tsurf_cr" placeholder="MH_Tsurf_cr *" data-decimals="1" step="0.1"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>객실온도 설정 :</label>
+                                            <input required type="number" class="form-control-sm" name="MH_Troom_set" placeholder="MH_Troom_set *" data-decimals="1" step="0.1"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>객실온도 제어범위 :</label>
+                                            <input required type="number" class="form-control-sm" name="MH_Troom_cr" placeholder="MH_Troom_cr *" data-decimals="1" step="0.1"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-12">
+                                        <div class="form-group">
+                                            <label>그룹 스케줄 : &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                            <label class="switch">
+                                                <input type="checkbox" name="SchUse">
+                                                <span class="slider round"></span>
+                                            </label>
+                                            <p>OFF</p><p style="display:none;">ON</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-md-4">
+                                        <div class="form-group">
+                                            <label>스케줄러 :</label><br>
+                                            <label class="switch">
+                                                <input type="checkbox" name="MH_SchedulerState" disabled>
+                                                <span class="slider round"></span>
+                                            </label>
+                                            <p>정지</p><p style="display:none;">동작</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-md-4">
+                                        <div class="form-group form-group-sm">
+                                            <label> 그룹번호 :      </label>
+                                            <select class="form-control" name="SchGroupIndex">
+                                                <option value="255">-</option>
+                                                <option value="0">1</option>
+                                                <option value="1">2</option>
+                                                <option value="2">3</option>
+                                                <option value="3">4</option>
+                                                <option value="4">5</option>
+                                                <option value="5">6</option>
+                                                <option value="6">7</option>
+                                                <option value="7">8</option>
+                                                <option value="8">9</option>
+                                                <option value="9">10</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 col-md-4">
+                                        <div class="form-group">
+                                            <label>현재난방 :</label><br>
+                                            <label class="switch">
+                                                <input type="checkbox" name="SchHeatingStatus" disabled>
+                                                <span class="slider round"></span>
+                                            </label>
+                                            <p>OFF</p><p style="display:none;">ON</p>
+                                        </div>
+                                    </div>
+                                </div>
 
-        <p><br>객실 현황 리스트</p>
-
-        <div class="col-md-55">
-        <div class="thumbnail">
-        <div class="image view view-first">
-        <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-        <div class="mask">
-        <p>Occupant's Info</p>
-        <div class="tools tools-bottom">
-        <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-        <a href="#"><i class="fa fa-pencil"></i></a>
-        <a href="#"><i class="fa fa-times"></i></a>
-        </div>
-        </div>
-        </div>
-        <div class="caption">
-        <p>&nbsp;&nbsp;Room No.201</p>
-        <label>
-        <input type="checkbox" class="js-switch" checked /> 재실 여부
-        </label>
-        </div>
-        </div>
-        </div>
-        <div class="col-md-55">
-        <div class="thumbnail">
-        <div class="image view view-first">
-        <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-        <div class="mask">
-        <p>Occupant's Info</p>
-        <div class="tools tools-bottom">
-        <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-        <a href="#"><i class="fa fa-pencil"></i></a>
-        <a href="#"><i class="fa fa-times"></i></a>
-        </div>
-        </div>
-        </div>
-        <div class="caption">
-        <p>&nbsp;&nbsp;Room No.202</p>
-        <label>
-        <input type="checkbox" class="js-switch" checked /> 재실 여부
-        </label>
-        </div>
-        </div>
-        </div>
-        <div class="col-md-55">
-        <div class="thumbnail">
-        <div class="image view view-first">
-        <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-        <div class="mask">
-        <p>Occupant's Info</p>
-        <div class="tools tools-bottom">
-        <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-        <a href="#"><i class="fa fa-pencil"></i></a>
-        <a href="#"><i class="fa fa-times"></i></a>
-        </div>
-        </div>
-        </div>
-        <div class="caption">
-        <p>&nbsp;&nbsp;Room No.203</p>
-        <label>
-        <input type="checkbox" class="js-switch" checked /> 재실 여부
-        </label>
-        </div>
-        </div>
-        </div>
-        <div class="col-md-55">
-        <div class="thumbnail">
-        <div class="image view view-first">
-        <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-        <div class="mask">
-        <p>Occupant's Info</p>
-        <div class="tools tools-bottom">
-        <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-        <a href="#"><i class="fa fa-pencil"></i></a>
-        <a href="#"><i class="fa fa-times"></i></a>
-        </div>
-        </div>
-        </div>
-        <div class="caption">
-        <p>&nbsp;&nbsp;Room No.204</p>
-        <label>
-        <input type="checkbox" class="js-switch" checked /> 재실 여부
-        </label>
-        </div>
-        </div>
-        </div>
-        <div class="col-md-55">
-        <div class="thumbnail">
-        <div class="image view view-first">
-        <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-        <div class="mask">
-        <p>Occupant's Info</p>
-        <div class="tools tools-bottom">
-        <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-        <a href="#"><i class="fa fa-pencil"></i></a>
-        <a href="#"><i class="fa fa-times"></i></a>
-        </div>
-        </div>
-        </div>
-        <div class="caption">
-        <p>&nbsp;&nbsp;Room No.205</p>
-        <label>
-        <input type="checkbox" class="js-switch" checked /> 재실 여부
-        </label>
-        </div>
-        </div>
-        </div>
-        <div class="col-md-55">
-        <div class="thumbnail">
-        <div class="image view view-first">
-        <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-        <div class="mask">
-        <p>Occupant's Info</p>
-        <div class="tools tools-bottom">
-        <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-        <a href="#"><i class="fa fa-pencil"></i></a>
-        <a href="#"><i class="fa fa-times"></i></a>
-        </div>
-        </div>
-        </div>
-        <div class="caption">
-        <p>&nbsp;&nbsp;Room No.206</p>
-        <label>
-        <input type="checkbox" class="js-switch" checked /> 재실 여부
-        </label>
-        </div>
-        </div>
-        </div>
-        <div class="col-md-55">
-        <div class="thumbnail">
-        <div class="image view view-first">
-        <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-        <div class="mask">
-        <p>Occupant's Info</p>
-        <div class="tools tools-bottom">
-        <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-        <a href="#"><i class="fa fa-pencil"></i></a>
-        <a href="#"><i class="fa fa-times"></i></a>
-        </div>
-        </div>
-        </div>
-        <div class="caption">
-        <p>&nbsp;&nbsp;Room No.207</p>
-        <label>
-        <input type="checkbox" class="js-switch" checked /> 재실 여부
-        </label>
-        </div>
-        </div>
-        </div>
-        <div class="col-md-55">
-        <div class="thumbnail">
-        <div class="image view view-first">
-        <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-        <div class="mask">
-        <p>Occupant's Info</p>
-        <div class="tools tools-bottom">
-        <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-        <a href="#"><i class="fa fa-pencil"></i></a>
-        <a href="#"><i class="fa fa-times"></i></a>
-        </div>
-        </div>
-        </div>
-        <div class="caption">
-        <p>&nbsp;&nbsp;Room No.208</p>
-        <label>
-        <input type="checkbox" class="js-switch" checked /> 재실 여부
-        </label>
-        </div>
-        </div>
-        </div>
-        <div class="col-md-55">
-        <div class="thumbnail">
-        <div class="image view view-first">
-        <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-        <div class="mask">
-        <p>Occupant's Info</p>
-        <div class="tools tools-bottom">
-        <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-        <a href="#"><i class="fa fa-pencil"></i></a>
-        <a href="#"><i class="fa fa-times"></i></a>
-        </div>
-        </div>
-        </div>
-        <div class="caption">
-        <p>&nbsp;&nbsp;Room No.209</p>
-        <label>
-        <input type="checkbox" class="js-switch" checked /> 재실 여부
-        </label>
-        </div>
-        </div>
-        </div>
-        <div class="col-md-55">
-        <div class="thumbnail">
-        <div class="image view view-first">
-        <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-        <div class="mask">
-        <p>Occupant's Info</p>
-        <div class="tools tools-bottom">
-        <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-        <a href="#"><i class="fa fa-pencil"></i></a>
-        <a href="#"><i class="fa fa-times"></i></a>
-        </div>
-        </div>
-        </div>
-        <div class="caption">
-        <p>&nbsp;&nbsp;Room No.210</p>
-        <label>
-        <input type="checkbox" class="js-switch" checked /> 재실 여부
-        </label>
-        </div>
-        </div>
-        </div>
-        <div class="col-md-55">
-        <div class="thumbnail">
-        <div class="image view view-first">
-        <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-        <div class="mask">
-        <p>Occupant's Info</p>
-        <div class="tools tools-bottom">
-        <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-        <a href="#"><i class="fa fa-pencil"></i></a>
-        <a href="#"><i class="fa fa-times"></i></a>
-        </div>
-        </div>
-        </div>
-        <div class="caption">
-        <p>&nbsp;&nbsp;Room No.211</p>
-        <label>
-        <input type="checkbox" class="js-switch" checked /> 재실 여부
-        </label>
-        </div>
-        </div>
-        </div>
-        <div class="col-md-55">
-        <div class="thumbnail">
-        <div class="image view view-first">
-        <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-        <div class="mask">
-        <p>Occupant's Info</p>
-        <div class="tools tools-bottom">
-        <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-        <a href="#"><i class="fa fa-pencil"></i></a>
-        <a href="#"><i class="fa fa-times"></i></a>
-        </div>
-        </div>
-        </div>
-        <div class="caption">
-        <p>&nbsp;&nbsp;Room No.212</p>
-        <label>
-        <input type="checkbox" class="js-switch" checked /> 재실 여부
-        </label>
-        </div>
-        </div>
-        </div>
-        <div class="col-md-55">
-        <div class="thumbnail">
-        <div class="image view view-first">
-        <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-        <div class="mask">
-        <p>Occupant's Info</p>
-        <div class="tools tools-bottom">
-        <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-        <a href="#"><i class="fa fa-pencil"></i></a>
-        <a href="#"><i class="fa fa-times"></i></a>
-        </div>
-        </div>
-        </div>
-        <div class="caption">
-        <p>&nbsp;&nbsp;Room No.213</p>
-        <label>
-        <input type="checkbox" class="js-switch" checked /> 재실 여부
-        </label>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-        </div>
-
-        </div>
-        </div>
-    </div>
-    <div class="row">
-    <div class="col-md-12">
-    <div class="x_panel">
-    <div class="x_title">
-    <h2>Floor 3 <small> Information </small></h2>
-    <ul class="nav navbar-right panel_toolbox">
-    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-    </li>
-    <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-    <ul class="dropdown-menu" role="menu">
-    <li><a href="#">Settings 1</a>
-    </li>
-    <li><a href="#">Settings 2</a>
-    </li>
-    </ul>
-    </li>
-    <li><a class="close-link"><i class="fa fa-close"></i></a>
-    </li>
-    </ul>
-    <div class="clearfix"></div>
-    <div class="x_content">
-
-    <div class="row">
-
-    <p><br>객실 현황 리스트</p>
-
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.301</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.302</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.303</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.304</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.305</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.306</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.307</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.308</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.309</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.310</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.311</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.312</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.313</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.314</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.315</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.316</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.317</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.318</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.319</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.320</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.321</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.322</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.323</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.324</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.325</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-
-    </div>
-    </div>
-    <div class="row">
-    <div class="col-md-12">
-    <div class="x_panel">
-    <div class="x_title">
-    <h2>Floor 5 <small> Information </small></h2>
-    <ul class="nav navbar-right panel_toolbox">
-    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-    </li>
-    <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-    <ul class="dropdown-menu" role="menu">
-    <li><a href="#">Settings 1</a>
-    </li>
-    <li><a href="#">Settings 2</a>
-    </li>
-    </ul>
-    </li>
-    <li><a class="close-link"><i class="fa fa-close"></i></a>
-    </li>
-    </ul>
-    <div class="clearfix"></div>
-    <div class="x_content">
-
-    <div class="row">
-
-    <p><br>객실 현황 리스트</p>
-
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.501</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.502</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.503</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.504</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.505</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.506</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.507</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.508</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.509</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.510</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.511</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.512</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
+                            </div>
+                            <div id="auto_setting" class="tab-pane"><br>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4><i class="fa fa-angle-right"></i> 자동난방설정</h4>
+                                    </div>
+                                </div><br>
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>체크인 날짜 :</label>
+                                            <div class="input-group input-group-sm date">
+                                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                <input type="text" class="form-control" name="CheckInTime">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>체크인 시간 :</label>
+                                            <div class="bfh-timepicker" name="CheckInTime"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>체크아웃 날짜 :</label>
+                                            <div class="input-group input-group-sm date">
+                                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                                <input type="text" class="form-control" name="CheckOutTime">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>체크아웃 시간 :</label>
+                                            <div class="bfh-timepicker" name="CheckOutTime"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group form-group-sm">
+                                            <label>재실모드 :</label>
+                                            <select class="form-control" name="RoomState">
+                                                <option selected value="0">공실</option>
+                                                <option value="1">예비</option>
+                                                <option value="2">재실</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group form-group-sm">
+                                            <label>예약방 난방타입 :</label>
+                                            <select class="form-control" name="ReservedRoomType">
+                                                <option selected value="0">상시</option>
+                                                <option value="1">매일</option>
+                                                <option value="2">오늘</option>
+                                                <option value="3">내일</option>
+                                                <option value="4">모레</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>예상입실시간 :</label>
+                                            <div class="bfh-timepicker" name="ReservedRoomHour"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>바닥온도 설정 :</label>
+                                            <input required type="number" class="form-control-sm" name="Tsurf_set" placeholder="Tsurf_set *" data-decimals="1" step="0.1"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>바닥온도 제어범위 :</label>
+                                            <input required type="number" class="form-control-sm" name="Tsurf_cr" placeholder="Tsurf_cr *" data-decimals="1" step="0.1"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>객실온도 설정 :</label>
+                                            <input required type="number" class="form-control-sm" name="Troom_set" placeholder="Troom_set *" data-decimals="1" step="0.1"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group">
+                                            <label>객실온도 제어범위 :</label>
+                                            <input required type="number" class="form-control-sm" name="Troom_cr" placeholder="Troom_cr *" data-decimals="1" step="0.1"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                <button type="button" class="btn btn-primary">저장</button>
+            </div>
+        </div>
     </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.513</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.514</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.515</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.516</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.517</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.518</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.519</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.520</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.521</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.522</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.523</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.524</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.525</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.526</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-
-    </div>
-    </div>
-    <div class="row">
-    <div class="col-md-12">
-    <div class="x_panel">
-    <div class="x_title">
-    <h2>Floor 6 <small> Information </small></h2>
-    <ul class="nav navbar-right panel_toolbox">
-    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-    </li>
-    <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-    <ul class="dropdown-menu" role="menu">
-    <li><a href="#">Settings 1</a>
-    </li>
-    <li><a href="#">Settings 2</a>
-    </li>
-    </ul>
-    </li>
-    <li><a class="close-link"><i class="fa fa-close"></i></a>
-    </li>
-    </ul>
-    <div class="clearfix"></div>
-    <div class="x_content">
-
-    <div class="row">
-
-    <p><br>객실 현황 리스트</p>
-
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.601</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.602</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.603</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.604</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.605</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.606</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.607</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.608</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.609</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.610</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.611</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.612</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.613</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.614</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.615</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.616</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.617</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.618</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.619</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.620</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.621</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.622</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.623</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.624</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.625</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.626</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    <div class="col-md-55">
-    <div class="thumbnail">
-    <div class="image view view-first">
-    <img style="width: 100%; display: block;" src="static/img/_media.jpg" alt="image" />
-    <div class="mask">
-    <p>Occupant's Info</p>
-    <div class="tools tools-bottom">
-    <!-- <a href="#"><i class="fa fa-link"></i></a> -->
-    <a href="#"><i class="fa fa-pencil"></i></a>
-    <a href="#"><i class="fa fa-times"></i></a>
-    </div>
-    </div>
-    </div>
-    <div class="caption">
-    <p>&nbsp;&nbsp;Room No.627</p>
-    <label>
-    <input type="checkbox" class="js-switch" checked /> 재실 여부
-    </label>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-
-    </div>
+</div>
+<div class="modal fade" id="alarm" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">알람</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-striped table-condensed">
+                    <colgroup>
+                        <col width="20%">
+                        <col width="80%">
+                    </colgroup>
+                    <tbody>
+                        <tr><th>시간</th><td><span class="alarmInfo"></span></td></tr>
+                        <tr><th>등급</th><td style="padding-bottom: 20px;"><div id="level-slider"></div></td></tr>
+                        <tr><th>내용</th><td><span class="alarmInfo"></span></td></tr>
+                        <tr><th>체크</th><td><span class="alarmInfo"></span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 
-<!--jQuery-->
 <script src="static/lib/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
-  <script src="static/lib/bootstrap/js/bootstrap.min.js"></script>
-<!-- FastClick -->
-<!--<script src="../vendors/fastclick/lib/fastclick.js"></script>-->
-<!--&lt;!&ndash; NProgress &ndash;&gt;-->
-<!--<script src="../vendors/nprogress/nprogress.js"></script>-->
-<!-- Switchery -->
-<script src="static/js/switchery.js"></script>
-<!-- Custom Theme Scripts -->
-<script src="static/js/custom.js"></script>
+<script src="static/lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="static/lib/jquery/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="static/lib/bootstrap-4.3.1/js/bootstrap-input-spinner-ver.bs3.js"></script>
+<!-- Bootstrap Form Helpers -->
+<script src="static/lib/bootstrap-form-helpers/js/bootstrap-formhelpers-ver.bs3.js"></script>
+<script src="static/lib/bootstrap-form-helpers/js/bootstrap-formhelpers-timepicker-ver.bs3.js"></script>
+<script src="static/lib/bootstrap-form-helpers/js/bootstrap-formhelpers-phone.js"></script>
+<script src="static/js/echarts-dev.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker3.min.css">
+<script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
+<script src="static/lib/bootstrap/js/bootstrap-datepicker.kr.js"></script>
+<!--jQuery-ui-Slider-Pips-->
+<script src="static/lib/jQuery-ui-Slider-Pips-master/dist/jquery-ui-slider-pips.js"></script>
+<script src="static/js/newBroadAjax.js"></script>
+<script>
+<!--window.onload = function()-->
+<!--{-->
+    <!--alarmPolling.getAlarm();-->
+<!--}-->
+
+$(document).ready(function(){
+    $("input[type='number']").inputSpinner();
+    $(".bfh-timepicker").bfhtimepicker('toggle');
+
+    // var dict_obj = JSON.parse('{{dict_obj | safe}}');
+    // var roomList = dict_obj.roomList;
+
+    <!--var data = getNewBroadAjax('alarm', 'rooms/getAlarm', '', 'room');-->
+
+    <!--var alarm = data.alarm;-->
+    <!--if(alarm.beChecked){-->
+        <!--var Time = Unix_timestamp(alarm.Time);-->
+        <!--var dataFilter = [Time, alarm.szContent, alarm.beChecked];-->
+        <!--$('#alarm .alarmInfo').each(function(index, object){-->
+            <!--$(this).text(dataFilter[index]);-->
+        <!--});-->
+
+        <!--var level = ["-", "낮음", "보통", "높음", "심각"];     // ["-", "trivial", "minor", "major", "critical"];-->
+
+        <!--$("#level-slider")-->
+            <!--.slider({-->
+                <!--max: level.length - 1,-->
+                <!--min: 0,-->
+                <!--value: alarm.Level-->
+            <!--})-->
+            <!--.slider("pips", {-->
+                <!--rest: "label",-->
+                <!--labels: level-->
+            <!--});-->
+        <!--if(!$('#alarm').is(':visible')){-->
+            <!--$('#alarm').modal('show');-->
+        <!--}-->
+    <!--}-->
+
+    ajaxPolling('alarm', 'rooms/getAlarm', '', 'room');
+
+
+    var setStatusCnt = 0;                           // 보일러 ON 설정 개수
+    var curStatusCnt = 0;                           // 보일러 ON 상태 개수
+    var data = getNewBroadAjax('roomInfo', 'rooms', '');
+    var roomList = data.roomInfo;
+
+    var target = $('#roomContainer');
+    var room_arr = [];
+    var sortRoom_arr = [];
+
+    for (var i = 0 ; i < roomList.length ; i++){
+        var roomNo = roomList[i].usRoomNo;          // 객실 상태 - 방번호
+        var roomState = roomList[i].ucRoomState;    // 객실 상태 - 재실모드(공실:0, 예비:1, 재실:2)
+        var curStatus = roomList[i].ucCurStatus;    // 객실 상태 - 보일러현재상태
+        var setStatus = roomList[i].ucSetStatus;    // 객실 상태 - 보일러설정상태
+                                                    // 가동(ucCurStatus:1), 가동준비(ucSetStatus:1, ucCurStatus:0), 정지(ucCurStatus:0)
+        var totalStatus = roomList[i].ucTotalStatus;// 객실 상태 - 제어기상태
+        var tSurf = roomList[i].fTsurf_cur;         // 객실 상태 - 바닥온도
+        var tRoom = roomList[i].fTroom_cur;         // 객실 상태 - 실내온도
+        var mode = roomList[i].usManHeatingMode;    // 객실 상태 - 난방모드(자동:0, 수동:1, 정지:2)
+        var oneRoom = $('.roomForm').clone(true);
+
+        if(roomState != 0){
+            if(roomState == 2){                                                             //재실
+                oneRoom.find('.panel').addClass('border-primary');
+                oneRoom.find('.panel-heading').addClass('bg-primary text-white');
+                oneRoom.find('.panel-heading > .row > div:eq(1) > span').text("재실");
+            }else{                                                                          //예비
+                oneRoom.find('.panel').addClass('border-warning');
+                oneRoom.find('.panel-heading').addClass('bg-warning text-white');
+                oneRoom.find('.panel-heading > .row > div:eq(1) > span').text("예비");
+            }
+        }                                                                               //Default: 공실
+
+        if(curStatus == 1){
+            if(setStatus == 1){                                                         // 보일러 가동
+                curStatusCnt += 1;
+                setStatusCnt += 1;
+                oneRoom.find('.flame').attr('src', "static/img/flame-active.svg");
+                oneRoom.find('.power').attr('src', "static/img/roomStatus/power-icon-active.svg");
+            }else{                                                                      // 보일러 정지중
+                oneRoom.find('.flame').attr('src', "static/img/flame-pre.svg");
+                oneRoom.find('.power').attr('src', "static/img/roomStatus/power-icon.svg");
+            }
+        }else {
+            if(setStatus == 1){                                                         // 보일러 가동준비중
+                setStatusCnt += 1;
+                oneRoom.find('.flame').attr('src', "static/img/flame-pre.svg");
+                oneRoom.find('.power').attr('src', "static/img/roomStatus/power-icon-active.svg");
+            }else{                                                                      // 보일러 정지
+                oneRoom.find('.flame').attr('src', "static/img/flame.svg");
+                oneRoom.find('.power').attr('src', "static/img/roomStatus/power-icon.svg");
+            }
+        }
+
+        <!--if(curStatus == 1 && setStatus == 1){                                                               // 보일러 가동-->
+            <!--curStatusCnt += 1;-->
+            <!--setStatusCnt += 1;-->
+            <!--&lt;!&ndash;oneRoom.find('.fire').attr('data', oneRoom.find('.fire').attr('data').replace("fire", "fire-active"));&ndash;&gt;-->
+            <!--&lt;!&ndash;oneRoom.find('.power').attr('data', oneRoom.find('.power').attr('data').replace("power-icon", "power-icon-active"));&ndash;&gt;-->
+            <!--&lt;!&ndash;oneRoom.find('.fire').attr('src', oneRoom.find('.fire').attr('src').replace("fire", "fire-active"));&ndash;&gt;-->
+            <!--oneRoom.find('.flame').attr('src', oneRoom.find('.flame').attr('src').replace("flame", "flame-active"));-->
+            <!--oneRoom.find('.power').attr('src', oneRoom.find('.power').attr('src').replace("power-icon", "power-icon-active"));-->
+        <!--}else if(curStatus == 0 && setStatus == 1) {                                                        // 가동준비-->
+            <!--setStatusCnt += 1;-->
+            <!--&lt;!&ndash;oneRoom.find('.power').attr('data', oneRoom.find('.power').attr('data').replace("power-icon", "power-icon-active"));&ndash;&gt;-->
+            <!--oneRoom.find('.flame').attr('src', oneRoom.find('.flame').attr('src').replace("flame", "flame-pre"));-->
+            <!--oneRoom.find('.power').attr('src', oneRoom.find('.power').attr('src').replace("power-icon", "power-icon-active"));-->
+        <!--}-->
+
+        if(mode != 2){
+            if(mode == 0){
+                <!--oneRoom.find('.auto').attr('data', oneRoom.find('.auto').attr('data').replace("auto-dial", "auto-dial-active"));-->
+                oneRoom.find('.auto').attr('src', oneRoom.find('.auto').attr('src').replace("auto-dial", "auto-dial-active"));
+            }else{
+                <!--oneRoom.find('.manual').attr('data', oneRoom.find('.manual').attr('data').replace("manual-dial", "manual-dial-active"));-->
+                oneRoom.find('.manual').attr('src', oneRoom.find('.manual').attr('src').replace("manual-dial", "manual-dial-active"));
+            }
+        }
+        oneRoom.find('.panel-heading > .row > div:eq(0) > span:first-child').text(roomNo);       //방번호
+
+        sortRoom_arr.push('<label for="' + roomNo + '">' + roomNo + '<input type="checkbox" class="multi" ' + '" id="' + roomNo + '"></label>');
+
+        oneRoom.find('.panel-footer > .row > div:eq(1) > span:first-child').text(tRoom);         //실내온도
+        if(tSurf != 255){
+            oneRoom.find('.panel-footer > .row > div:eq(3) > span:first-child').text(tSurf);         //바닥온도
+        }else {
+            oneRoom.find('.panel-footer > .row > div:eq(3) > span:first-child').text('- ');
+        };
+
+        var floor = roomNo.toString().charAt(0);
+
+        if(i < 1){
+            var $oneFloor = $('.floorForm').clone(true);
+            $oneFloor.find('h2').text(floor+'F');
+            room_arr.push($oneFloor.removeClass('floorForm').show());
+        }else{
+            var floorBefore = roomList[i-1].usRoomNo.toString().charAt(0);
+            if(floor != floorBefore){
+                <!--console.log('floor = ', floor, 'floorBefore = ', floorBefore);-->
+                var $oneFloor = $('.floorForm').clone(true);
+                $oneFloor.find('h2').text(floor+'F');
+                room_arr.push($oneFloor.removeClass('floorForm').show());
+            }
+        }
+
+        if((totalStatus & 8).toString(2) === "0" && (totalStatus & 16).toString(2) !== "0"){
+            <!--console.log(roomNo, ' = 정상');-->
+            oneRoom.find('.plug').attr('src', oneRoom.find('.plug').attr('src').replace("plug", "plug-active"));
+        }else{
+            if((totalStatus & 8).toString(2) !== "0"){
+                <!--console.log(roomNo, ' = 제어기센서 통신 에러 ', ',&8 = ', (totalStatus & 8).toString(2));-->
+                oneRoom.find('.wifi').attr('src', oneRoom.find('.wifi').attr('src').replace("wifi-off", "wifi-off-active"));
+                oneRoom.find('.panel-body .row:first-child div:last-child').css({"background-color":"#6c5ce7"});
+                <!--oneRoom.find('.panel-body').addClass('error');-->
+                <!--oneRoom.find('.error').html(-->
+                    <!--'<div class="' + 'row">' +-->
+                        <!--'<div class="col-xs-8 col-sm-8 col-md-8' + '">' +-->
+                            <!--'<h5>통신에러</h5>' +-->
+                        <!--'</div>' +-->
+                        <!--'<div class="col-xs-4 col-sm-4 col-md-4' + '">' +-->
+                            <!--'<img class="ethernet' + '" src=' + '"static/img/ethernet.svg' +'" width=' + '"30' + '" height=' + '"30' + '">' +-->
+                        <!--'</div>' +-->
+                    <!--'</div>');-->
+                <!--oneRoom.find('.panel-body').wrapInner('<div class="errorWrap"></div>');-->
+                <!--oneRoom.find('.errorWrap').prepend(-->
+                    <!--'<div class="' + 'row error">' +-->
+                        <!--'<div class="col-xs-6 col-sm-6 col-md-6 text-left' + '">' +-->
+                            <!--'<span>통신</span>' +-->
+                        <!--'</div>' +-->
+                        <!--'<div class="col-xs-6 col-sm-6 col-md-6' + '">' +-->
+                            <!--'<img class="ethernet' + '" src=' + '"static/img/ethernet.svg' +'" width=' + '"15' + '" height=' + '"15' + '">' +-->
+                        <!--'</div>' +-->
+                    <!--'</div>');-->
+            }
+            if((totalStatus & 16).toString(2) === "0"){
+                <!--console.log(roomNo, ' = 제어기센서 전원 OFF ', ',&16 = ', (totalStatus & 16).toString(2));-->
+                <!--oneRoom.find('.panel-body').addClass('error');-->
+                <!--oneRoom.find('.error').html(-->
+                    <!--'<div class="' + 'row">' +-->
+                        <!--'<div class="col-xs-8 col-sm-8 col-md-8' + '">' +-->
+                            <!--'<h5>센서 OFF</h5>' +-->
+                        <!--'</div>' +-->
+                        <!--'<div class="col-xs-4 col-sm-4 col-md-4' + '">' +-->
+                            <!--'<img class="plug' + '" src=' + '"static/img/plug.svg' +'" width=' + '"30' + '" height=' + '"30' + '">' +-->
+                        <!--'</div>' +-->
+                    <!--'</div>');-->
+            }
+        }
+
+        room_arr.push(oneRoom.removeClass('roomForm').addClass('room').show());
+    }
+    target.append(room_arr);
+    console.log('setStatusCnt = ', setStatusCnt, 'curStatusCnt = ', curStatusCnt);
+    $('.boilerStat').html('<h4>난방(보일러 on) : ' + setStatusCnt + '(' + curStatusCnt + ')' + '</h4>');
+    $('#roomCheckList').append(sortRoom_arr);
+
+    $( ".multi" ).checkboxradio({
+	    icon: false
+    });
+    <!--$('.multi').prop('checked',true).checkboxradio('refresh');-->
+
+    $('[data-toggle="popover"]').popover({
+        container: 'body',
+        show:true,
+        html:true,
+        placement:'right',
+        trigger:'focus',
+        content: function() {
+            var roomNo = $.trim($(this).find('.roomNo').text());
+            $('#roomGraph').find('.modal-title').text(roomNo+'호 그래프');
+            $('#roomSetting').find('.modal-title').text(roomNo+'호 설정');
+            var $menu = $('.click-menu').html();
+            return $menu + '<input type="hidden" name="roomNo" value="'+ roomNo + '">';
+        }
+    });
+    $(document).on("click", ".roomGraph", function() {
+        var roomNo = $(this).parent().parent().find('input[name="roomNo"]').val();
+        var formData = setFormData(roomNo);
+
+        console.log("ahuStatus.html - formData = ", formData, "type = ", typeof(formData));
+        formData = JSON.stringify(formData);
+        var data = getNewBroadDB('graph', '/getRoomTrend', formData);
+        var graph = data.graph;
+        console.log('graph', graph);
+        var keys = Object.keys(graph[0]);
+        console.log('key', keys);
+        var parseData = {};
+        for(var i = 0; i < graph.length; i++){
+            for(var j = 0; j < keys.length; j++){
+                if(parseData[keys[j]]==undefined){
+                    parseData[keys[j]] = [];
+                }else{
+                    parseData[keys[j]].push(graph[i][keys[j]]);
+                }
+            }
+        }
+        $('#roomGraph').find('input[name="roomNo"]').val(roomNo);
+        setRoomInfoChart(roomNo, parseData);
+        $('#roomGraph').modal('show');
+    });
+    $("button:submit").click(function(e){
+        var queryBt = $(this);
+        e.preventDefault();
+        var roomNo = $('input[name="roomNo"]').val();
+        var formData = setFormData(roomNo);
+        console.log("formData = ", formData);
+        formData = JSON.stringify(formData);
+        var data = getNewBroadDB('graph', '/getRoomTrend', formData);
+        var graph = data.graph;
+        console.log('graph', graph);
+        var keys = Object.keys(graph[0]);
+        console.log('key', keys);
+        var parseData = {};
+        for(var i = 0; i < graph.length; i++){
+            for(var j = 0; j < keys.length; j++){
+                if(parseData[keys[j]]==undefined){
+                    parseData[keys[j]] = [];
+                }else{
+                    parseData[keys[j]].push(graph[i][keys[j]]);
+                }
+            }
+        }
+        setRoomInfoChart(roomNo, parseData);
+    });
+    $(document).on("click", ".roomSetting", function() {
+        var roomNo = $(this).parent().parent().find('input[name="roomNo"]').val();
+        var data = getNewBroadAjax('getRoom', 'rooms/getRoomStat/' + roomNo);
+        var roomInfo = data['getRoom'];
+        setParsedJson(roomInfo);
+        $('#roomCheckList').find('#'+roomNo).prop('checked',true).checkboxradio('refresh');
+        if(roomInfo.SchState == 1){
+            $('#SchState').text('동작중');
+        }else{
+            $('#SchState').text('중지');
+        }
+    });
+    $('.modal-dialog').draggable({
+        handle: ".modal-header"
+    });
+
+    $('.input-group.date').datepicker({
+        calendarWeeks: false,
+        todayHighlight: true,
+        autoclose: true,
+        format: "yyyy-mm-dd",
+        language: "kr"
+    });
+
+    var check = $('.switch').find("input[type='checkbox']");
+    <!--console.log('check 개수 ', check.length);-->
+
+    check.click(function(){
+        $(this).closest('div').find('p').toggle();
+    });
+
+    ajaxPolling('roomInfo', 'rooms', '');
+});
+function setRoomInfoChart(roomNo, parseData){
+    var $roomInfoChart = document.getElementById("roomInfoChart");
+    var eChartObject = echarts.getInstanceByDom($roomInfoChart);
+
+    if(eChartObject==null || eChartObject==undefined){
+        var resizeContainer = function(){
+            var modalWidth = document.querySelector("#roomGraph > div.modal-dialog").clientWidth;
+            // console.log('modalWidth : ', modalWidth);
+            if (modalWidth != 0){
+                $roomInfoChart.style.width = modalWidth * 0.9 + 'px';
+            }else{
+                $roomInfoChart.style.width = '900px';
+            }
+        };
+        resizeContainer();
+        var eChart = echarts.init($roomInfoChart);
+        $(window).on('resize', function (){
+            resizeContainer();
+            eChart.resize();
+        });
+        var app = {};
+
+        option = null;
+        option = {
+            title: [{text: '객실온도 그래프', padding: [5, 0]}, {text: '객실상태 그래프', padding: [300, 0]}],
+            axisPointer: {
+                link: {xAxisIndex: 'all'},
+                label: {backgroundColor: '#777'}
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                },
+                formatter: function (params) {
+                    var tooltip = params[0].name + '<br>';
+                    for(var i = 0; i < params.length; i++){
+                        if(params[i].seriesName == '난방설정상태' || params[i].seriesName == '난방가동상태' || params[i].seriesName == '재실정보'){
+                            var label = '';
+                            switch (params[i].value) {
+                                case 0: label = "수동"; break;
+                                case 1: label = "자동"; break;
+                                case 2: label = "off"; break;
+                                case 3: label = "on"; break;
+                                case 4: label = "공실"; break;
+                                case 5: label = "예비"; break;
+                                case 6: label = "입실"; break;
+                            }
+                            tooltip += params[i].marker + params[i].seriesName + ': ' + label + '<br>';
+                        }else{
+                            tooltip += params[i].marker + params[i].seriesName + ': ' + params[i].value + '℃<br>';
+                        }
+                    }
+                    return tooltip;
+                }
+            },
+            legend: [
+                {
+                    right: 'center',
+                    top: '5%',
+                    data:['설정온도', '실내설정온도', '바닥설정온도', '현재실내온도', '현재바닥온도']
+                }, {
+                    right: 'center',
+                    top: '60%',
+                    data:['난방설정상태', '난방가동상태', '재실정보']
+                }
+            ],
+            grid: [
+                {left: 50, right: 20, top: 80, bottom: '50%', containLabel: false},
+                {left: 50, right: 20, top: '65%', bottom: 20, containLabel: false}
+            ],
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: [
+                {type: 'category', gridIndex: 0, splitLine: {show: true, lineStyle:{type:'dashed'}}, data: parseData.timestamp},
+                {type: 'category', gridIndex: 1, data: parseData.timestamp}
+            ],
+            yAxis: [
+                {
+                    gridIndex: 0,
+                    type: 'value',
+                    name: '온도',
+                    axisLabel: {
+                        formatter: '{value} ℃'
+                    }
+                }, {
+                    // type: 'category',
+                    gridIndex: 1,
+                    data: ['수동', '자동', 'off', 'on', '공실', '예비', '입실'],
+                    type: 'value',
+                    min: 0,
+                    max: 6,
+                    axisLabel: {
+                        formatter: function (value) {
+                            var label = '';
+                            switch (value) {
+                                case 0: label = "수동"; break;
+                                case 1: label = "자동"; break;
+                                case 2: label = "off"; break;
+                                case 3: label = "on"; break;
+                                case 4: label = "공실"; break;
+                                case 5: label = "예비"; break;
+                                case 6: label = "입실"; break;
+                            }
+                            return label;
+                        }
+                    },
+                    splitArea: {
+                        show: true
+                    }
+                }
+            ],
+            series: [
+                {
+                    name:'설정온도',
+                    type:'line',
+                    smooth: true,
+                    xAxisIndex: 0,
+                    yAxisIndex: 0,
+                    itemStyle: {
+                        color: '#2f4554'
+                    },
+                    animationDelay: function (idx) {
+                        return idx * 10;
+                    },
+                    // markPoint : {
+                    //     data : [
+                    //         {type : 'max', name: '설정온도'}
+                    //     ]
+                    // },
+                    data: parseData.fTset
+                },
+                {
+                    name:'실내설정온도',
+                    type:'line',
+                    smooth: true,
+                    xAxisIndex: 0,
+                    yAxisIndex: 0,
+                    itemStyle: {
+                        color: '#00b894'
+                    },
+                    animationDelay: function (idx) {
+                        return idx * 10;
+                    },
+                    data: parseData.fTroom_set
+                },
+                {
+                    name:'바닥설정온도',
+                    type:'line',
+                    smooth: true,
+                    xAxisIndex: 0,
+                    yAxisIndex: 0,
+                    itemStyle: {
+                        color: '#ff5252'
+                    },
+                    animationDelay: function (idx) {
+                        return idx * 10;
+                    },
+                    data: parseData.fTsurf_set
+                },
+                {
+                    name:'현재실내온도',
+                    type:'line',
+                    smooth: true,
+                    xAxisIndex: 0,
+                    yAxisIndex: 0,
+                    itemStyle: {
+                        color: 'rgba(46, 134, 222,1.0)'
+                    },
+                    animationDelay: function (idx) {
+                        return idx * 10;
+                    },
+                    data: parseData.fTroom_cur
+                },
+                {
+                    name:'현재바닥온도',
+                    type:'line',
+                    smooth: true,
+                    xAxisIndex: 0,
+                    yAxisIndex: 0,
+                    itemStyle: {
+                        color: 'rgba(255, 159, 67,1.0)'
+                    },
+                    animationDelay: function (idx) {
+                        return idx * 10;
+                    },
+                    data: parseData.fTsurf_cur
+                },
+                {
+                    name:'재실정보',
+                    type:'line',
+                    step: 'middle',
+                    xAxisIndex: 1,
+                    yAxisIndex: 1,
+                    data: parseData.ucRoomState
+                },
+                {
+                    name:'난방설정상태',
+                    type:'line',
+                    step: 'middle',
+                    xAxisIndex: 1,
+                    yAxisIndex: 1,
+                    data: parseData.ucSetStatus
+                },
+                {
+                    name:'난방가동상태',
+                    type:'line',
+                    step: 'middle',
+                    xAxisIndex: 1,
+                    yAxisIndex: 1,
+                    data: parseData.ucCurStatus
+                }
+            ]
+        };
+
+        if (option && typeof option === "object") {
+            eChart.setOption(option, true);
+        };
+        window.onresize = function() {
+            <!--$('.eCharts').each(function(){-->
+                <!--var id = $(this).attr('_echarts_instance_');-->
+                <!--window.echarts.getInstanceById(id).resize();-->
+            <!--});-->
+            // alert("size variation");
+            eChart.resize();
+        }
+    }else{
+        var option = eChartObject.getOption();
+        option.series[0].data = parseData.fTset;
+        option.series[1].data = parseData.fTroom_set;
+        option.series[2].data = parseData.fTsurf_set;
+        option.series[3].data = parseData.fTroom_cur;
+        option.series[4].data = parseData.fTsurf_cur;
+        option.series[5].data = parseData.ucRoomState;
+        option.series[6].data = parseData.ucSetStatus;
+        option.series[7].data = parseData.ucCurStatus;
+        option.xAxis[0].data = parseData.timestamp;
+        option.xAxis[1].data = parseData.timestamp;
+        eChartObject.setOption(option, true);
+    }
+
+}
+
+function setRoomStatusChart(roomNo, parseData){
+    var $stepChart = document.getElementById("roomStatusChart");
+    var eChartObject = echarts.getInstanceByDom($stepChart);
+
+    if(eChartObject==null || eChartObject==undefined){
+        var resizeContainer = function(){
+            var modalWidth = document.querySelector("#roomGraph > div.modal-dialog").clientWidth;
+            // console.log('modalWidth : ', modalWidth);
+            if (modalWidth != 0){
+                $stepChart.style.width = modalWidth * 0.9 + 'px';
+            }else{
+                $stepChart.style.width = '900px';
+            }
+        };
+        resizeContainer();
+        var eChart = echarts.init($stepChart);
+        $(window).on('resize', function (){
+            resizeContainer();
+            eChart.resize();
+        });
+        var app = {};
+
+        option = null;
+        <!--var dataCount = 48*60;-->
+        <!--var filterNum = 60;-->
+        <!--var data = generateData(dataCount, filterNum);-->
+        option = {
+            title: {
+                text: '객실상태 그래프'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow'
+                },
+                formatter: function (params) {
+                    var tooltip = params[0].name + '<br>';
+                    for(var i = 0; i < params.length; i++){
+                        var label = '';
+                        switch (params[i].value) {
+                            case 0: label = "수동"; break;
+                            case 1: label = "자동"; break;
+                            case 2: label = "off"; break;
+                            case 3: label = "on"; break;
+                            case 4: label = "공실"; break;
+                            case 5: label = "예비"; break;
+                            case 6: label = "입실"; break;
+                        }
+                        tooltip += params[i].marker + params[i].seriesName + ': ' + label + '<br>';
+                    }
+                    return tooltip;
+                }
+            },
+            legend: {
+                top: 30,
+                data:['재실정보', '난방설정상태', '난방가동상태']
+            },
+            grid: {
+              left: 30,
+              right: 30,
+              bottom: 0,
+              containLabel: true
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            xAxis: {
+                type: 'category',
+                data: parseData.timestamp,
+                splitLine: {show: true, lineStyle:{type:'dashed'}}
+            },
+            yAxis: {
+                type: 'category',
+                data: ['수동', '자동', 'off', 'on', '공실', '예비', '입실'],
+                type: 'value',
+                min: 0,
+                max: 6,
+                axisLabel: {
+                    formatter: function (value) {
+                        var label = '';
+                        switch (value) {
+                            case 0: label = "수동"; break;
+                            case 1: label = "자동"; break;
+                            case 2: label = "off"; break;
+                            case 3: label = "on"; break;
+                            case 4: label = "공실"; break;
+                            case 5: label = "예비"; break;
+                            case 6: label = "입실"; break;
+                        }
+                        return label;
+                    }
+                },
+                splitArea: {
+                    show: true
+                }
+            },
+            series: [
+                {
+                    name:'재실정보',
+                    type:'line',
+                    step: 'middle',
+                    data: parseData.ucRoomState
+                },
+                {
+                    name:'난방설정상태',
+                    type:'line',
+                    step: 'middle',
+                    data: parseData.ucSetStatus
+                },
+                {
+                    name:'난방가동상태',
+                    type:'line',
+                    step: 'middle',
+                    data: parseData.ucCurStatus
+                }
+            ]
+        };
+
+        if (option && typeof option === "object") {
+            eChart.setOption(option, true);
+        };
+        window.onresize = function() {
+            <!--$('.eCharts').each(function(){-->
+                <!--var id = $(this).attr('_echarts_instance_');-->
+                <!--window.echarts.getInstanceById(id).resize();-->
+            <!--});-->
+            // alert("size variation");
+            eChart.resize();
+        }
+    }else{
+        var option = eChartObject.getOption();
+        <!--option.series[0].data = peak_list;-->
+        <!--option.series[1].data = use_amt_list;-->
+        <!--option.xAxis[0].data = term_list;-->
+        eChartObject.setOption(option, true);
+    }
+
+}
+
+function generateData(dataCount, filterNum) {
+
+    var date = new Date();
+    date.setDate(date.getDate() - 2);
+
+    var categoryData = [];
+    var valueData = [];
+    var roomStatus = [];
+    var heatSetData = [];
+    var heatRunData = [];
+    for (var i = 0; i <= dataCount/filterNum; i++) {
+        for (var j = 0; j < 3; j++) {
+            var ranNum = Math.random();
+            if(ranNum < 0.5){
+                ranNum =Math.floor(ranNum)
+            }else{
+                ranNum= Math.ceil(ranNum)
+            }
+            switch (j) {
+                case 0: roomStatus.push(ranNum); break;
+                case 1: heatSetData.push(ranNum + 2); break;
+                case 2: heatRunData.push(ranNum + 4); break;
+            }
+        }
+        categoryData.push(echarts.format.formatTime('yyyy-MM-dd\nhh:mm', date));
+        date.setMinutes(date.getMinutes()+filterNum)
+    }
+    return {
+        categoryData: categoryData,
+        roomStatus: roomStatus,
+        heatSetData: heatSetData,
+        heatRunData: heatRunData
+    };
+}
+
+function curRoomTempChart(roomNo, parseData){
+    var $tempChart = document.getElementById("roomTempChart");
+    var eChartObject = echarts.getInstanceByDom($tempChart);
+
+    if(eChartObject==null || eChartObject==undefined){
+        var resizeContainer = function(){
+            var modalWidth = document.querySelector("#roomGraph > div.modal-dialog").clientWidth;
+            // console.log('modalWidth : ', modalWidth);
+            if (modalWidth != 0){
+                $tempChart.style.width = modalWidth * 0.9 + 'px';
+            }else{
+                $tempChart.style.width = '900px';
+            }
+        };
+        resizeContainer();
+        var eChart = echarts.init($tempChart);
+        $(window).on('resize', function (){
+            resizeContainer();
+            eChart.resize();
+        });
+        var app = {};
+
+        option = null;
+        <!--var dataCount = 48*60;-->
+        <!--var filterNum = 60;-->
+        <!--var data = generateData2(dataCount, filterNum);-->
+
+        option = {
+            title: {
+                text: '온도 그래프'
+            },
+            color: ['#2f4554'],
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    crossStyle: {
+                        color: '#999'
+                    }
+                },
+                formatter: function (params) {
+                    var tooltip = params[0].name + '<br>';
+                    for(var i = 0; i < params.length; i++){
+                        tooltip += params[i].marker + params[i].seriesName + ': ' + params[i].value + '℃<br>';
+                    }
+                    return tooltip;
+                }
+            },
+            legend: {
+                right: 'center',
+                top: 30,
+                bottom: 30,
+                data:['설정온도', '바닥설정온도', '실내설정온도', '현재바닥온도', '현재실내온도']
+            },
+            toolbox: {
+              show: true,
+              feature: {
+                  saveAsImage: {}
+              }
+            },
+            xAxis: {
+                type: 'category',
+                // data: data.categoryData
+                data: parseData.timestamp
+            },
+            axisPointer: {
+                value: '6',
+                snap: true,
+                lineStyle: {
+                  color: '#004E52',
+                  opacity: 0.5,
+                  width: 1
+                },
+                label: {
+                  show: true,
+                  backgroundColor: '#004E52'
+                },
+                handle: {
+                  show: false,
+                  color: '#004E52'
+                }
+            },
+            yAxis: [
+              {
+                  type: 'value',
+                  name: '온도',
+                  axisLabel: {
+                    formatter: '{value} ℃'
+                  }
+              },
+              {
+                  type: 'value',
+                  name: '관온도',
+                  axisLabel: {
+                    formatter: '{value} ℃'
+                  }
+              }
+            ],
+            grid: {
+              left: 30,
+              right: 30,
+              bottom: 20,
+              containLabel: true
+            },
+            series: [
+                {
+                    name:'설정온도',
+                    type:'line',
+                    smooth: true,
+                    yAxisIndex: 0,
+                    itemStyle: {
+                        color: '#2f4554'
+                    },
+                    animationDelay: function (idx) {
+                        return idx * 10;
+                    },
+                    // markPoint : {
+                    //     data : [
+                    //         {type : 'max', name: '설정온도'}
+                    //     ]
+                    // },
+                    data: parseData.fTset
+                },
+                {
+                    name:'바닥설정온도',
+                    type:'line',
+                    smooth: true,
+                    yAxisIndex: 1,
+                    itemStyle: {
+                        color: '#ff5252'
+                    },
+                    animationDelay: function (idx) {
+                        return idx * 10;
+                    },
+                    data: parseData.fTsurf_set
+                },
+                {
+                    name:'실내설정온도',
+                    type:'line',
+                    smooth: true,
+                    yAxisIndex: 0,
+                    itemStyle: {
+                        color: '#00b894'
+                    },
+                    animationDelay: function (idx) {
+                        return idx * 10;
+                    },
+                    data: parseData.fTroom_set
+                },
+                {
+                    name:'현재바닥온도',
+                    type:'line',
+                    smooth: true,
+                    yAxisIndex: 1,
+                    itemStyle: {
+                        color: 'rgba(255, 159, 67,1.0)'
+                    },
+                    animationDelay: function (idx) {
+                        return idx * 10;
+                    },
+                    data: parseData.fTsurf_cur
+                },
+                {
+                    name:'현재실내온도',
+                    type:'line',
+                    smooth: true,
+                    yAxisIndex: 0,
+                    itemStyle: {
+                        color: 'rgba(46, 134, 222,1.0)'
+                    },
+                    animationDelay: function (idx) {
+                        return idx * 10;
+                    },
+                    data: parseData.fTroom_cur
+                }
+            ],
+            animationEasing: 'elasticOut',
+            animationDelayUpdate: function (idx) {
+                return idx * 5;
+            }
+        };
+
+        if (option && typeof option === "object") {
+                eChart.setOption(option, true);
+        };
+        window.onresize = function() {
+            eChart.resize();
+        }
+    }else{
+        var option = eChartObject.getOption();
+        <!--option.series[0].data = peak_list;-->
+        <!--option.series[1].data = use_amt_list;-->
+        <!--option.xAxis[0].data = term_list;-->
+        eChartObject.setOption(option, true);
+    }
+}
+function generateRandom(min, max) {
+  var ranNum = Math.floor(Math.random()*(max-min+1)) + min;
+  return ranNum;
+}
+
+function generateData2(dataCount, filterNum) {
+
+    var date = new Date();
+    date.setDate(date.getDate() - 2);
+
+    var categoryData = [];
+    var setTempData = [];
+    var curFloorTempData = [];
+    var curRoomTempData = [];
+
+    for (var i = 0; i <= dataCount/filterNum; i++) {
+        setTempData.push(generateRandom(15, 25));
+        curFloorTempData.push(generateRandom(100, 255));
+        curRoomTempData.push(generateRandom(20, 26));
+
+        categoryData.push(echarts.format.formatTime('yyyy-MM-dd\nhh:mm', date));
+        date.setMinutes(date.getMinutes()+filterNum);
+    }
+    return {
+        categoryData: categoryData,
+        setTempData: setTempData,
+        curFloorTempData: curFloorTempData,
+        curRoomTempData: curRoomTempData
+    };
+}
+<!--window.onload=function() {-->
+	<!--var object = document.getElementsByClassName("power");-->
+	<!--for(var i = 1 ; i < object.length ; i++) {-->
+	    <!--var svgDoc = object[i].contentDocument;-->
+    	<!--var svgItem = svgDoc.getElementById("Capa_1");-->
+    	<!--svgItem.setAttribute("fill", "#28a745");-->
+    <!--};-->
+<!--};-->
+
+</script>

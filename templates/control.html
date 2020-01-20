@@ -1,0 +1,1124 @@
+<!-- Bootstrap core CSS -->
+<!--<link href="static/lib/bootstrap/css/bootstrap.css" rel="stylesheet">-->
+<link href="static/lib/bootstrap-4.3.1/css/bootstrap.css" rel="stylesheet">
+<!--external css-->
+<link href="static/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link href="static/css/style.css" rel="stylesheet">
+<link href="static/css/style-responsive.css" rel="stylesheet">
+<!-- Bootstrap Form Helpers -->
+<link href="static/lib/bootstrap-form-helpers/css/bootstrap-formhelpers.css" rel="stylesheet" media="screen">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+ <!--&lt;!&ndash;Nav tabs &ndash;&gt;-->
+<!--<div id="setList" class="row">-->
+    <!--<div class="col-xs-2 col-sm-2 col-md-2">-->
+        <!--<div class="bg-light nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">-->
+          <!--<a class="nav-link active" id="v-pills-envSetting-tab" data-toggle="pill" href="#v-pills-envSetting" role="tab" aria-controls="v-pills-envSetting" aria-selected="true">환경설정</a>-->
+          <!--<a class="nav-link" id="v-pills-roomSetting-tab" data-toggle="pill" href="#v-pills-roomSetting" role="tab" aria-controls="v-pills-roomSetting" aria-selected="false">객실설정</a>-->
+          <!--<a class="nav-link" id="v-pills-trand-tab" data-toggle="pill" href="#v-pills-trand" role="tab" aria-controls="v-pills-trand" aria-selected="false">트랜드</a>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="col-xs-10 col-sm-10 col-md-10">-->
+        <!--<div class="tab-content" id="v-pills-tabContent">-->
+            <!--<div class="tab-pane fade show active" id="v-pills-envSetting" role="tabpanel" aria-labelledby="v-pills-envSetting-tab">-->
+                <!--<div class="row">-->
+                    <!--<div class="col-xs-2 col-sm-2 col-md-2">-->
+                        <!--<div class="bg-light nav flex-column nav-pills" id="v-pills-tab2" role="tablist" aria-orientation="vertical">-->
+                          <!--<a class="nav-link active" id="v-pills-commonConfig-tab" data-toggle="pill" href="#v-pills-commonConfig" role="tab" aria-controls="v-pills-commonConfig" aria-selected="true">시스템</a>-->
+                          <!--<a class="nav-link" id="v-pills-floorConfig-tab" data-toggle="pill" href="#v-pills-floorConfig" role="tab" aria-controls="v-pills-floorConfig" aria-selected="false">난방</a>-->
+                          <!--<a class="nav-link" id="v-pills-solbeachConfig-tab" data-toggle="pill" href="#v-pills-solbeachConfig" role="tab" aria-controls="v-pills-solbeachConfig" aria-selected="false">공조기</a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-xs-10 col-sm-10 col-md-10">-->
+                        <!--<div class="tab-content" id="v-pills-tabContent2">-->
+                            <!--<div class="tab-pane fade show active" id="v-pills-commonConfig" role="tabpanel" aria-labelledby="v-pills-commonConfig-tab">-->
+                                <!--<div class="row">-->
+                                    <!--<div class="col-md-12">-->
+                                        <!--<h4><i class="fa fa-angle-right"></i> 시스템 설정</h4>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="row">-->
+                                    <!--<div class="col-md-6">-->
+                                        <!--<div class="form-group">-->
+                                            <!--<label>SiteInfo :</label>-->
+                                            <!--<input type="text" class="form-control" placeholder="SiteInfo *" value="" />-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group">-->
+                                            <!--<label>System Local :</label>-->
+                                            <!--<form>-->
+                                              <!--<div class="input-group mb-3">-->
+                                                <!--<div class="input-group-prepend">-->
+                                                  <!--<span class="input-group-text">IP Addr</span>-->
+                                                <!--</div>-->
+                                                <!--<input type="text" class="form-control" placeholder="IP Addr">-->
+                                                  <!--<div class="input-group-prepend">-->
+                                                  <!--<span class="input-group-text">PortNo</span>-->
+                                                <!--</div>-->
+                                                <!--<input type="text" class="form-control" placeholder="PortNo">-->
+                                              <!--</div>-->
+                                            <!--</form>-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group">-->
+                                            <!--<label>System Remote :</label>-->
+                                            <!--<form>-->
+                                              <!--<div class="input-group mb-3">-->
+                                                <!--<div class="input-group-prepend">-->
+                                                  <!--<span class="input-group-text">IP Addr</span>-->
+                                                <!--</div>-->
+                                                <!--<input type="text" class="form-control" placeholder="IP Addr">-->
+                                                  <!--<div class="input-group-prepend">-->
+                                                  <!--<span class="input-group-text">PortNo</span>-->
+                                                <!--</div>-->
+                                                <!--<input type="text" class="form-control" placeholder="PortNo">-->
+                                              <!--</div>-->
+                                            <!--</form>-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group">-->
+                                            <!--<label>MinPkIntervalSec :</label>-->
+                                            <!--<input type="text" class="form-control"  placeholder="MinPkIntervalSec *" value="" />-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group">-->
+                                            <!--<label>ControlPeriodSec :</label>-->
+                                            <!--<input type="text" class="form-control"  placeholder="ControlPeriodSec *" value="" />-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group">-->
+                                            <!--<div class="maxl">-->
+                                                <!--<label class="radio inline">-->
+                                                    <!--<input type="radio" name="gender" value="male" checked>-->
+                                                    <!--<span> Male </span>-->
+                                                <!--</label>-->
+                                                <!--<label class="radio inline">-->
+                                                    <!--<input type="radio" name="gender" value="female">-->
+                                                    <!--<span>Female </span>-->
+                                                <!--</label>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="col-md-6">-->
+                                        <!--<div class="form-group">-->
+                                            <!--<label>DB Server :</label>-->
+                                            <!--<form>-->
+                                              <!--<div class="input-group mb-3">-->
+                                                <!--<div class="input-group-prepend">-->
+                                                  <!--<span class="input-group-text">IP Addr</span>-->
+                                                <!--</div>-->
+                                                <!--<input type="text" class="form-control" placeholder="IP Addr">-->
+                                                  <!--<div class="input-group-prepend">-->
+                                                  <!--<span class="input-group-text">PortNo</span>-->
+                                                <!--</div>-->
+                                                <!--<input type="text" class="form-control" placeholder="PortNo">-->
+                                              <!--</div>-->
+                                            <!--</form>-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group">-->
+                                            <!--<label>DB Name :</label>-->
+                                            <!--<input type="text" class="form-control"  placeholder="DB Name *" value="" />-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group">-->
+                                            <!--<label>DB user :</label>-->
+                                            <!--<form>-->
+                                              <!--<div class="input-group mb-3">-->
+                                                <!--<div class="input-group-prepend">-->
+                                                  <!--<span class="input-group-text">ID</span>-->
+                                                <!--</div>-->
+                                                <!--<input type="text" class="form-control" placeholder="ID">-->
+                                                  <!--<div class="input-group-prepend">-->
+                                                  <!--<span class="input-group-text">PassWd</span>-->
+                                                <!--</div>-->
+                                                <!--<input type="text" class="form-control" placeholder="PassWd">-->
+                                              <!--</div>-->
+                                            <!--</form>-->
+                                        <!--</div>-->
+                                        <!--<div class="form-group">-->
+                                            <!--<label>SMS :</label>-->
+                                            <!--<form>-->
+                                              <!--<div class="input-group mb-3">-->
+                                                <!--<div class="input-group-prepend">-->
+                                                  <!--<span class="input-group-text">ID</span>-->
+                                                <!--</div>-->
+                                                <!--<input type="text" class="form-control" placeholder="ID">-->
+                                                  <!--<div class="input-group-prepend">-->
+                                                  <!--<span class="input-group-text">SMS</span>-->
+                                                <!--</div>-->
+                                                <!--<input type="text" class="form-control" placeholder="PassWd">-->
+                                              <!--</div>-->
+                                            <!--</form>-->
+                                        <!--</div>-->
+                                        <!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<select class="form-control">&ndash;&gt;-->
+                                                <!--&lt;!&ndash;<option class="hidden"  selected disabled>Please select your Sequrity Question</option>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;<option>What is your Birthdate?</option>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;<option>What is Your old Phone Number</option>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;<option>What is your Pet Name?</option>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;</select>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                        <!--<div class="form-group text-right">-->
+                                            <!--<label>&nbsp;&nbsp;</label>-->
+                                            <!--<input type="submit" class="btn btn-info"  value="저장"/>-->
+                                            <!--<button type="button" class="btn btn-secondary">취소</button>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="tab-pane fade" id="v-pills-floorConfig" role="tabpanel" aria-labelledby="v-pills-floorConfig-tab">-->
+                                <!--<div class="row">-->
+                                    <!--<div class="col-xs-3 col-sm-3 col-md-3">-->
+                                        <!--<div class="nav flex-column nav-pills" id="v-pills-tab3" role="tablist" aria-orientation="vertical">-->
+                                            <!--<a class="nav-link disabled" id="v-pills-blank-tab" data-toggle="pill" role="tab" aria-controls="v-pills-blank" aria-selected="true">&nbsp;</a>-->
+                                            <!--<a class="nav-link active" id="v-pills-floorRadConfig-tab" data-toggle="pill" href="#v-pills-floorRadConfig" role="tab" aria-controls="v-pills-floorRadConfig" aria-selected="true">난방 설정</a>-->
+                                            <!--<a class="nav-link" id="v-pills-controlPara-tab" data-toggle="pill" href="#v-pills-controlPara" role="tab" aria-controls="v-pills-controlPara" aria-selected="false">제어값 설정</a>-->
+                                            <!--<a class="nav-link" id="v-pills-userTelNo-tab" data-toggle="pill" href="#v-pills-userTelNo" role="tab" aria-controls="v-pills-userTelNo" aria-selected="false">연락망 설정</a>-->
+                                            <!--<a class="nav-link" id="v-pills-preHeatControl-tab" data-toggle="pill" href="#v-pills-preHeatControl" role="tab" aria-controls="v-pills-preHeatControl" aria-selected="false">사전난방 설정</a>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="col-xs-9 col-sm-9 col-md-9">-->
+                                        <!--<div class="tab-content" id="v-pills-tabContent3">-->
+                                            <!--<div class="tab-pane fade show active" id="v-pills-floorRadConfig" role="tabpanel" aria-labelledby="v-pills-floorRadConfig-tab">FloorRadConfig</div>-->
+                                            <!--<div class="tab-pane fade" id="v-pills-controlPara" role="tabpanel" aria-labelledby="v-pills-controlPara-tab">controlPara</div>-->
+                                            <!--<div class="tab-pane fade" id="v-pills-userTelNo" role="tabpanel" aria-labelledby="v-pills-userTelNo-tab">userTelNo</div>-->
+                                            <!--<div class="tab-pane fade" id="v-pills-preHeatControl" role="tabpanel" aria-labelledby="v-pills-preHeatControl-tab">preHeatControl</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="tab-pane fade" id="v-pills-solbeachConfig" role="tabpanel" aria-labelledby="v-pills-solbeachConfig-tab">solbeachConfig</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="tab-pane fade" id="v-pills-roomSetting" role="tabpanel" aria-labelledby="v-pills-roomSetting-tab">-->
+                <!--<div class="bg-light"></div>-->
+            <!--</div>-->
+            <!--<div class="tab-pane fade" id="v-pills-trand" role="tabpanel" aria-labelledby="v-pills-trand-tab">-->
+                <!--<div class="bg-light">-->
+
+
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!-- Nav tabs -->
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#common_config">시스템</a>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">난방</a>
+        <div class="dropdown-menu">
+            <a class="dropdown-item" data-toggle="tab" href="#floorRad_config">난방</a>
+            <a class="dropdown-item" data-toggle="tab" href="#ctrl_param_preHeating">제어값&사전난방</a>
+            <a class="dropdown-item" data-toggle="tab" href="#register_telNo">연락망</a>
+            <!--<a class="dropdown-item" data-toggle="tab" href="#preHeating">사전난방</a>-->
+        </div>
+    </li>
+    <!--<li class="nav-item">-->
+        <!--<a class="nav-link" data-toggle="tab" href="#solbeach_config">공조기</a>-->
+    <!--</li>-->
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+    <div id="common_config" class="container tab-pane active"><br>
+        <div class="row">
+            <div class="col-md-12">
+                <h4><i class="fa fa-angle-right"></i> System Setting</h4>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-md-9">
+                <div class="form-group">
+                    <label>시스템 주소 :</label>
+                    <form>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">IP</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="IP Addr" name="tAddr.IpAddress">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">PORT</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="PortNo" name="tAddr.PortNo">
+                        </div>
+                    </form>
+                </div>
+                <div class="form-group">
+                    <label>원격지 주소 :</label>
+                    <form>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">IP</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="IP Addr" name="tRemoteAddr.IpAddress">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">PORT</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="PortNo" name="tRemoteAddr.PortNo">
+                        </div>
+                    </form>
+                </div>
+                <div class="form-group">
+                    <label>DB 서버 :</label>
+                    <form>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">IP</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="IP Addr" name="tDataBase.tAddr.IpAddress">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">PORT</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="PortNo" name="tDataBase.tAddr.PortNo">
+                        </div>
+                    </form>
+                </div>
+                <div class="form-group">
+                    <label>DB 계정 :</label>
+                    <form>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">ID</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="ID" name="tDataBase.ID">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">PW</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="PassWd" name="tDataBase.PassWd">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>수요처 구분 :</label>
+                    <select class="form-control" name="SiteInfo">
+                        <option selected value="1">오션벨리</option>
+                        <option value="2">쏠비치</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>최소패킷간격(초) :</label>
+                    <input required type="number" class="form-control" name="PacketMinIntervalSec" data-decimals="1" min="0" max="9" step="0.1"/>
+                </div>
+                <div class="form-group">
+                    <label>제어주기(초) :</label>
+                    <input required type="number" class="form-control" name="ControlPeriodSec" data-decimals="1" min="0" max="200" step="1"/>
+                </div>
+                <div class="form-group">
+                    <label>DB 이름 :</label>
+                    <input type="text" class="form-control" name="tDataBase.Name" placeholder="DB Name *" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>SMS :</label>
+                    <form>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">ID</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="ID" name="tSMS.ID">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">KEY</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="KEY" name="tSMS.Key">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="floorRad_config" class="container tab-pane fade"><br>
+        <div class="row">
+            <div class="col-md-12">
+                <h4><i class="fa fa-angle-right"></i> floorRad_config</h4>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>제어옵션 :</label>
+                    <form>
+                        <div class="row">
+                            <div class="col-sm-6 col-md-2">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" name="tFloorRadConf.ControlOption" id="ctrl_manual_heating">
+                                    <label class="custom-control-label" for="ctrl_manual_heating">수동난방</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-2">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" name="tFloorRadConf.ControlOption" id="ctrl_schedule">
+                                    <label class="custom-control-label" for="ctrl_schedule">스케줄러</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-2">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" name="tFloorRadConf.ControlOption" id="ctrl_peak_demand">
+                                    <label class="custom-control-label" for="ctrl_peak_demand">최대전력</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-2">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" name="tFloorRadConf.ControlOption" id="ctrl_var_temp">
+                                    <label class="custom-control-label" for="ctrl_var_temp">가변온도</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-2">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" name="tFloorRadConf.ControlOption" id="ctrl_pre_heating">
+                                    <label class="custom-control-label" for="ctrl_pre_heating">사전난방</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-2">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" name="tFloorRadConf.ControlOption" id="ctrl_optimal_stop">
+                                    <label class="custom-control-label" for="ctrl_optimal_stop">최적정지</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-2">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" name="tFloorRadConf.ControlOption" id="ctrl_demand_response">
+                                    <label class="custom-control-label" for="ctrl_demand_response">부하시간대 온도</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-2">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" name="tFloorRadConf.ControlOption" id="ctrl_damper">
+                                    <label class="custom-control-label" for="ctrl_damper">댐퍼</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-2">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" name="tFloorRadConf.ControlOption" id="ctrl_occupant">
+                                    <label class="custom-control-label" for="ctrl_occupant">공실</label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label>객실 수 :</label>
+                    <input required type="number" class="form-control" name="tFloorRadConf.RoomCnt" placeholder="RoomCnt *" min="1" max="300" step="1"/>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label>바닥온도 사용 :</label>
+                    <form>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" name="tFloorRadConf.UseTsurf" id="UseTsurf">
+                            <label class="custom-control-label" for="UseTsurf">NO/YES</label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label>바닥온도 설정값 :</label>
+                    <input required type="number" class="form-control" name="tFloorRadConf.Tsurf_set" placeholder="Tsurf_set *" data-decimals="1" min="0" max="100" step="0.1"/>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label>바닥온도 제어범위 :</label>
+                    <input required type="number" class="form-control" name="tFloorRadConf.Tsurf_cr" placeholder="Tsurf_cr *" data-decimals="1" min="0" max="100" step="0.1"/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label>실내온도 설정값 :</label>
+                    <input required type="number" class="form-control" name="tFloorRadConf.Troom_set" placeholder="Troom_set *" data-decimals="1" min="0" max="100" step="0.1"/>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label>실내온도 제어범위 :</label>
+                    <input required type="number" class="form-control" name="tFloorRadConf.Troom_cr" placeholder="Troom_cr *" data-decimals="1" min="0" max="100" step="0.1"/>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label>입실시간 :</label>
+                    <div class="bfh-timepicker" name="tFloorRadConf.CheckInHour"></div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label>예비객실 거주시간 :</label>
+                    <input required type="number" class="form-control" name="tFloorRadConf.RR_StayHour" placeholder="RR_StayHour *" min="0" max="24" step="1"/>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label>제어온도 최소단위 :</label>
+                    <input required type="number" class="form-control" name="tFloorRadConf.Tctrl_res" placeholder="Tctrl_res *" data-decimals="2" min="0" max="100" step="0.01"/>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label>구동옵션 :</label>
+                    <select class="form-control" name="tFloorRadConf.OperationOption">
+                        <option class="hidden" selected disabled>미선택시 정지</option>
+                        <option value="0">정지</option>
+                        <option value="1">수동</option>
+                        <option value="2">자동</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label>난방상태변화 최소시간 :</label>
+                    <input required type="number" class="form-control" name="tFloorRadConf.MinStateChagneTimeSec" placeholder="MinStateChagneTimeSec *" step="1"/>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group">
+                    <label>온도증가통계 사용 :</label>
+                    <form>
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" name="tFloorRadConf.CalTempInc" id="CalTempInc">
+                            <label class="custom-control-label" for="CalTempInc">NO/YES</label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ctrl_param_preHeating" class="container tab-pane fade"><br>
+        <div id="control_parameter">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4><i class="fa fa-angle-right"></i> control_parameter</h4>
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-sm-6 col-md-3">
+                    <div class="form-group">
+                        <label>최대주간 객실 수 :</label>
+                        <input required type="number" name="tFloorRadConf.tPeak.MaxHeatingRoom" class="form-control" placeholder="PD_MaxHR *" min="1" max="300" step="1"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="form-group">
+                        <label>최대야간 객실 수 :</label>
+                        <input required type="number" name="tFloorRadConf.tPeak.NightMaxHeatingRoom" class="form-control"  placeholder="PD_NMaxHR *" min="1" max="300" step="1"/>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-3">
+                    <div class="form-group">
+                        <label>외기보상온도 최고값 :</label>
+                        <input required type="number" name="tFloorRadConf.tVariableTemp.HeatingHighTemp" class="form-control"  placeholder="VT_Thigh *" data-decimals="1" min="-30" max="30" step="0.1"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="form-group">
+                        <label>외기보상온도 최저값 :</label>
+                        <input required type="number" name="tFloorRadConf.tVariableTemp.HeatingLowTemp" class="form-control"  placeholder="VT_Tlow *" data-decimals="1" min="-30" max="30" step="0.1"/>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-3">
+                    <div class="form-group">
+                        <label>외기보상온도 제어폭 :</label>
+                        <input required type="number" name="tFloorRadConf.tVariableTemp.HeatingDelatTemp" class="form-control" placeholder="VT_Tdelta *" data-decimals="1" min="0" max="20" step="0.1"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="form-group">
+                        <label>최적정지 시간(초) :</label>
+                        <input required type="number" name="tFloorRadConf.tOptimalStop.OptimalStopTimeSec" class="form-control" placeholder="OS_TimeS *" min="0" max="10000" step="1"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="form-group">
+                        <label>수요반응제어 온도 :</label>
+                        <input required type="number" name="tFloorRadConf.tDemandResponse.DRTemp" class="form-control" placeholder="DR_Temp *" data-decimals="1" min="0" max="20" step="0.1"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="form-group">
+                        <label>수요반응제어 시간(시) :</label>
+                        <input required type="number" name="tFloorRadConf.tDemandResponse.DRTimeHour" class="form-control" placeholder="DR_TimeH *" min="0" max="23" step="1"/>
+                    </div>
+                </div>
+            </div><br>
+        </div>
+        <div id="preHeating">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4><i class="fa fa-angle-right"></i> preHeating</h4>
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>사전예열 옵션 :</label>
+                        <form>
+                            <div class="row">
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" name="tFloorRadConf.tPreHeating.Option" id="ML">
+                                        <label class="custom-control-label" for="ML">ML</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" name="tFloorRadConf.tPreHeating.Option" id="TSlopeStats">
+                                        <label class="custom-control-label" for="TSlopeStats">온도기울기통계</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" name="tFloorRadConf.tPreHeating.Option" id="HroomCnt">
+                                        <label class="custom-control-label" for="HroomCnt">난방가동객실수</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="custom-control custom-switch">
+                                        <input type="checkbox" class="custom-control-input" name="tFloorRadConf.tPreHeating.Option" id="LLoadTime">
+                                        <label class="custom-control-label" for="LLoadTime">경부하시간</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-3">
+                    <div class="form-group">
+                        <label>PH_Tavg :</label>
+                        <input required type="number" name="tFloorRadConf.tPreHeating.Tout_avg" class="form-control" placeholder="PH_Tavg *" data-decimals="1" min="0" max="50" step="0.1"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="form-group">
+                        <label>PH_WFto :</label>
+                        <input required type="number" name="tFloorRadConf.tPreHeating.WF_Toutdoor" class="form-control" placeholder="PH_WFto *" min="0" max="100" step="1"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="form-group">
+                        <label>PH_WFTdf :</label>
+                        <input required type="number" name="tFloorRadConf.tPreHeating.WF_Tdiff" class="form-control" placeholder="PH_WFTdf *" min="0" max="100" step="1"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="form-group">
+                        <label>StartTimeER :</label>
+                        <div class="bfh-timepicker" name="tFloorRadConf.tPreHeating.PH_StartTimeErrRange"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-3">
+                    <div class="form-group">
+                        <label>LLStartTimeER :</label>
+                        <div class="bfh-timepicker" name="tFloorRadConf.tPreHeating.PH_LowLoadStartTimeErrRange"></div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="form-group">
+                        <label>CRTsurf_init :</label>
+                        <input required type="number" name="tFloorRadConf.tPreHeating.CooledRoomTsurf_init" class="form-control" placeholder="CRTsurf_init *" data-decimals="1" min="0" max="50" step="0.1"/>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <div class="form-group">
+                        <label>CRPHHourtInc :</label>
+                        <input required type="number" name="tFloorRadConf.tPreHeating.CooledRoomPHHourInc" class="form-control" placeholder="CRPHHourtInc *" min="0" max="23" step="1"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="register_telNo" class="container tab-pane fade"><br>
+        <div class="row">
+            <div class="col-md-12">
+                <h4><i class="fa fa-angle-right"></i> register_telNo</h4>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>연락처 1 :</label>
+                    <form>
+                        <div class="control-group">
+                            <div class="controls">
+                                <input type="text" class="form-control bfh-phone" placeholder="'-'제외" data-format="010dddddddd" name="tFloorRadConf.TelNumber0">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="form-group">
+                    <label>연락처 2 :</label>
+                    <form>
+                        <div class="control-group">
+                            <div class="controls">
+                                <input type="text" class="form-control bfh-phone" placeholder="'-'제외" data-format="010dddddddd" name="tFloorRadConf.TelNumber1">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="form-group">
+                    <label>연락처 3 :</label>
+                    <form>
+                        <div class="control-group">
+                            <div class="controls">
+                                <input type="text" class="form-control bfh-phone" placeholder="'-'제외" data-format="010dddddddd" name="tFloorRadConf.TelNumber2">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="form-group">
+                    <label>연락처 4 :</label>
+                    <form>
+                        <div class="control-group">
+                            <div class="controls">
+                                <input type="text" class="form-control bfh-phone" placeholder="'-'제외" data-format="010dddddddd" name="tFloorRadConf.TelNumber3">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>연락처 5 :</label>
+                    <form>
+                        <div class="control-group">
+                            <div class="controls">
+                                <input type="text" class="form-control bfh-phone" placeholder="'-'제외" data-format="010dddddddd" name="tFloorRadConf.TelNumber4">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>문자알림 옵션 :</label>
+                            <form>
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" name="tFloorRadConf.tNotify.NotifyOption" id="SMSOpt">
+                                    <label class="custom-control-label" for="SMSOpt">ON / OFF</label>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label>문자알림 간격(초) :</label>
+                            <input required type="number" name="tFloorRadConf.tNotify.NotifyIntervalSec" class="form-control"  placeholder="SMSNotifyDeltaS *" min="0" max="86400" step="1"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>문자알림 시작시간 :</label>
+                            <div class="bfh-timepicker" name="tFloorRadConf.tNotify.NotifyStartHour"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>문자알림 종료시간 :</label>
+                            <div class="bfh-timepicker" name="tFloorRadConf.tNotify.NotifyEndHour"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div id="solbeach_config" class="container tab-pane fade"><br>-->
+        <!--<div class="row">-->
+            <!--<div class="col-md-12">-->
+                <!--<h4><i class="fa fa-angle-right"></i> solbeach_config</h4>-->
+            <!--</div>-->
+        <!--</div><br>-->
+        <!--<div class="row">-->
+            <!--<div class="col-md-6">-->
+                <!--<div class="form-group">-->
+                    <!--<label>SiteInfo :</label>-->
+                    <!--<input type="text" class="form-control" placeholder="SiteInfo *" />-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label>System Local :</label>-->
+                    <!--<form>-->
+                      <!--<div class="input-group mb-3">-->
+                        <!--<div class="input-group-prepend">-->
+                          <!--<span class="input-group-text">IP Addr</span>-->
+                        <!--</div>-->
+                        <!--<input type="text" class="form-control" placeholder="IP Addr">-->
+                          <!--<div class="input-group-prepend">-->
+                          <!--<span class="input-group-text">PortNo</span>-->
+                        <!--</div>-->
+                        <!--<input type="text" class="form-control" placeholder="PortNo">-->
+                      <!--</div>-->
+                    <!--</form>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label>System Remote :</label>-->
+                    <!--<form>-->
+                      <!--<div class="input-group mb-3">-->
+                        <!--<div class="input-group-prepend">-->
+                          <!--<span class="input-group-text">IP Addr</span>-->
+                        <!--</div>-->
+                        <!--<input type="text" class="form-control" placeholder="IP Addr">-->
+                          <!--<div class="input-group-prepend">-->
+                          <!--<span class="input-group-text">PortNo</span>-->
+                        <!--</div>-->
+                        <!--<input type="text" class="form-control" placeholder="PortNo">-->
+                      <!--</div>-->
+                    <!--</form>-->
+                <!--</div>-->
+                <!--<div class="row">-->
+                <!--<div class="col-xs-12 col-sm-12 col-md-6">-->
+                    <!--<div class="form-group">-->
+                        <!--<label>MinPkIntervalSec :</label>-->
+                        <!--<input required type="number" class="form-control"  placeholder="MinPkIntervalSec *" data-decimals="1" min="0" max="9" step="0.1"/>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="col-xs-12 col-sm-12 col-md-6">-->
+                    <!--<div class="form-group">-->
+                        <!--<label>ControlPeriodSec :</label>-->
+                        <!--<input required type="number" class="form-control"  placeholder="ControlPeriodSec *" data-decimals="1" min="0" max="9" step="0.1"/>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="maxl">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<label class="radio inline">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<input type="radio" name="gender" value="male" checked>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<span> Male </span>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</label>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<label class="radio inline">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<input type="radio" name="gender" value="female">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<span>Female </span>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</label>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--</div>-->
+            <!--<div class="col-md-6">-->
+                <!--<div class="form-group">-->
+                    <!--<label>DB Server :</label>-->
+                    <!--<form>-->
+                      <!--<div class="input-group mb-3">-->
+                        <!--<div class="input-group-prepend">-->
+                          <!--<span class="input-group-text">IP Addr</span>-->
+                        <!--</div>-->
+                        <!--<input type="text" class="form-control" placeholder="IP Addr">-->
+                          <!--<div class="input-group-prepend">-->
+                          <!--<span class="input-group-text">PortNo</span>-->
+                        <!--</div>-->
+                        <!--<input type="text" class="form-control" placeholder="PortNo">-->
+                      <!--</div>-->
+                    <!--</form>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label>DB Name :</label>-->
+                    <!--<input type="text" class="form-control"  placeholder="DB Name *" />-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label>DB user :</label>-->
+                    <!--<form>-->
+                      <!--<div class="input-group mb-3">-->
+                        <!--<div class="input-group-prepend">-->
+                          <!--<span class="input-group-text">ID</span>-->
+                        <!--</div>-->
+                        <!--<input type="text" class="form-control" placeholder="ID">-->
+                          <!--<div class="input-group-prepend">-->
+                          <!--<span class="input-group-text">PassWd</span>-->
+                        <!--</div>-->
+                        <!--<input type="text" class="form-control" placeholder="PassWd">-->
+                      <!--</div>-->
+                    <!--</form>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                    <!--<label>SMS :</label>-->
+                    <!--<form>-->
+                      <!--<div class="input-group mb-3">-->
+                        <!--<div class="input-group-prepend">-->
+                          <!--<span class="input-group-text">ID</span>-->
+                        <!--</div>-->
+                        <!--<input type="text" class="form-control" placeholder="ID">-->
+                          <!--<div class="input-group-prepend">-->
+                          <!--<span class="input-group-text">KEY</span>-->
+                        <!--</div>-->
+                        <!--<input type="text" class="form-control" placeholder="KEY">-->
+                      <!--</div>-->
+                    <!--</form>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<select class="form-control">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<option class="hidden"  selected disabled>Please select your Sequrity Question</option>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<option>What is your Birthdate?</option>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<option>What is Your old Phone Number</option>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<option>What is your Pet Name?</option>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</select>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>
+
+<div class="container"><br>
+    <div class="form-group text-right">
+        <input type="submit" class="btn btn-info" value="저장"/>
+        <button type="button" class="btn btn-secondary">취소</button>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="static/lib/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<!--<script src="static/lib/bootstrap/js/bootstrap.min.js"></script>-->
+<script src="static/lib/bootstrap-4.3.1/js/bootstrap.min.js"></script>
+<script src="static/lib/bootstrap-4.3.1/js/bootstrap-input-spinner.js"></script>
+<!-- Bootstrap Form Helpers -->
+<script src="static/lib/bootstrap-form-helpers/js/bootstrap-formhelpers.js"></script>
+<script src="static/lib/bootstrap-form-helpers/js/bootstrap-formhelpers-timepicker.js"></script>
+<script src="static/lib/bootstrap-form-helpers/js/bootstrap-formhelpers-phone.js"></script>
+<script src="static/js/newBroadAjax.js"></script>
+<script>
+
+$(document).ready(function(){
+    $("input[type='number']").inputSpinner();
+    $(".bfh-timepicker").bfhtimepicker('toggle');
+
+    var data = getNewBroadAjax('emsSysConfig', 'rooms/emsSysConfig');
+    var config = data['emsSysConfig'];
+    setParsedJson(config);
+
+    <!--$.each(data['emsSysConfig'], function(key, value){-->
+        <!--// console.log('step1-', key, ': ', value, 'length: ', Object.keys(value).length, 'type: ', typeof(value));-->
+        <!--$.fn.setValue(key, value);-->
+        <!--if(typeof(value)=='object'){-->
+            <!--$.each(value, function(key2, value2) {-->
+                <!--// console.log('step2-', key+'.'+key2, ': ', value2);-->
+                <!--$.fn.setValue(key+'.'+key2, value2);-->
+                <!--if(typeof(value2)=='object'){-->
+                    <!--$.each(value2, function(key3, value3) {-->
+                        <!--// console.log('step3-', key+'.'+key2+'.'+key3, ': ', value3);-->
+                        <!--$.fn.setValue(key+'.'+key2+'.'+key3, value3);-->
+                    <!--});-->
+                <!--}-->
+            <!--});-->
+        <!--}-->
+    <!--});-->
+
+    $("input[type='submit']").click(function(){
+        var params = new Object();
+        var config = new Object();
+        var $tabs = $('.tab-content');
+
+        $tabs.find('input[type="text"], select').each(function(index){
+            var key = $(this).attr('name');
+            var value = $(this).val();
+            if(key == undefined || key == ''){
+                key = $(this).parent().parent().find('input[type="number"]').attr('name') || $(this).closest('.bfh-timepicker').attr('name');
+                var $timePicker = $(this).closest('.bfh-timepicker');
+                if($timePicker.length > 0){
+                    value = $timePicker.find('td.hour').find('input[type="text"]').val();
+                };
+            };
+            if(($(this).prop('tagName') == "SELECT") && (value == null)) {
+                value = 0;
+            };
+            // if(params['configs'] == undefined) params['configs'] = {};
+            // console.log("key = ", key, "value = ", value);
+            if($('input[name="'+key+'"]').attr('type') == "number"){
+                value = value.replace(/,/gi, "");
+                value = parseFloat(value);
+            }else {
+                if(!isNaN(Number(value))){
+                    value = Number(value);
+                }
+            }
+            key = key.split(".");
+            <!--var numValue = parseFloat(value);-->
+            // console.log('key.length : ', key.length);
+            if(key.length > 1){
+                if(key.length < 3){
+                    if(config[key[0]] == undefined) {
+                        config[key[0]] = {};
+                    }
+                    // config[key[0]][key[1]] = isNaN(numValue)? value : numValue;
+                    // data['emsSysConfig'][key[0]][key[1]] = isNaN(numValue)? value : numValue;
+                    data['emsSysConfig'][key[0]][key[1]] = value;
+                }else if(key.length < 4){
+                    if(config[key[0]] == undefined) {
+                        config[key[0]] = {};
+                    }
+                    if(config[key[0]][key[1]] == undefined) {
+                        config[key[0]][key[1]] = {};
+                    }
+                    // config[key[0]][key[1]][key[2]] = isNaN(numValue)? value : numValue;
+                    data['emsSysConfig'][key[0]][key[1]][key[2]] = value;
+                }
+            }else {
+                // config[key] = isNaN(numValue)? value : numValue;
+                data['emsSysConfig'][key] = value;
+            }
+        });
+
+        var $checkBox = $tabs.find('input[type="checkbox"]');
+        if($checkBox.length > 0){
+            var ctrl_option = new Object();
+            $checkBox.each(function(index){
+                var key = $(this).attr('name');
+                var on_off = 0;
+                var oneCheckBox = $(this).prop('checked');
+                (oneCheckBox == true) ? on_off = 1 : on_off = 0;
+                // console.log(key, on_off);
+                if(params[key] == undefined) params[key] = [];
+                params[key].push(on_off);
+            });
+        };
+        $.each(params, function(key, value){
+            var strBinary = value.join("");
+            value = parseInt(strBinary, 2);
+            key = key.split(".");
+            if(key.length > 1){
+                if(key.length < 3){
+                    data['emsSysConfig'][key[0]][key[1]] = value;
+                }else if(key.length < 4){
+                    data['emsSysConfig'][key[0]][key[1]][key[2]] = value;
+                }
+            }else {
+                data['emsSysConfig'][key] = value;
+            }
+            // console.log(key, ' : ', value);
+        });
+        <!--if($checkBox.length > 0){-->
+            <!--var ctrl_option = new Object();-->
+            <!--$checkBox.each(function(index){-->
+                <!--var parentKey = $(this).attr('name');-->
+                <!--var key = $(this).attr('id');-->
+                <!--var on_off = 0;-->
+                <!--var oneCheckBox = $(this).prop('checked');-->
+                <!--(oneCheckBox == true) ? on_off = 1 : on_off = 0;-->
+                <!--console.log(configKey, parentKey, key, on_off);-->
+                <!--if(parentKey == key){-->
+                    <!--params['configs'][key] = on_off;-->
+                <!--}else{-->
+                    <!--params['configs'][parentKey] = ctrl_option;-->
+                    <!--params['configs'][parentKey][key] = on_off;-->
+                <!--};-->
+            <!--});-->
+        <!--};-->
+        alert(JSON.stringify(data));
+        console.log('data : ', data);
+        console.log('config : ', config);
+        console.log('params : ', params);
+    });
+
+    <!--$("input[type='submit']").click(function(){-->
+        <!--var params = new Object();-->
+        <!--var config = new Object();-->
+        <!--var $activeTab = $('.tab-content > .active');-->
+        <!--var configKey = $activeTab.attr('id');-->
+
+        <!--$activeTab.find('input[type="text"], select').each(function(index){-->
+            <!--if($activeTab.attr('id') == "ctrl_param_preHeating"){-->
+                <!--configKey = $(this).closest('div.row').parent().attr('id');-->
+            <!--};-->
+            <!--var key = $(this).attr('name');-->
+            <!--var value = $(this).val();-->
+            <!--if(key == undefined || key == ''){-->
+                <!--key = $(this).parent().parent().find('input[type="number"]').attr('name') || $(this).closest('.bfh-timepicker').attr('name');-->
+                <!--var $timePicker = $(this).closest('.bfh-timepicker');-->
+                <!--if($timePicker.length > 0){-->
+                    <!--value = $timePicker.find('div:first-child > input[type="text"]').val();-->
+                <!--};-->
+            <!--};-->
+            <!--if(($(this).prop('tagName') == "SELECT") && (value == null)) {-->
+                <!--value = 0;-->
+            <!--};-->
+            <!--if(params[configKey] == undefined) params[configKey] = {};-->
+            <!--params[configKey][key] = value;-->
+        <!--});-->
+
+        <!--var $checkBox = $activeTab.find('input[type="checkbox"]');-->
+
+        <!--if($checkBox.length > 0){-->
+            <!--var ctrl_option = new Object();-->
+            <!--$checkBox.each(function(index){-->
+                <!--var parentKey = $(this).attr('name');-->
+                <!--var key = $(this).attr('id');-->
+                <!--var on_off = 0;-->
+                <!--var oneCheckBox = $(this).prop('checked');-->
+                <!--(oneCheckBox == true) ? on_off = 1 : on_off = 0;-->
+                <!--console.log(configKey, parentKey, key, on_off);-->
+                <!--if(parentKey == key){-->
+                    <!--params[configKey][key] = on_off;-->
+                <!--}else{-->
+                    <!--params[configKey][parentKey] = ctrl_option;-->
+                    <!--params[configKey][parentKey][key] = on_off;-->
+                <!--};-->
+            <!--});-->
+        <!--};-->
+        <!--console.log(params);-->
+        <!--alert(JSON.stringify(params));-->
+    <!--});-->
+
+});
+<!--$.fn.setValue = function(key, value) {-->
+    <!--var $element = $('input[name="'+key+'"]');-->
+    <!--// setting <INPUT> value-->
+    <!--if ($element.length){-->
+        <!--if ($element.attr('type')=='number'){-->
+            <!--$element.prop('value', Number(value));-->
+            <!--$element.next().find('input[type="text"]').val(Number(value));-->
+        <!--}else if ($element.attr('type')=='text'){-->
+            <!--$element.val(value);-->
+        <!--}else if ($element.attr('type')=='checkbox'){-->
+            <!--// console.log('체크박스 = ', key, ' : ', value);-->
+            <!--var binNum = value.toString(2);-->
+            <!--binNum = pad(binNum, $element.length).split("");-->
+            <!--// console.log(binNum, typeof(binNum));-->
+            <!--$element.each(function(index){-->
+                <!--if(Number(binNum[index])){-->
+                    <!--this.checked = true;-->
+                <!--}-->
+            <!--});-->
+        <!--}-->
+    <!--}else {-->
+        <!--$element = $('select[name="'+key+'"]');-->
+        <!--// setting <SELECT> value-->
+        <!--if ($element.length){-->
+            <!--$element.val(value);-->
+        <!--}else {-->
+            <!--$element = $('div[name="'+key+'"]').find('div.bfh-timepicker-popover');-->
+            <!--// setting <DIV.bfh-timePicker> value-->
+            <!--if ($element.length){-->
+                <!--// console.log('시간 = ', key, ' : ', value);-->
+                <!--$element.prev().find('input[type="text"]').val(pad(value,2)+':00');-->
+                <!--$element.find('td.hour').find('input[type="text"]').val(pad(value,2));-->
+                <!--$element.find('td.minute').find('input[type="text"]').val('00');-->
+                <!--$element.find('td.minute').find('input[type="text"]').attr("disabled",true);-->
+            <!--}else {-->
+                <!--// console.log('미설정 = ', key, ' : ', value);-->
+            <!--}-->
+        <!--}-->
+    <!--}-->
+<!--}-->
+<!--function pad(n, width) {-->
+  <!--n = n + '';-->
+  <!--return n.length >= width ? n : new Array(width - n.length + 1).join('0') + n;-->
+<!--}-->
+
+</script>

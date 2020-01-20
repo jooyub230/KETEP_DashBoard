@@ -116,6 +116,7 @@ option = {
             type:'bar',
             smooth: true,
             data: dataJsonArray,
+            color: '#1b2a49',
             markArea: {
               data: [
                 [{}, {xAxis: hour}]
@@ -129,7 +130,8 @@ option = {
             name:'예측사용량',
             type:'bar',
             smooth: true,
-            color: 'rgba(99, 110, 114,0.3)',
+            // color: 'rgba(99, 110, 114,0.3)',
+            color: '#c9d1d3',
             barGap: '-100%'
         },
         {
@@ -138,7 +140,8 @@ option = {
             smooth: true,
             data: [-3, -2, -1, -1, 0, 1, 1, 2, 3, 3, 4, 5, 6, 5, 3, 1, 0, -2, -3, 0, 4, 4, 3, 4],
             yAxisIndex: 1,
-            color: 'rgba(255, 107, 107,1.0)'
+            // color: 'rgba(255, 107, 107,1.0)'
+            color: '#00909e'
         }
     ]
 };
@@ -170,6 +173,7 @@ option = {
           type: 'pie',
           radius : '75%',
           center: ['50%', '60%'],
+          color: ['#1b2a49', '#00909e'],
           data:[
               {value:300, name:'가스'},
               {value:700, name:'전기'}
@@ -208,6 +212,7 @@ option = {
             radius: '100%',
             center : ['50%', '90%'],
             axisTick: {length},
+            color: ['#1b2a49', '#00909e'],
             axisLine: {
                 show: true,
                 lineStyle: {
@@ -219,11 +224,18 @@ option = {
                         [5/6, 'rgba(250, 130, 49,1.0)'],
                         [1, 'rgba(235, 59, 90,1.0)']
                     ],
+//                    color: [
+//                        [1/5, '#c9d1d3'],
+//                        [2/5, '#4ecdc4'],
+//                        [3/5, '#00909e'],
+//                        [4/5, '#465881'],
+//                        [1, '#1b2a49']
+//                    ],
                     width: 50
                 }
             },
-            max: 12,
-            splitNumber: 12,
+            max: 10,
+            splitNumber: 10,
             splitLine: {
               show: false
             },
@@ -304,6 +316,7 @@ option = {
             type:'pie',
             center: ['50%', '60%'],
             radius: ['40%', '75%'],
+            color: ['#1b2a49', '#00909e'],
             avoidLabelOverlap: false,
             label: {
                 normal: {
@@ -427,9 +440,12 @@ option = {
                     color: new echarts.graphic.LinearGradient(
                         0, 0, 0, 1,
                         [
-                            {offset: 0, color: '#83bff6'},
-                            {offset: 0.5, color: '#188df0'},
-                            {offset: 1, color: '#188df0'}
+//                            {offset: 0, color: '#83bff6'},
+//                            {offset: 0.5, color: '#188df0'},
+//                            {offset: 1, color: '#188df0'}
+                            {offset: 0, color: '#4ecdc4'},
+                            {offset: 0.5, color: '#34A4AE'},
+                            {offset: 1, color: '#00909e'}
                         ]
                     )
                 },
@@ -457,9 +473,9 @@ option = {
                         color: new echarts.graphic.LinearGradient(
                         0, 0, 0, 1,
                         [
-                            {offset: 0, color: 'rgba(22, 160, 133,1.0)'},
-                            {offset: 0.5, color: 'rgba(46, 204, 113,0.5)'},
-                            {offset: 1, color: 'rgba(46, 204, 113,0.3)'}
+                            {offset: 0, color: '#4ecdc4'},
+                            {offset: 0.5, color: '#34A4AE'},
+                            {offset: 1, color: '#00909e'}
                         ]
                         )
                     }
@@ -569,9 +585,12 @@ option = {
                     color: new echarts.graphic.LinearGradient(
                         0, 0, 0, 1,
                         [
-                            {offset: 0, color: '#83bff6'},
-                            {offset: 0.5, color: '#188df0'},
-                            {offset: 1, color: '#188df0'}
+//                            {offset: 0, color: '#83bff6'},
+//                            {offset: 0.5, color: '#188df0'},
+//                            {offset: 1, color: '#188df0'}
+                            {offset: 0, color: '#4ecdc4'},
+                            {offset: 0.5, color: '#34A4AE'},
+                            {offset: 1, color: '#00909e'}
                         ]
                     )
                 },
@@ -599,9 +618,9 @@ option = {
                         color: new echarts.graphic.LinearGradient(
                         0, 0, 0, 1,
                         [
-                            {offset: 0, color: '#2f4554'},
-                            {offset: 0.5, color: '#2378f7'},
-                            {offset: 1, color: '#83bff6'}
+                            {offset: 0, color: '#4ecdc4'},
+                            {offset: 0.5, color: '#34A4AE'},
+                            {offset: 1, color: '#00909e'}
                         ]
                         )
                     }
